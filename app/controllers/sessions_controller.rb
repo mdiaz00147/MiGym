@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       flash[:success] = "Bienvenido de nuevo #{current_user.name.upcase}"
       redirect_to user
     else
-      flash[:danger] = 'Invalid email/password combination' # Not quite right!
+      flash[:danger] = 'Email invalido/Contrasena incorrecta' # Not quite right!
       render 'new'
     end
     

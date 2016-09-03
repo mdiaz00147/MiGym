@@ -76,6 +76,7 @@
         <% if logged_in? && current_user.admin? %>
         <ul id="nav">
           <li class="<%= active_class("/users/#{current_user.id}") %>"><%= link_to '<i class="fa fa-home"></i> Inicio'.html_safe, current_user %></li>
+          <li class="<%= active_class('/admin/estadisticas') %>"><%= link_to '<i class="fa fa-area-chart"></i> Estadisticas'.html_safe, admin_estadisticas_path %></li>
           <li class="has_sub <%= active_class('/cortesias') %>"><a href="#"><i class="fa fa-eye"></i> Cortesias  <span class="pull-right"><i class="fa fa-chevron-right"></i></span></a>
             <ul>
               <li><%= link_to 'Listar cortesias', cortesias_path %></li>
@@ -230,5 +231,5 @@
 
 
   </body>
-  
+
 </html>
