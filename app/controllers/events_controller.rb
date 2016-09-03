@@ -34,4 +34,7 @@ class EventsController < ApplicationController
 			end
 		end
 	end
+	def index
+		@event = Event.all.order(id: :asc)
+	end
 end

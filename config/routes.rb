@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   get     'static_pages/home'
   get     'estadisticas', to: 'stats#index'
   post    'referer/new', to: 'events#referer'
+  get     'events', to: 'events#index'
   
   root    'sessions#new'
   # The priority is based upon order of creation: first created -> highest priority.
