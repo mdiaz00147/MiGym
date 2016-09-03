@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   end
   def create
   	 user = User.find_by(email: params[:session][:email].downcase)
-     
+     user.update_attribute(:last_login, DateTime.now)
     if user && user.authenticate(params[:session][:password])
       log_in user
       flash[:success] = "Bienvenido de nuevo #{current_user.name.upcase}"
