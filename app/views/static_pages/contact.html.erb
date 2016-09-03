@@ -1,0 +1,124 @@
+<% provide(:title, "Contactanos") %>
+<div class="col-md-8">
+
+
+              <div class="widget wgreen">
+                
+                <div class="widget-head">
+                  <div class="pull-left">Contactanos</div>
+                  
+                  <div class="clearfix"></div>
+                </div>
+
+                <div class="widget-content">
+                  <div class="padd">
+
+                    <br />
+                    <!-- Form starts.  -->
+                     <form class="form-horizontal" role="form">
+                              
+                                <div class="form-group">
+                                  <label class="col-lg-3 control-label">Nombre</label>
+                                  <div class="col-lg-8">
+                                    <input type="text" class="form-control" value="<%= current_user.name %>">
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                  <label class="col-lg-3 control-label">Telefono</label>
+                                  <div class="col-lg-8">
+                                    <input type="text" class="form-control" placeholder="Opcional">
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                  <label class="col-lg-3 control-label">Asunto</label>
+                                  <div class="col-lg-8">
+                                    <input type="text" class="form-control" placeholder="">
+                                  </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                  <label class="col-lg-3 control-label">Mensaje</label>
+                                  <div class="col-lg-7">
+                                    <textarea class="form-control" rows="5"></textarea>
+                                  </div>
+                                </div>    
+                                
+                                                                
+                                
+                                <div class="form-group">
+                                  <div class="col-lg-offset-3 col-lg-6">
+                                    <button type="button" class="btn btn-sm btn-primary">Enviar mensaje</button>
+                                  </div>
+                                </div>
+                              </form>
+                  </div>
+                </div>
+                  <div class="widget-foot">
+                    <!-- Footer goes here -->
+                  </div>
+              </div>  
+
+  </div>
+  	<div class="col-md-4">
+
+              <!-- Widget -->
+              <div class="widget">
+                <!-- Widget title -->
+                <div class="widget-head">
+                  <div class="pull-left">Tambien puedes encontrarnos</div>
+                 
+                  <div class="clearfix"></div>
+                </div>
+                <div class="widget-content">
+                  <!-- Widget content -->
+                  <div class="padd">
+                                               <!-- Contact box -->
+                             <div class="support-contact">
+                          
+                                <p><i class="fa fa-phone"></i>&nbsp; Telefono<strong>:</strong> 6315645</p>
+                                <hr />
+                                <p><i class="fa fa-whatsapp"></i>&nbsp; Whatsapp<strong>:</strong> 311 4897855</p>
+                                <hr />
+                                <p><i class="fa fa-envelope"></i>&nbsp; Email<strong>:</strong> elitefitnesscenterco@gmail.com</p>
+                                <hr />
+                                <p><i class="fa fa-home"></i>&nbsp; Direccion<strong>:</strong> Carrera 58 No 137 a - 10 Piso 3 </p>
+								<hr />
+                                <!-- Button -->
+                                
+                             </div>
+                  </div>
+                </div>
+
+              </div> 
+              <div class="widget">
+                <div class="widget-head">
+                  <div class="pull-left">Donde estasmos ubicados</div>
+                  
+                  <div class="clearfix"></div>
+                </div>
+                <div class="widget-content">
+                  <div class="gmap">
+                    <iframe height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.co.in/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Google+India+Bangalore,+Bennigana+Halli,+Bangalore,+Karnataka&amp;aq=0&amp;oq=google+&amp;sll=9.930582,78.12303&amp;sspn=0.192085,0.308647&amp;ie=UTF8&amp;hq=Google&amp;hnear=Bennigana+Halli,+Bangalore,+Bengaluru+Urban,+Karnataka&amp;t=m&amp;ll=12.993518,77.660294&amp;spn=0.012545,0.036006&amp;z=15&amp;output=embed"></iframe>
+                  </div>
+                  <div class="widget-foot">
+                    <!-- Footer goes here -->
+                  </div>
+                </div>
+              </div> 
+            </div>
+  </div>
+              
+<% flash.each do |message_type, message| %>
+  <% if message_type == "warning" %>
+  <script>
+  swal({
+      title: "<%= message %>",
+      text:  "Hola <%=current_user.name%>, nos hemos dado cuenta que tu plan ha vencido. Pero no te preocupes!, a continuacion podras contactarnos para saber como continuar tu proceso lo mas pronto posible (:",
+      
+      confirmButtonColor: "#337ab7",
+      confirmButtonText: "Contactar ahora",
+      showConfirmButton: true
+   })
+  </script>
+  <% end %>
+<% end %>

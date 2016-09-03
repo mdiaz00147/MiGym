@@ -1,0 +1,113 @@
+<% provide(:title, "Clases") %>
+    <div class="page-head">
+        <h2 class="pull-left"><i class="fa fa-child"></i> Clases</h2>
+        <div class="bread-crumb pull-right">
+          <a href="/"><i class="fa fa-child"></i> Home</a> 
+          <span class="divider">/</span> 
+          <a href="#" class="bread-current">Clases</a>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="matter">
+      <div class="container">
+<% if logged_in? %> 
+
+<div class="row">
+            <div class="col-md-12">
+
+              <div class="widget">
+                <div class="widget-head">
+                  <div class="pull-left">Clases disponibles</div>
+                  <div class="widget-icons pull-right">
+                    <a href="#" class="wminimize"><i class="fa fa-chevron-up"></i></a> 
+                    <a href="#" class="wclose"><i class="fa fa-times"></i></a>
+                  </div>  
+                  <div class="clearfix"></div>
+                </div>
+                <div class="widget-content">
+                  <div class="padd">
+                    
+              <!-- Table Page -->
+              <div class="page-tables">
+                <!-- Table -->
+                <div class="table-responsive">
+                  <table cellpadding="0" cellspacing="0" border="0" id="data-table-lessons" width="100%">
+                    <thead>
+                      <tr>
+                        <th>Nombre</th>
+                        <th>Fecha de inicio</th>
+                        <th>Hora de inicio</th>
+                        <th>Usuarios permitidos</th>
+                        <th>Accíon</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% @lessons.each do |lesson| %>
+                        <tr>
+                          <td><%= lesson.name %></td>
+                          <td><%= (lesson.start_date).strftime("%d/%m/%Y") %></td>
+                          <td><%= (lesson.start_date).strftime("%k:%M") %></td>
+                          <td><%= lesson.users_allowed %></td>
+                          <td>
+
+                              <%= link_to '<i class="fa fa-eye"></i>'.html_safe, lesson,  class: "btn btn-xs btn-success" %>
+                              <%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_lesson_path(lesson), class: "btn btn-xs btn-default" %>
+                              <%= link_to '<i class="fa fa-times"></i>'.html_safe, lesson, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %></td>
+                        </tr>
+                      <% end %>
+                    </tbody>
+                    <tfoot>
+                      
+                    </tfoot> 
+                  </table>
+                  <div class="clearfix"></div>
+                </div>
+                </div>
+              </div>
+
+          
+                  </div>
+                  <div class="widget-foot">
+                    <!-- Footer goes here -->
+                  </div>
+                </div>
+              </div>  
+              
+            </div>
+          </div>
+          <script type="text/javascript">
+            $(document).ready(function() {
+              $('#data-table-lessons').dataTable({
+                 "pageLength": 30,
+                 "order": [],
+                 "language": {
+                            "search": "Buscar: ",
+                            "lengthMenu":     "Mostrar _MENU_ resultados",
+                            "info":           "Mostrando _START_ a _END_ de _TOTAL_ resultados",
+                            "infoEmpty":      "Mostrando 0 a 0 de 0 resultados",
+                            "paginate": {
+                                "first":      "Primero",
+                                "last":       "Ultimo",
+                                "next":       "Siguiente",
+                                "previous":   "Anterior",
+                                
+                            }
+                        }
+              });
+            });
+          </script>
+<% flash.each do |message_type, message| %>
+<%= message %>
+<% if message_type = "welcome" %>
+<script>
+swal({
+    title: "<%= message %>",
+    text:  "",
+    type: "success",
+    timer: 3000,
+    showConfirmButton: false
+ })
+</script>
+<% end %>
+<% end %>
+<% end %>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  lessons: 1
+  price: 
+  start_hour: MyString
+  end_hour: MyString
+
+two:
+  name: MyString
+  lessons: 1
+  price: 
+  start_hour: MyString
+  end_hour: MyString

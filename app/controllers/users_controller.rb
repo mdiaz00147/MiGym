@@ -1,0 +1,83 @@
+class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:edit, :update]
+  #before_action :correct_user,   only: [:edit, :update]
+  before_action :admin_user,     only: :destroy
+
+
+  def show
+  	@user         = User.find(params[:id])
+    @schedules    = @user.schedules.where(created_at: (Time.now.beginning_of_month)..Time.now.end_of_month)
+    @event        = @user.events.all
+    @plan         = @user.plan
+    @plans        = Plan.all
+  end
+  
+  def index
+    @users  =  User.all
+  end
+  def new
+    @user         = User.new
+    @plans        = Plan.all
+  end
+  def edit
+    @plans        = Plan.all
+  end
+
+  def create
+  plan        =   params[:user][:plan_id]
+  expiry      =   (Time.now + 1.months) 
+  @plan_vars   =   Plan.find(plan)
+
+	@user        = User.new(user_params)
+  @user.plan_id   = @plan_vars.id
+  @user.lessons   = @plan_vars.lessons
+  @user.expiry_at = expiry
+
+    if @user.save
+    	flash[:success] = "Usuario creado exitosamente"
+      redirect_to	users_path
+    else
+    	flash[:warning]	=	"Ooops... algo ha fallado :O #{@user.errors}"
+	    redirect_to  new_user_path
+    end
+  end
+
+  def update
+    @plans        = Plan.all
+      if @user.update(user_params)
+        flash[:success] = "Actualizado correctamente"
+        redirect_to user_path
+      else
+        flash[:warning] = "Ooops... algo ha fallado :O #{@user.errors}"
+        redirect_to user
+      end
+  end
+  def destroy
+    @user.destroy
+    flash[:warning] = "Usuario eliminado"
+    redirect_to users_path
+  end
+  private
+    def set_user
+      @user = User.find(params[:id])
+    end
+    def user_params
+      params.require(:user).permit(:name, :email, :phone, :document, :password,
+                                   :password_confirmation, :plan_id, :lessons, :expiry_at, :avatar)
+    end
+    def logged_in_user
+      unless logged_in?
+        flash[:danger] = "Please log in."
+        redirect_to login_url
+      end
+    end
+     def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_url) unless current_user?(@user)
+    end
+    def admin_user
+      redirect_to(root_url) unless current_user.admin?
+    end
+end
+

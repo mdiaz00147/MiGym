@@ -1,0 +1,122 @@
+<div class="page-head">
+        <h2 class="pull-left"><i class="fa fa-user"></i> Editar usuario</h2>
+        <div class="bread-crumb pull-right">
+          <a href="/"><i class="fa fa-user"></i> Home</a> 
+          <span class="divider">/</span> 
+          <a href="#" class="bread-current">Clases</a>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="matter">
+      <div class="container">
+   <div class="row">
+  	<div class="col-md-10 col-lg-offset-1">
+            <div class="widget wred">
+              <div class="widget-head">
+                <i class="fa fa-user"></i> Editar usuario 
+              </div>
+              <div class="widget-content">
+                <div class="padd">
+        				<% provide(:title, 'Editar usuarios') %>
+
+        			    <%= form_for(@user, html: { class: "form-horizontal" }) do |f| %>
+                  
+                    <div class="form-group">
+                          <label class="control-label col-md-2" for="sitename"></label>
+                          <div class="col-md-9 col-lg-offset-4">
+                          <img src="<%=@user.avatar.url%>" style="width: 200px; border:solid 1px ">
+                          <br>
+                          <br>
+                          <span class="btn btn-default btn-file">
+                              Seleccionar imagen <%= f.file_field :avatar, style: 'display: '  %>
+                          </span>                          
+                          </div>
+                    </div>
+
+        			      <div class="form-group">
+                          <label class="control-label col-md-2" for="sitename">Nombre</label>
+                          <div class="col-md-9">
+        			      <%= f.text_field :name, class: 'form-control' %>
+                          </div>
+                    </div>
+                    <div class="form-group">
+                          <label class="control-label col-md-2" for="sitename">Email
+                          </label>
+                          <div class="col-md-9">
+        			      <%= f.email_field :email, class: 'form-control' %>
+                          </div>
+                    </div>
+                    <div class="form-group">
+                          <label class="control-label col-md-2" for="sitename">Documento
+                          </label>
+                          <div class="col-md-9">
+                          <input class="form-control" type="text" value="<%= @user.document.to_i %>" name="user[document]" id="user_document" />
+                          </div>
+                    </div>
+                    <div class="form-group">
+                          <label class="control-label col-md-2" for="sitename">Telefono
+                          </label>
+                          <div class="col-md-9">
+                    <input class="form-control" type="text" value="<%= @user.phone.to_i %>" name="user[phone]" id="user_phone" />
+                          </div>
+                    </div>
+
+                    <div class="form-group">
+                          <label class="control-label col-md-2" for="sitename">Clases
+                          </label>
+                          <div class="col-md-9">
+                    <%= f.text_field :lessons, class: 'form-control' %>
+                          </div>
+                    </div>
+                    <div class="form-group">
+                          <label class="control-label col-md-2" for="sitename">Vencimiento
+                          </label>
+                          <div class="col-md-9">
+                    <input class="form-control" type="text" name="user[expiry_at]" id="user_expiry_at" value="<%= (@user.expiry_at).strftime("%d/%m/%Y") %>" />
+                          </div>
+                    </div>
+                    <div class="form-group">
+                          <label class="control-label col-md-2" for="sitename">Plan actual
+                          </label>
+                          <div class="col-md-6">
+                          <select class="form-control" name="user[plan_id]">
+                            <option value="<%= @user.plan.id %>"><%= @user.plan.name %></option>
+                          <% @plans.each do |plan| %>
+                            <option value="<%= plan.id %>"><%= plan.name %> | $<%= plan.price %> COP</option>
+                          <% end %>
+                          </select>
+                          </div>
+                          
+                    </div>
+                    
+
+
+                    <div class="form-group">
+                          <label class="control-label col-md-2" for="sitename">Password</label>
+                          <div class="col-md-6">
+        			      <%= f.password_field :password, class: 'form-control' %>
+                          </div>
+                    </div>
+                    <div class="form-group">
+                          <label class="control-label col-md-2" for="sitename">Confirmacíon de password</label>
+                          <div class="col-md-6">
+        			      <%= f.password_field :password_confirmation, class: 'form-control' %>
+                          </div>
+                    </div>
+                    <div class="form-group">
+                           <!-- Buttons -->
+                           <div class="col-lg-9 col-lg-offset-2">
+        			      <%= f.submit "Guardar cambios", class: "btn btn-primary" %>
+                    <a class="btn btn-default" href="<%= users_path %>">Cancelar</a>
+                           </div>
+                    </div>
+        			    <% end %>
+    			      </div>
+              </div>
+              <div class="widget-foot">
+                 
+              </div>
+            </div>
+   </div>                
+  </div>  
+ </div>

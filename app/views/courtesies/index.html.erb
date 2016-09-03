@@ -1,0 +1,98 @@
+<% provide(:title, "Cortesias") %>
+    <div class="page-head">
+        <h2 class="pull-left"><i class="fa fa-child"></i> Cortesias</h2>
+        <div class="bread-crumb pull-right">
+          <a href="/"><i class="fa fa-child"></i> Home</a> 
+          <span class="divider">/</span> 
+          <a href="#" class="bread-current">Cortesias</a>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="matter">
+      <div class="container">
+<% if logged_in? %> 
+
+<div class="row">
+            <div class="col-md-12">
+
+              <div class="widget">
+                <div class="widget-head">
+                  <div class="pull-left">Cortesias</div>
+             
+                  <div class="clearfix"></div>
+                </div>
+                <div class="widget-content">
+                  <div class="padd">
+              <div class="page-tables">
+                <div class="table-responsive">
+                  <table cellpadding="0" cellspacing="0" border="0" id="data-table-1" width="100%">
+                    <thead>
+                      <tr>
+                        <th>Nombre</th>
+                        <th>Fecha de cortesia</th>
+                        <th>Hora de cortesia</th>
+                        <th>Email</th>
+                        <th>Telefono</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% @courtesies.each do |courtesie| %>
+                        <tr>
+                          <td><%= courtesie.name %></td>
+                          <td><%= (courtesie.start_hour).strftime("%d/%m/%Y") %></td>
+                          <td><%= (courtesie.start_hour).strftime("%k:%M") %></td>
+                          <td><%= courtesie.email %></td>
+                          <td><%= courtesie.phone %></td>
+                          <td>
+                              <%= link_to '<i class="fa fa-pencil"></i>'.html_safe, courtesie_path(courtesie), class: "btn btn-xs btn-default" %>
+                              <%= link_to '<i class="fa fa-times"></i>'.html_safe, courtesie_delete_path(courtesie), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %>
+                              </td>
+                        </tr>
+                      <% end %>
+                    </tbody>
+                    <tfoot>
+                      
+                    </tfoot> 
+                  </table>
+                  <div class="clearfix"></div>
+                </div>
+                </div>
+              </div>
+
+          
+                  </div>
+                  <div class="widget-foot">
+                    <!-- Footer goes here -->
+                  </div>
+                </div>
+              </div>  
+              
+            </div>
+          </div>
+<% flash.each do |message_type, message| %>
+  <% if message_type == "success" %>
+  <script>
+  swal({
+      title: "<%= message %>",
+      text:  "",
+      type: "<%= message_type %>",
+      timer: 3000,
+      showConfirmButton: false
+   })
+  </script>
+  <% end %>
+
+  <% if message_type == "warning" %>
+  <script>
+  swal({
+      title: "<%= message %>",
+      text:  "",
+      type: "<%= message_type %>",
+      timer: 3000,
+      showConfirmButton: false
+   })
+  </script>
+  <% end %>
+<% end %>
+<% end %>

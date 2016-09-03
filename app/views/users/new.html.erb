@@ -1,0 +1,106 @@
+<div class="page-head">
+        <h2 class="pull-left"><i class="fa fa-user"></i> Crear usuario</h2>
+        <div class="bread-crumb pull-right">
+          <a href="/"><i class="fa fa-user"></i> Home</a> 
+          <span class="divider">/</span> 
+          <a href="#" class="bread-current">Crear usuario</a>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="matter">
+      <div class="container">
+   <div class="row">
+  	<div class="col-md-10 col-lg-offset-1">
+            <div class="widget wred">
+              <div class="widget-head">
+                <i class="fa fa-user"></i> Crear usuario 
+              </div>
+              <div class="widget-content">
+                <div class="padd">
+        				<% provide(:title, 'Crear usuarios') %>
+
+        			    <%= form_for(@user, html: { class: "form-horizontal", multipart: true }) do |f| %>
+        			      <div class="form-group">
+                          <label class="control-label col-md-2" for="sitename">Nombre</label>
+                          <div class="col-md-9">
+        			      <%= f.text_field :name, class: 'form-control' %>
+                          </div>
+                    </div>
+                    <div class="form-group">
+                          <label class="control-label col-md-2" for="sitename">Email
+                          </label>
+                          <div class="col-md-9">
+        			      <%= f.email_field :email, class: 'form-control' %>
+                          </div>
+                    </div>
+                    <div class="form-group">
+                          <label class="control-label col-md-2" for="sitename">Documento
+                          </label>
+                          <div class="col-md-9">
+                    <%= f.text_field :document, class: 'form-control' %>
+                          </div>
+                    </div>
+                    <div class="form-group">
+                          <label class="control-label col-md-2" for="sitename">Telefono
+                          </label>
+                          <div class="col-md-9">
+                    <%= f.text_field :phone, class: 'form-control' %>
+                          </div>
+                    </div>
+
+                    <div class="form-group">
+                          <label class="control-label col-md-2" for="sitename">Plan
+                          </label>
+                          <div class="col-md-6">
+                          <select class="form-control" name="user[plan_id]">
+                          <% @plans.each do |plan| %>
+                            <option value="<%= plan.id %>"><%= plan.name %> | $<%= plan.price %> COP</option>
+                          <% end %>
+                          </select>
+                          </div>
+                          
+                    </div>
+
+                    <div class="form-group">
+                          <label class="control-label col-md-2" for="sitename">Password</label>
+                          <div class="col-md-6">
+        			      <%= f.password_field :password, class: 'form-control' %>
+                          </div>
+                    </div>
+                    <div class="form-group">
+                          <label class="control-label col-md-2" for="sitename">Confirmacíon de password</label>
+                          <div class="col-md-6">
+        			      <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+                  <%= f.file_field :avatar %>
+                          </div>
+                    </div>
+                    <div class="form-group">
+                           <!-- Buttons -->
+                           <div class="col-lg-9 col-lg-offset-2">
+        			      <%= f.submit "Crear usuario", class: "btn btn-primary" %>
+                            <a class="btn btn-default" href="<%= users_path %>">Cancelar</a>
+                           </div>
+                    </div>
+        			    <% end %>
+    			      </div>
+              </div>
+              <div class="widget-foot">
+                 
+              </div>
+            </div>
+   </div>                
+  </div> 
+  <% flash.each do |message_type, message| %>
+  <% if message_type == "warning" %>
+  <script>
+  swal({
+      title: "<%= message %>",
+      text:  "",
+      type: "<%= message_type %>",
+      timer: 3000,
+      showConfirmButton: false
+   })
+  </script>
+  <% end %>
+<% end %> 

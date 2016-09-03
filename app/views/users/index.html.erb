@@ -1,0 +1,104 @@
+<% provide(:title, 'Usuarios') %>
+<div class="page-head">
+        <h2 class="pull-left"><i class="fa fa-users"></i> Usuarios</h2>
+        <div class="bread-crumb pull-right">
+          <a href="/"><i class="fa fa-users"></i> Home</a> 
+          <span class="divider">/</span> 
+          <a href="#" class="bread-current">Usuarios</a>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="matter">
+      <div class="container">
+<% if current_user.admin? %> 
+<div class="row">
+
+            <div class="col-md-12">
+              <div class="widget">
+                <div class="widget-head">
+                  <div class="pull-left">Usuarios Inscritos</div>
+                  <div class="widget-icons pull-right">
+                    <a href="#" class="wminimize"><i class="fa fa-chevron-up"></i></a> 
+                    <a href="#" class="wclose"><i class="fa fa-times"></i></a>
+                  </div>  
+                  <div class="clearfix"></div>
+                </div>
+                <div class="widget-content">
+                  <div class="padd">
+                    
+              <!-- Table Page -->
+              <div class="page-tables">
+                <!-- Table -->
+                <div class="table-responsive">
+                  <table cellpadding="0" cellspacing="0" border="0" id="data-table-1" width="100%">
+                    <thead>
+                      <tr>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th>Telefono</th>
+                        <th>Plan</th>
+                        <th>Clases</th>
+                        <th>Vencimiento</th>
+                        <th>Documento</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% @users.each do |user| %>
+                        <tr>
+                          <td><%= user.name %></td>
+                          <td><%= user.email %></td>
+                          <td><%= user.phone.to_i %></td>
+                          <td><%= user.plan.name %></td>
+                          <td><%= user.lessons %></td>
+                          <td><%= (user.expiry_at).strftime("%d/%m/%Y") %></td>
+                          <td><%= user.document %></td>
+                          <td><%= link_to '<i class="fa fa-user"></i>'.html_safe, user,  class: "btn btn-xs btn-success" %>
+                              <%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_user_path(user), class: "btn btn-xs btn-default" %>
+                              <%= link_to '<i class="fa fa-times"></i>'.html_safe, user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %>   </td>
+                        </tr>
+                      <% end %>
+                    </tbody>
+                    <tfoot>
+                      
+                    </tfoot> 
+                  </table>
+                  <div class="clearfix"></div>
+                </div>
+                </div>
+              </div>
+
+          
+                  </div>
+                  <div class="widget-foot">
+                    <!-- Footer goes here -->
+                  </div>
+                </div>
+              </div>  
+              
+            </div>
+  <% flash.each do |message_type, message| %>
+  <% if message_type == "success" %>
+  <script>
+  swal({
+      title: "<%= message %>",
+      text:  "",
+      type: "<%= message_type %>",
+      timer: 3000,
+      showConfirmButton: false
+   })
+  </script>
+  <% end %>
+  <% if message_type == "warning" %>
+  <script>
+  swal({
+      title: "<%= message %>",
+      text:  "",
+      type: "<%= message_type %>",
+      timer: 3000,
+      showConfirmButton: false
+   })
+  </script>
+  <% end %>
+<% end %>
+<% end %>

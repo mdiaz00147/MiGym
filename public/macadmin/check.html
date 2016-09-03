@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, td, th {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+th {text-align: left;}
+</style>
+</head>
+<body>
+
+<?php
+$q = $_GET['q'];
+$b = $_GET['q'];
+$c = $_GET['q'];
+
+  require('def.php');			
+  $db=@mysql_connect(server,user,pass);
+  mysql_select_db(database, $db) or die(mysql_error());
+  mysql_query("set names 'utf8'");
+
+	$query="SELECT * FROM panel_clases WHERE id = '".$q."'";
+ 	$result=mysql_query($query) or die(mysql_error());
+
+echo "<table>
+<tr>
+<th>Firstname</th>
+<th>Lastname</th>
+<th>Age</th>
+<th>Hometown</th>
+<th>Job</th>
+</tr>";
+while ($row = mysql_fetch_object($result)){  
+    echo "<tr>";
+    echo "<td>" . $usuario=$row->usuario . "</td>";
+    echo "<td>" . $hora_inicio=$row->hora_inicio . "</td>";
+    echo "<td>" . $clase=$row->clase . "</td>";
+    echo "<td>" . $entrenador=$row->entrenador . "</td>";
+    echo "<td>" . $id_clase=$row->id_clase . "</td>";
+    echo "</tr>";
+}
+echo "</table>";
+mysqli_close($db);
+?>
+</body>
+</html>

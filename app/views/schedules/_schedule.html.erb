@@ -1,0 +1,6 @@
+<tr>
+  <td><%= link_to schedule.user.name, schedule.user %></td>
+  <td><%= schedule.lesson.start_date.to_formatted_s(:db) %></td>
+  <td><% schedule.lesson_id %><%= link_to  schedule.lesson.name, schedule.lesson %></td>
+ 
+</tr>
