@@ -62,7 +62,10 @@
 
                     <div class="form quick-post">
                                       <!-- Edit profile form (not working)-->
-                                      <%= form_for(:referer, url: '/referer/new', html: { class: "form-horizontal" } ) do |f| %>
+                                      <%= form_for(:referer, url: '/referer/new', html: { class: "form-horizontal", onsubmit: "if(document.getElementById('checkboxterms').checked==false){
+                                        alert('Debes aceptar los terminos y condiciones antes de guardar'); 
+                                        return false;
+                                        }" } ) do |f| %>
                                           <%= f.hidden_field :event_name, value: 'referidos' %>
                                           <div class="form-group">
                                             <label class="control-label col-lg-3" for="title">Referido #1</label>
@@ -106,7 +109,8 @@
                                           <div class="form-group">
                                              <!-- Buttons -->
                        <div class="col-lg-offset-3 col-lg-6">
-                        <button type="checkbox"></button> Acepto terminos y condiciones
+                        <input type="checkbox" id="checkboxterms"></input> Acepto <a href="#" id="terminos" style="color:white; font-weight: bold;">terminos y condiciones</a>
+
                         <br>
                         <button type="submit" class="btn btn-sm btn-success"><h4>Guardar!</h4></button>
                        </div>
@@ -255,7 +259,17 @@
       </div>
     </div>          
  </div>
+<script type="text/javascript">
+  document.querySelector('#terminos').onclick = function(){
+  swal({
+    title: "Terminos y condiciones evento referidos",
+    text: "<p>- El bono es personal e instransferible</p><p>- No es acumulable con otros descuentos (e.g: Plan 2x1)</p><p>- Redimible en un plazo de 6 meses</p><p>- No es canjeable por dinero en efectivo</p><p>- Valido solamente para gimnasios Elite Fintess Center</p>",
+    html: true,
+    showConfirmButton: true
+  });
+};
 
+</script>
 <% flash.each do |message_type, message| %>
 <script>
 swal({
