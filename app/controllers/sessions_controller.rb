@@ -9,7 +9,6 @@ class SessionsController < ApplicationController
      user.update_attribute(:last_login, DateTime.now)
     if user && user.authenticate(params[:session][:password])
       log_in user
-      Gymail.register_email(user).deliver_now
 
       flash[:success] = "Bienvenido de nuevo #{current_user.name.upcase}"
       redirect_to user
