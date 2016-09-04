@@ -177,6 +177,7 @@ DEPENDENCIES
   httparty
   jbuilder (~> 2.0)
   jquery-rails
+  mail
   materialize-sass
   momentjs-rails (>= 2.9.0)
   paperclip (~> 5.0.0)
