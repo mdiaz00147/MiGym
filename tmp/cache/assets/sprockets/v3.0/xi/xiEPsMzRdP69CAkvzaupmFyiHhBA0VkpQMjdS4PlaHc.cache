@@ -1,0 +1,89 @@
+{:uriI"ífile://app/assets/javascripts/Chart.js/samples/bar-stacked.html?type=text/html&id=f52e2c46e6268afcea0b7623edf36ac827fe3264a31d3a99e0a7914f4867677e:ET:load_pathI"app/assets/javascripts;T:filenameI"=app/assets/javascripts/Chart.js/samples/bar-stacked.html;T:	nameI"!Chart.js/samples/bar-stacked;T:logical_pathI"&Chart.js/samples/bar-stacked.html;T:content_typeI"text/html;T:sourceI"g<!doctype html>
+<html>
+
+<head>
+    <title>Stacked Bar Chart</title>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="../Chart.bundle.js"></script>
+    <style>
+    canvas {
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+    }
+    </style>
+</head>
+
+<body>
+    <div style="width: 75%">
+        <canvas id="canvas"></canvas>
+    </div>
+    <button id="randomizeData">Randomize Data</button>
+    <script>
+        var randomScalingFactor = function() {
+            return (Math.random() > 0.5 ? 1.0 : -1.0) * Math.round(Math.random() * 100);
+        };
+        var randomColorFactor = function() {
+            return Math.round(Math.random() * 255);
+        };
+
+        var barChartData = {
+            labels: ["January", "February", "March", "April", "May", "June", "July"],
+            datasets: [{
+                label: 'Dataset 1',
+                backgroundColor: "rgba(220,220,220,0.5)",
+                data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
+            }, {
+                label: 'Dataset 2',
+                backgroundColor: "rgba(151,187,205,0.5)",
+                data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
+            }, {
+                label: 'Dataset 3',
+                backgroundColor: "rgba(151,187,205,0.5)",
+                data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
+            }]
+
+        };
+        window.onload = function() {
+            var ctx = document.getElementById("canvas").getContext("2d");
+            window.myBar = new Chart(ctx, {
+                type: 'bar',
+                data: barChartData,
+                options: {
+                    title:{
+                        display:true,
+                        text:"Chart.js Bar Chart - Stacked"
+                    },
+                    tooltips: {
+                        mode: 'label'
+                    },
+                    responsive: true,
+                    scales: {
+                        xAxes: [{
+                            stacked: true,
+                        }],
+                        yAxes: [{
+                            stacked: true
+                        }]
+                    }
+                }
+            });
+        };
+
+        $('#randomizeData').click(function() {
+            $.each(barChartData.datasets, function(i, dataset) {
+                dataset.backgroundColor = 'rgba(' + randomColorFactor() + ',' + randomColorFactor() + ',' + randomColorFactor() + ',.7)';
+                dataset.data = [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()];
+
+            });
+            window.myBar.update();
+        });
+    </script>
+</body>
+
+</html>
+;T:metadata{	:dependencieso:Set:
+@hash}
+I"environment-version;TTI"environment-paths;TTI"rails-env;TTI"2processors:type=text/html&file_type=text/html;TTI"Kfile-digest://app/assets/javascripts/Chart.js/samples/bar-stacked.html;TTF:charsetI"
+utf-8;F:digest"%Poc'nÍπ¡1q¨ﬂXõ5êÌ∑Yõ™*çÚÚ0^[˛:lengthig:dependencies_digest"%∏ﬂFGûõ	9õCÍñöÒékÙ¯êL›g&W¶°¢:idI"Ef52e2c46e6268afcea0b7623edf36ac827fe3264a31d3a99e0a7914f4867677e;F:
+mtimel+X%ùW

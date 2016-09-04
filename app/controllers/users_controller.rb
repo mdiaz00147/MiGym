@@ -36,6 +36,7 @@ class UsersController < ApplicationController
 
     if @user.save
     	flash[:success] = "Usuario creado exitosamente"
+      Gymail.register_email(@user).deliver_now
       redirect_to	users_path
     else
     	flash[:warning]	=	"Ooops... algo ha fallado :O #{@user.errors}"
