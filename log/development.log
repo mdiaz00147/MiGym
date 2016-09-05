@@ -20206,3 +20206,2206 @@ Processing by UsersController#show as HTML
   Rendered layouts/_header.html.erb (1.1ms)
   Rendered layouts/_footer.html.erb (0.1ms)
 Completed 200 OK in 98ms (Views: 88.8ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/admin/reminder" for 192.168.1.113 at 2016-09-05 15:12:55 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by EventsController#reminder as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE (last_login < '2016-08-29 15:12:55 -0500')[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 50]]
+Redirected to http://192.168.1.113:8080/users/50
+Completed 302 Found in 25ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/users/50" for 192.168.1.113 at 2016-09-05 15:12:55 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"50"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 50]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", "50"]]
+  [1m[36mPlan Load (0.2ms)[0m  [1mSELECT  "plans".* FROM "plans" WHERE "plans"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 50]]
+  [1m[36mEvent Load (0.2ms)[0m  [1mSELECT "events".* FROM "events" WHERE "events"."user_id" = ?[0m  [["user_id", 50]]
+  [1m[35mPlan Load (0.1ms)[0m  SELECT "plans".* FROM "plans"
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "schedules" WHERE "schedules"."user_id" = ? AND ("schedules"."created_at" BETWEEN '2016-09-01 05:00:00.000000' AND '2016-10-01 04:59:59.999999')[0m  [["user_id", 50]]
+  [1m[35mSchedule Load (0.1ms)[0m  SELECT "schedules".* FROM "schedules" WHERE "schedules"."user_id" = ? AND ("schedules"."created_at" BETWEEN '2016-09-01 05:00:00.000000' AND '2016-10-01 04:59:59.999999')  [["user_id", 50]]
+  [1m[36mLesson Load (0.1ms)[0m  [1mSELECT  "lessons".* FROM "lessons" WHERE "lessons"."id" = ? LIMIT 1[0m  [["id", 1302]]
+  [1m[35mLesson Load (0.1ms)[0m  SELECT  "lessons".* FROM "lessons" WHERE "lessons"."id" = ? LIMIT 1  [["id", 1306]]
+  [1m[36mLesson Load (0.1ms)[0m  [1mSELECT  "lessons".* FROM "lessons" WHERE "lessons"."id" = ? LIMIT 1[0m  [["id", 1301]]
+  [1m[35mLesson Load (0.1ms)[0m  SELECT  "lessons".* FROM "lessons" WHERE "lessons"."id" = ? LIMIT 1  [["id", 1250]]
+  Rendered schedules/_schedule.html.erb (13.4ms)
+  Rendered users/show.html.erb within layouts/application (29.9ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 94ms (Views: 74.5ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/users/50" for 192.168.1.113 at 2016-09-05 15:14:01 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"50"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 50]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", "50"]]
+  [1m[36mPlan Load (0.2ms)[0m  [1mSELECT  "plans".* FROM "plans" WHERE "plans"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 50]]
+  [1m[36mEvent Load (0.1ms)[0m  [1mSELECT "events".* FROM "events" WHERE "events"."user_id" = ?[0m  [["user_id", 50]]
+  [1m[35mPlan Load (0.1ms)[0m  SELECT "plans".* FROM "plans"
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "schedules" WHERE "schedules"."user_id" = ? AND ("schedules"."created_at" BETWEEN '2016-09-01 05:00:00.000000' AND '2016-10-01 04:59:59.999999')[0m  [["user_id", 50]]
+  [1m[35mSchedule Load (0.1ms)[0m  SELECT "schedules".* FROM "schedules" WHERE "schedules"."user_id" = ? AND ("schedules"."created_at" BETWEEN '2016-09-01 05:00:00.000000' AND '2016-10-01 04:59:59.999999')  [["user_id", 50]]
+  [1m[36mLesson Load (0.1ms)[0m  [1mSELECT  "lessons".* FROM "lessons" WHERE "lessons"."id" = ? LIMIT 1[0m  [["id", 1302]]
+  [1m[35mLesson Load (0.1ms)[0m  SELECT  "lessons".* FROM "lessons" WHERE "lessons"."id" = ? LIMIT 1  [["id", 1306]]
+  [1m[36mLesson Load (0.1ms)[0m  [1mSELECT  "lessons".* FROM "lessons" WHERE "lessons"."id" = ? LIMIT 1[0m  [["id", 1301]]
+  [1m[35mLesson Load (0.1ms)[0m  SELECT  "lessons".* FROM "lessons" WHERE "lessons"."id" = ? LIMIT 1  [["id", 1250]]
+  Rendered schedules/_schedule.html.erb (3.3ms)
+  Rendered users/show.html.erb within layouts/application (10.0ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 62ms (Views: 58.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/assets/fullcalendar.scss.self-13bfc7d614771e5f27776eaf4e370a0cfcfc5195614e5bf4ed0c22a4a101294e.css?body=1" for 192.168.1.113 at 2016-09-05 15:14:01 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/font-awesome.min.scss.self-6bb04114c00dc0f2115b700bce976c1d368c4c641247d3f2bd520b3067efef45.css?body=1" for 192.168.1.113 at 2016-09-05 15:14:01 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/events.self-b60acab5af8d245ed2b3012f77d11d8d207d8eada27756badaf4ef05770d60f6.css?body=1" for 192.168.1.113 at 2016-09-05 15:14:01 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/bootstrap-datetimepicker.min.scss.self-d5787e4379cc4bcde60bb2e38d3f52dd4e847581ecafd44ea47385db6c1ca350.css?body=1" for 192.168.1.113 at 2016-09-05 15:14:01 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/bootstrap.scss.self-f945c3a27ed1c16090096c999c7583ddc3934af7a5b21febb698614c7a550ce0.css?body=1" for 192.168.1.113 at 2016-09-05 15:14:01 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/bootstrap.min.scss.self-1f98fb16c9e1f565fe9924fadc2a8523a7bc42353d76aa42a0eb8ac320ce9bdc.css?body=1" for 192.168.1.113 at 2016-09-05 15:14:01 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery-ui.scss.self-8597c5928b743edeb10a9fa3c6c09263e8d78de4083ae3ea895f5e86651db158.css?body=1" for 192.168.1.113 at 2016-09-05 15:14:01 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery.cleditor.scss.self-d21d6b21ae972c0bf700d0c40dc9e98a7441f3adf03bc8eafd6ccf14ebf366e1.css?body=1" for 192.168.1.113 at 2016-09-05 15:14:01 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery.dataTables.scss.self-aa0637dfdab07b07281fc4afa8ef4be877493be1fc5f7b68e6ec25a7a3601874.css?body=1" for 192.168.1.113 at 2016-09-05 15:14:01 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery.onoff.scss.self-6ca085ed645ccc2e36028469002b2780926d46cfd2f614e366d6f33315122725.css?body=1" for 192.168.1.113 at 2016-09-05 15:14:01 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/prettyPhoto.scss.self-72229f85b6fbf92a6a861cc308a88d02394607bc8f05f4d715d0bbf1d9a78a62.css?body=1" for 192.168.1.113 at 2016-09-05 15:14:01 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/rateit.scss.self-d35550488387421fc64b29b1e34dd70f5a5baf01b37e9b09c0b0ad77d50c02f6.css?body=1" for 192.168.1.113 at 2016-09-05 15:14:01 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/style.scss.self-2cb380e8e6fa3c55b4222f3df4afbce2c210bc468b11f0101d690f7ad002287c.css?body=1" for 192.168.1.113 at 2016-09-05 15:14:01 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/widgets.scss.self-35b0ad21c250e09ed8fd977caa32f614ff5742a7d9db08e2100aa95a49f2a833.css?body=1" for 192.168.1.113 at 2016-09-05 15:14:01 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/application.self-d1c15f463c52528c60d5acc3cc89ac075c399bfd57e27593b10d011bbaad53a0.css?body=1" for 192.168.1.113 at 2016-09-05 15:14:01 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/sweetalert.self-93ae81483be2e9705db4cd911fa410bc2cf6c24f355dc5ac899de49fab854e63.css?body=1" for 192.168.1.113 at 2016-09-05 15:14:01 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 192.168.1.113 at 2016-09-05 15:14:01 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 192.168.1.113 at 2016-09-05 15:14:01 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/Chart.js/Chart.bundle.self-c11f584663002f049e839927ca9137dceee340c8d67ec91df0cfaaa3bf7b71dd.js?body=1" for 192.168.1.113 at 2016-09-05 15:14:01 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/Chart.js/Chart.bundle.min.self-e2785196d72dd3a3601cc2d56a5d269ea2ef4b789cd96652426b9facf906dcdb.js?body=1" for 192.168.1.113 at 2016-09-05 15:14:01 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/Chart.js/Chart.self-6a8d08dda71696d48153f33a0e7fed483876051ded8a0a3c76466f3640512e10.js?body=1" for 192.168.1.113 at 2016-09-05 15:14:01 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/Chart.js/Chart.min.self-7bf1ca1b6e7988ee8756e86335c2f10e17c0a1dcd3a81d8d20edea4e09204ef4.js?body=1" for 192.168.1.113 at 2016-09-05 15:14:01 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/courtesies.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 192.168.1.113 at 2016-09-05 15:14:01 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/events.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 192.168.1.113 at 2016-09-05 15:14:01 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/stats.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 192.168.1.113 at 2016-09-05 15:14:01 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/sweetalert.self-2f4d106e0b5bd7c2cd59eea258597298f81d0b8ca8eb60b1d1cc6a5c45ac4ba5.js?body=1" for 192.168.1.113 at 2016-09-05 15:14:01 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/application.self-7862a8a8b42407b4741a1adeeea35f0d13ddc4f702ec532adb0674491d296495.js?body=1" for 192.168.1.113 at 2016-09-05 15:14:01 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/Elite-Logo-PNG-5ce3f413d41ce310ce8f9c08d97b8ac0d4784714d9d2d9af1dc7722de46f0eb6.png" for 192.168.1.113 at 2016-09-05 15:14:02 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/2000-4a88d406d6a5f501e24fba370965b16206c25581752326870c495cb30dc12610.png" for 192.168.1.113 at 2016-09-05 15:14:02 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/favicon-ea123d56334256719ee0c696d016978f9509cdf77ffec82b0a7ff1322fda8f2b.png" for 192.168.1.113 at 2016-09-05 15:14:02 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/a." for 192.168.1.113 at 2016-09-05 15:14:04 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+ActionController::RoutingError (No route matches [GET] "/a."):
+  actionpack (4.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:20:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.6) lib/rails/engine.rb:518:in `call'
+  railties (4.2.6) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  puma (2.3.2) lib/puma/server.rb:371:in `handle_request'
+  puma (2.3.2) lib/puma/server.rb:248:in `process_client'
+  puma (2.3.2) lib/puma/server.rb:147:in `block in run'
+  puma (2.3.2) lib/puma/thread_pool.rb:92:in `block in spawn_thread'
+
+
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.8ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (75.7ms)
+
+
+Started GET "/admin/reminder" for 192.168.1.113 at 2016-09-05 15:14:07 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by EventsController#reminder as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE (last_login < '2016-08-29 15:14:07 -0500')[0m
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.4ms)
+
+ArgumentError (invalid date):
+  app/controllers/events_controller.rb:44:in `parse'
+  app/controllers/events_controller.rb:44:in `block in reminder'
+  app/controllers/events_controller.rb:43:in `reminder'
+
+
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (49.1ms)
+
+
+Started GET "/admin/reminder" for 192.168.1.113 at 2016-09-05 15:14:08 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by EventsController#reminder as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE (last_login < '2016-08-29 15:14:08 -0500')
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.2ms)
+
+ArgumentError (invalid date):
+  app/controllers/events_controller.rb:44:in `parse'
+  app/controllers/events_controller.rb:44:in `block in reminder'
+  app/controllers/events_controller.rb:43:in `reminder'
+
+
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.2ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (47.4ms)
+  [1m[36mUser Load (3.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE (last_login < '2016-08-29 15:17:00 -0500')[0m
+  [1m[36mUser Load (1.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE (last_login < '2016-08-29 15:17:33 -0500')[0m
+
+
+Started GET "/admin/reminder" for 192.168.1.113 at 2016-09-05 15:21:52 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by EventsController#reminder as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE (last_login < '2016-08-29 15:21:52 -0500')[0m
+  Rendered gymail/reminder.html.erb within layouts/mailer (1.6ms)
+
+Gymail#reminder: processed outbound mail in 16.5ms
+
+Sent mail to sandra-munoz2014@hotmail.com (7547.2ms)
+Date: Mon, 05 Sep 2016 15:21:52 -0500
+From: elitefitnesscenterco@gmail.com
+To: sandra-munoz2014@hotmail.com
+Message-ID: <57cdd3e0ec18d_9af3ff24c8e5570393a9@MacBook-Pro-de-Mario.local.mail>
+Subject: Hace rato no sabemos de ti ARIANAS
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<html>
+  <body>
+    <!doctype html>
+<html xmlns=3D"http://www.w3.org/1999/xhtml" xmlns:v=3D"urn:schemas-micro=
+soft-com:vml" xmlns:o=3D"urn:schemas-microsoft-com:office:office">
+	<head>
+		<!-- NAME: 1 COLUMN -->
+		<!--[if gte mso 15]>
+		<xml>
+			<o:OfficeDocumentSettings>
+			<o:AllowPNG/>
+			<o:PixelsPerInch>96</o:PixelsPerInch>
+			</o:OfficeDocumentSettings>
+		</xml>
+		<![endif]-->
+		<meta charset=3D"UTF-8">
+        <meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge">
+        <meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-=
+scale=3D1">
+		<title>*|MC:SUBJECT|*</title>
+        =
+
+    <style type=3D"text/css">
+		p{
+			margin:10px 0;
+			padding:0;
+		}
+		table{
+			border-collapse:collapse;
+		}
+		h1,h2,h3,h4,h5,h6{
+			display:block;
+			margin:0;
+			padding:0;
+		}
+		img,a img{
+			border:0;
+			height:auto;
+			outline:none;
+			text-decoration:none;
+		}
+		body,#bodyTable,#bodyCell{
+			height:100%;
+			margin:0;
+			padding:0;
+			width:100%;
+		}
+		#outlook a{
+			padding:0;
+		}
+		img{
+			-ms-interpolation-mode:bicubic;
+		}
+		table{
+			mso-table-lspace:0pt;
+			mso-table-rspace:0pt;
+		}
+		.ReadMsgBody{
+			width:100%;
+		}
+		.ExternalClass{
+			width:100%;
+		}
+		p,a,li,td,blockquote{
+			mso-line-height-rule:exactly;
+		}
+		a[href^=3Dtel],a[href^=3Dsms]{
+			color:inherit;
+			cursor:default;
+			text-decoration:none;
+		}
+		p,a,li,td,body,table,blockquote{
+			-ms-text-size-adjust:100%;
+			-webkit-text-size-adjust:100%;
+		}
+		.ExternalClass,.ExternalClass p,.ExternalClass td,.ExternalClass div,.E=
+xternalClass span,.ExternalClass font{
+			line-height:100%;
+		}
+		a[x-apple-data-detectors]{
+			color:inherit !important;
+			text-decoration:none !important;
+			font-size:inherit !important;
+			font-family:inherit !important;
+			font-weight:inherit !important;
+			line-height:inherit !important;
+		}
+		#bodyCell{
+			padding:10px;
+		}
+		.templateContainer{
+			max-width:600px !important;
+		}
+		a.mcnButton{
+			display:block;
+		}
+		.mcnImage{
+			vertical-align:bottom;
+		}
+		.mcnTextContent{
+			word-break:break-word;
+		}
+		.mcnTextContent img{
+			height:auto !important;
+		}
+		.mcnDividerBlock{
+			table-layout:fixed !important;
+		}
+	/*
+	@tab Page
+	@section Background Style
+	@tip Set the background color and top border for your email. You may wan=
+t to choose colors that match your company's branding.
+	*/
+		body,#bodyTable{
+			/*@editable*/background-color:#FAFAFA;
+		}
+	/*
+	@tab Page
+	@section Background Style
+	@tip Set the background color and top border for your email. You may wan=
+t to choose colors that match your company's branding.
+	*/
+		#bodyCell{
+			/*@editable*/border-top:0;
+		}
+	/*
+	@tab Page
+	@section Email Border
+	@tip Set the border for your email.
+	*/
+		.templateContainer{
+			/*@editable*/border:0;
+		}
+	/*
+	@tab Page
+	@section Heading 1
+	@tip Set the styling for all first-level headings in your emails. These =
+should be the largest of your headings.
+	@style heading 1
+	*/
+		h1{
+			/*@editable*/color:#202020;
+			/*@editable*/font-family:Helvetica;
+			/*@editable*/font-size:26px;
+			/*@editable*/font-style:normal;
+			/*@editable*/font-weight:bold;
+			/*@editable*/line-height:125%;
+			/*@editable*/letter-spacing:normal;
+			/*@editable*/text-align:left;
+		}
+	/*
+	@tab Page
+	@section Heading 2
+	@tip Set the styling for all second-level headings in your emails.
+	@style heading 2
+	*/
+		h2{
+			/*@editable*/color:#202020;
+			/*@editable*/font-family:Helvetica;
+			/*@editable*/font-size:22px;
+			/*@editable*/font-style:normal;
+			/*@editable*/font-weight:bold;
+			/*@editable*/line-height:125%;
+			/*@editable*/letter-spacing:normal;
+			/*@editable*/text-align:left;
+		}
+	/*
+	@tab Page
+	@section Heading 3
+	@tip Set the styling for all third-level headings in your emails.
+	@style heading 3
+	*/
+		h3{
+			/*@editable*/color:#202020;
+			/*@editable*/font-family:Helvetica;
+			/*@editable*/font-size:20px;
+			/*@editable*/font-style:normal;
+			/*@editable*/font-weight:bold;
+			/*@editable*/line-height:125%;
+			/*@editable*/letter-spacing:normal;
+			/*@editable*/text-align:left;
+		}
+	/*
+	@tab Page
+	@section Heading 4
+	@tip Set the styling for all fourth-level headings in your emails. These=
+ should be the smallest of your headings.
+	@style heading 4
+	*/
+		h4{
+			/*@editable*/color:#202020;
+			/*@editable*/font-family:Helvetica;
+			/*@editable*/font-size:18px;
+			/*@editable*/font-style:normal;
+			/*@editable*/font-weight:bold;
+			/*@editable*/line-height:125%;
+			/*@editable*/letter-spacing:normal;
+			/*@editable*/text-align:left;
+		}
+	/*
+	@tab Preheader
+	@section Preheader Style
+	@tip Set the background color and borders for your email's preheader are=
+a.
+	*/
+		#templatePreheader{
+			/*@editable*/background-color:#FAFAFA;
+			/*@editable*/border-top:0;
+			/*@editable*/border-bottom:0;
+			/*@editable*/padding-top:9px;
+			/*@editable*/padding-bottom:9px;
+		}
+	/*
+	@tab Preheader
+	@section Preheader Text
+	@tip Set the styling for your email's preheader text. Choose a size and =
+color that is easy to read.
+	*/
+		#templatePreheader .mcnTextContent,#templatePreheader .mcnTextContent p=
+{
+			/*@editable*/color:#656565;
+			/*@editable*/font-family:Helvetica;
+			/*@editable*/font-size:12px;
+			/*@editable*/line-height:150%;
+			/*@editable*/text-align:left;
+		}
+	/*
+	@tab Preheader
+	@section Preheader Link
+	@tip Set the styling for your email's preheader links. Choose a color th=
+at helps them stand out from your text.
+	*/
+		#templatePreheader .mcnTextContent a,#templatePreheader .mcnTextContent=
+ p a{
+			/*@editable*/color:#656565;
+			/*@editable*/font-weight:normal;
+			/*@editable*/text-decoration:underline;
+		}
+	/*
+	@tab Header
+	@section Header Style
+	@tip Set the background color and borders for your email's header area.
+	*/
+		#templateHeader{
+			/*@editable*/background-color:#FFFFFF;
+			/*@editable*/border-top:0;
+			/*@editable*/border-bottom:0;
+			/*@editable*/padding-top:9px;
+			/*@editable*/padding-bottom:0;
+		}
+	/*
+	@tab Header
+	@section Header Text
+	@tip Set the styling for your email's header text. Choose a size and col=
+or that is easy to read.
+	*/
+		#templateHeader .mcnTextContent,#templateHeader .mcnTextContent p{
+			/*@editable*/color:#202020;
+			/*@editable*/font-family:Helvetica;
+			/*@editable*/font-size:16px;
+			/*@editable*/line-height:150%;
+			/*@editable*/text-align:left;
+		}
+	/*
+	@tab Header
+	@section Header Link
+	@tip Set the styling for your email's header links. Choose a color that =
+helps them stand out from your text.
+	*/
+		#templateHeader .mcnTextContent a,#templateHeader .mcnTextContent p a{
+			/*@editable*/color:#2BAADF;
+			/*@editable*/font-weight:normal;
+			/*@editable*/text-decoration:underline;
+		}
+	/*
+	@tab Body
+	@section Body Style
+	@tip Set the background color and borders for your email's body area.
+	*/
+		#templateBody{
+			/*@editable*/background-color:#FFFFFF;
+			/*@editable*/border-top:0;
+			/*@editable*/border-bottom:2px solid #EAEAEA;
+			/*@editable*/padding-top:0;
+			/*@editable*/padding-bottom:9px;
+		}
+	/*
+	@tab Body
+	@section Body Text
+	@tip Set the styling for your email's body text. Choose a size and color=
+ that is easy to read.
+	*/
+		#templateBody .mcnTextContent,#templateBody .mcnTextContent p{
+			/*@editable*/color:#202020;
+			/*@editable*/font-family:Helvetica;
+			/*@editable*/font-size:16px;
+			/*@editable*/line-height:150%;
+			/*@editable*/text-align:left;
+		}
+	/*
+	@tab Body
+	@section Body Link
+	@tip Set the styling for your email's body links. Choose a color that he=
+lps them stand out from your text.
+	*/
+		#templateBody .mcnTextContent a,#templateBody .mcnTextContent p a{
+			/*@editable*/color:#2BAADF;
+			/*@editable*/font-weight:normal;
+			/*@editable*/text-decoration:underline;
+		}
+	/*
+	@tab Footer
+	@section Footer Style
+	@tip Set the background color and borders for your email's footer area.
+	*/
+		#templateFooter{
+			/*@editable*/background-color:#FAFAFA;
+			/*@editable*/border-top:0;
+			/*@editable*/border-bottom:0;
+			/*@editable*/padding-top:9px;
+			/*@editable*/padding-bottom:9px;
+		}
+	/*
+	@tab Footer
+	@section Footer Text
+	@tip Set the styling for your email's footer text. Choose a size and col=
+or that is easy to read.
+	*/
+		#templateFooter .mcnTextContent,#templateFooter .mcnTextContent p{
+			/*@editable*/color:#656565;
+			/*@editable*/font-family:Helvetica;
+			/*@editable*/font-size:12px;
+			/*@editable*/line-height:150%;
+			/*@editable*/text-align:center;
+		}
+	/*
+	@tab Footer
+	@section Footer Link
+	@tip Set the styling for your email's footer links. Choose a color that =
+helps them stand out from your text.
+	*/
+		#templateFooter .mcnTextContent a,#templateFooter .mcnTextContent p a{
+			/*@editable*/color:#656565;
+			/*@editable*/font-weight:normal;
+			/*@editable*/text-decoration:underline;
+		}
+	@media only screen and (min-width:768px){
+		.templateContainer{
+			width:600px !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		body,table,td,p,a,li,blockquote{
+			-webkit-text-size-adjust:none !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		body{
+			width:100% !important;
+			min-width:100% !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		#bodyCell{
+			padding-top:10px !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		.mcnImage{
+			width:100% !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		.mcnCartContainer,.mcnCaptionTopContent,.mcnRecContentContainer,.mcnCap=
+tionBottomContent,.mcnTextContentContainer,.mcnBoxedTextContentContainer,=
+.mcnImageGroupContentContainer,.mcnCaptionLeftTextContentContainer,.mcnCa=
+ptionRightTextContentContainer,.mcnCaptionLeftImageContentContainer,.mcnC=
+aptionRightImageContentContainer,.mcnImageCardLeftTextContentContainer,.m=
+cnImageCardRightTextContentContainer{
+			max-width:100% !important;
+			width:100% !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		.mcnBoxedTextContentContainer{
+			min-width:100% !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		.mcnImageGroupContent{
+			padding:9px !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		.mcnCaptionLeftContentOuter .mcnTextContent,.mcnCaptionRightContentOute=
+r .mcnTextContent{
+			padding-top:9px !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		.mcnImageCardTopImageContent,.mcnCaptionBlockInner .mcnCaptionTopConten=
+t:last-child .mcnTextContent{
+			padding-top:18px !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		.mcnImageCardBottomImageContent{
+			padding-bottom:9px !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		.mcnImageGroupBlockInner{
+			padding-top:0 !important;
+			padding-bottom:0 !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		.mcnImageGroupBlockOuter{
+			padding-top:9px !important;
+			padding-bottom:9px !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		.mcnTextContent,.mcnBoxedTextContentColumn{
+			padding-right:18px !important;
+			padding-left:18px !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		.mcnImageCardLeftImageContent,.mcnImageCardRightImageContent{
+			padding-right:18px !important;
+			padding-bottom:0 !important;
+			padding-left:18px !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		.mcpreview-image-uploader{
+			display:none !important;
+			width:100% !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+	/*
+	@tab Mobile Styles
+	@section Heading 1
+	@tip Make the first-level headings larger in size for better readability=
+ on small screens.
+	*/
+		h1{
+			/*@editable*/font-size:22px !important;
+			/*@editable*/line-height:125% !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+	/*
+	@tab Mobile Styles
+	@section Heading 2
+	@tip Make the second-level headings larger in size for better readabilit=
+y on small screens.
+	*/
+		h2{
+			/*@editable*/font-size:20px !important;
+			/*@editable*/line-height:125% !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+	/*
+	@tab Mobile Styles
+	@section Heading 3
+	@tip Make the third-level headings larger in size for better readability=
+ on small screens.
+	*/
+		h3{
+			/*@editable*/font-size:18px !important;
+			/*@editable*/line-height:125% !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+	/*
+	@tab Mobile Styles
+	@section Heading 4
+	@tip Make the fourth-level headings larger in size for better readabilit=
+y on small screens.
+	*/
+		h4{
+			/*@editable*/font-size:16px !important;
+			/*@editable*/line-height:150% !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+	/*
+	@tab Mobile Styles
+	@section Boxed Text
+	@tip Make the boxed text larger in size for better readability on small =
+screens. We recommend a font size of at least 16px.
+	*/
+		.mcnBoxedTextContentContainer .mcnTextContent,.mcnBoxedTextContentConta=
+iner .mcnTextContent p{
+			/*@editable*/font-size:14px !important;
+			/*@editable*/line-height:150% !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+	/*
+	@tab Mobile Styles
+	@section Preheader Visibility
+	@tip Set the visibility of the email's preheader on small screens. You c=
+an hide it to save space.
+	*/
+		#templatePreheader{
+			/*@editable*/display:block !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+	/*
+	@tab Mobile Styles
+	@section Preheader Text
+	@tip Make the preheader text larger in size for better readability on sm=
+all screens.
+	*/
+		#templatePreheader .mcnTextContent,#templatePreheader .mcnTextContent p=
+{
+			/*@editable*/font-size:14px !important;
+			/*@editable*/line-height:150% !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+	/*
+	@tab Mobile Styles
+	@section Header Text
+	@tip Make the header text larger in size for better readability on small=
+ screens.
+	*/
+		#templateHeader .mcnTextContent,#templateHeader .mcnTextContent p{
+			/*@editable*/font-size:16px !important;
+			/*@editable*/line-height:150% !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+	/*
+	@tab Mobile Styles
+	@section Body Text
+	@tip Make the body text larger in size for better readability on small s=
+creens. We recommend a font size of at least 16px.
+	*/
+		#templateBody .mcnTextContent,#templateBody .mcnTextContent p{
+			/*@editable*/font-size:16px !important;
+			/*@editable*/line-height:150% !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+	/*
+	@tab Mobile Styles
+	@section Footer Text
+	@tip Make the footer content text larger in size for better readability =
+on small screens.
+	*/
+		#templateFooter .mcnTextContent,#templateFooter .mcnTextContent p{
+			/*@editable*/font-size:14px !important;
+			/*@editable*/line-height:150% !important;
+		}
+
+}</style></head>
+    <body>
+        <center>
+            <table align=3D"center" border=3D"0" cellpadding=3D"0" cellsp=
+acing=3D"0" height=3D"100%" width=3D"100%" id=3D"bodyTable">
+                <tr>
+                    <td align=3D"center" valign=3D"top" id=3D"bodyCell">
+                        <!-- BEGIN TEMPLATE // -->
+						<!--[if gte mso 9]>
+						<table align=3D"center" border=3D"0" cellspacing=3D"0" cellpadding=3D=
+"0" width=3D"600" style=3D"width:600px;">
+						<tr>
+						<td align=3D"center" valign=3D"top" width=3D"600" style=3D"width:60=
+0px;">
+						<![endif]-->
+                        <table border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" width=3D"100%" class=3D"templateContainer">
+                            <tr>
+                                <td valign=3D"top" id=3D"templatePreheade=
+r"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%"=
+ class=3D"mcnTextBlock" style=3D"min-width:100%;">
+    <tbody class=3D"mcnTextBlockOuter">
+        <tr>
+            <td valign=3D"top" class=3D"mcnTextBlockInner" style=3D"paddi=
+ng-top:9px;">
+              	<!--[if mso]>
+				<table align=3D"left" border=3D"0" cellspacing=3D"0" cellpadding=3D"0=
+" width=3D"100%" style=3D"width:100%;">
+				<tr>
+				<![endif]-->
+			    =
+
+				<!--[if mso]>
+				<td valign=3D"top" width=3D"390" style=3D"width:390px;">
+				<![endif]-->
+                <table align=3D"left" border=3D"0" cellpadding=3D"0" cell=
+spacing=3D"0" style=3D"max-width:390px;" width=3D"100%" class=3D"mcnTextC=
+ontentContainer">
+                    <tbody><tr>
+                        =
+
+                        <td valign=3D"top" class=3D"mcnTextContent" style=
+=3D"padding-top:0; padding-left:18px; padding-bottom:9px; padding-right:1=
+8px;">
+                        =
+
+                            =
+
+                        </td>
+                    </tr>
+                </tbody></table>
+				=
+
+            </td>
+        </tr>
+    </tbody>
+</table></td>
+                            </tr>
+                            <tr>
+                                <td valign=3D"top" id=3D"templateHeader">=
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" cl=
+ass=3D"mcnImageBlock" style=3D"min-width:100%;">
+    <tbody class=3D"mcnImageBlockOuter">
+            <tr>
+                <td valign=3D"top" style=3D"padding:9px" class=3D"mcnImag=
+eBlockInner">
+                    <table align=3D"left" width=3D"100%" border=3D"0" cel=
+lpadding=3D"0" cellspacing=3D"0" class=3D"mcnImageContentContainer" style=
+=3D"min-width:100%;">
+                        <tbody><tr>
+                            <td class=3D"mcnImageContent" valign=3D"top" =
+style=3D"padding-right: 9px; padding-left: 9px; padding-top: 0; padding-b=
+ottom: 0; text-align:center;">
+                                =
+
+                                    <a href=3D"http://www.elitefitnesscol=
+ina.com/consejos-para-disfrutar-y-sacarle-el-maximo-al-ejerciciio/" title=
+=3D"" class=3D"" target=3D"_blank">
+                                        <img align=3D"center" alt=3D"" sr=
+c=3D"http://panel.elitefitnesscolina.com/assets/Elite-Logo-PNG-5ce3f413d4=
+1ce310ce8f9c08d97b8ac0d4784714d9d2d9af1dc7722de46f0eb6.png" width=3D"564"=
+ style=3D"width: 80% ;max-width:5212px; padding-bottom: 0; display: inlin=
+e !important; vertical-align: bottom;" class=3D"mcnImage">
+                                    </a>
+                                =
+
+                            </td>
+                        </tr>
+                    </tbody></table>
+                </td>
+            </tr>
+    </tbody>
+</table></td>
+                            </tr>
+                            <tr>
+                                <td valign=3D"top" id=3D"templateBody"><t=
+able border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" clas=
+s=3D"mcnTextBlock" style=3D"min-width:100%;">
+    <tbody class=3D"mcnTextBlockOuter">
+        <tr>
+            <td valign=3D"top" class=3D"mcnTextBlockInner" style=3D"paddi=
+ng-top:9px;">
+              	<!--[if mso]>
+				<table align=3D"left" border=3D"0" cellspacing=3D"0" cellpadding=3D"0=
+" width=3D"100%" style=3D"width:100%;">
+				<tr>
+				<![endif]-->
+			    =
+
+				<!--[if mso]>
+				<td valign=3D"top" width=3D"600" style=3D"width:600px;">
+				<![endif]-->
+                <table align=3D"left" border=3D"0" cellpadding=3D"0" cell=
+spacing=3D"0" style=3D"max-width:100%; min-width:100%;" width=3D"100%" cl=
+ass=3D"mcnTextContentContainer">
+                    <tbody><tr>
+                        =
+
+                        <td valign=3D"top" class=3D"mcnTextContent" style=
+=3D"padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:1=
+8px;">
+                        =
+
+                            =
+
+                        </td>
+                    </tr>
+                </tbody></table>
+				<!--[if mso]>
+				</td>
+				<![endif]-->
+                =
+
+				<!--[if mso]>
+				</tr>
+				</table>
+				<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"=
+100%" class=3D"mcnTextBlock" style=3D"min-width:100%;">
+    <tbody class=3D"mcnTextBlockOuter">
+        <tr>
+            <td valign=3D"top" class=3D"mcnTextBlockInner" style=3D"paddi=
+ng-top:9px;">
+              	<!--[if mso]>
+				<table align=3D"left" border=3D"0" cellspacing=3D"0" cellpadding=3D"0=
+" width=3D"100%" style=3D"width:100%;">
+				<tr>
+				<![endif]-->
+			    =
+
+				<!--[if mso]>
+				<td valign=3D"top" width=3D"600" style=3D"width:600px;">
+				<![endif]-->
+                <table align=3D"left" border=3D"0" cellpadding=3D"0" cell=
+spacing=3D"0" style=3D"max-width:100%; min-width:100%;" width=3D"100%" cl=
+ass=3D"mcnTextContentContainer">
+                    <tbody><tr>
+                        =
+
+                        <td valign=3D"top" class=3D"mcnTextContent" style=
+=3D"padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:1=
+8px;">
+                        =
+
+                            <p style=3D"text-align: justify;"><strong><sp=
+an style=3D"font-size:18px"><span style=3D"font-family:verdana,geneva,san=
+s-serif">Hola <span style=3D"color: #E1BC29" >ARIANAS</span></span></span=
+></strong></p>
+
+<p style=3D"text-align: justify;"><br>
+<span style=3D"font-size:18px"><span style=3D"font-family:verdana,geneva,=
+sans-serif">Hemos notado que no agendas tus sesiones desde el <b>2016-08-=
+23.</b> Recuerda que para alcanzar tus metas debes ser constante en tu en=
+trenamiento!</span></span></p>
+
+<p style=3D"text-align: justify;"><br>
+<span style=3D"font-size:18px"><span style=3D"font-family:verdana,geneva,=
+sans-serif">No olvides que para agendar debes entrar a <a href=3D"http://=
+panel.elitefitnesscolina.com">http://panel.elitefitnesscolina.com</a></b>=
+</span></span></p>
+
+<p style=3D"text-align: justify;"><span style=3D"font-size:18px"><span st=
+yle=3D"font-family:verdana,geneva,sans-serif"><b>Tu usuario:</b> sandra-m=
+unoz2014@hotmail.com</span></span></p>
+<p style=3D"text-align: justify;"><span style=3D"font-size:18px"><span st=
+yle=3D"font-family:verdana,geneva,sans-serif"><b>Tu contrase=C3=B1a:</b> =
+0</span></span></p>
+
+<p style=3D"text-align: left;"><br>
+<span style=3D"font-size:18px"><span style=3D"font-family:verdana,geneva,=
+sans-serif">Esperamos verte pronto :)</span></span></p>
+
+                        </td>
+                    </tr>
+                </tbody></table>
+				<!--[if mso]>
+				</td>
+				<![endif]-->
+                =
+
+				<!--[if mso]>
+				</tr>
+				</table>
+				<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table></td>
+                            </tr>
+                            <tr>
+                                <td valign=3D"top" id=3D"templateFooter">=
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" cl=
+ass=3D"mcnDividerBlock" style=3D"min-width:100%;">
+    <tbody class=3D"mcnDividerBlockOuter">
+        <tr>
+            <td class=3D"mcnDividerBlockInner" style=3D"min-width: 100%; =
+padding: 10px 18px 25px;">
+                <table class=3D"mcnDividerContent" border=3D"0" cellpaddi=
+ng=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"min-width: 100%;border=
+-top-width: 2px;border-top-style: solid;border-top-color: #EEEEEE;">
+                    <tbody><tr>
+                        <td>
+                            <span></span>
+                        </td>
+                    </tr>
+                </tbody></table>
+<!--            =
+
+                <td class=3D"mcnDividerBlockInner" style=3D"padding: 18px=
+;">
+                <hr class=3D"mcnDividerContent" style=3D"border-bottom-co=
+lor:none; border-left-color:none; border-right-color:none; border-bottom-=
+width:0; border-left-width:0; border-right-width:0; margin-top:0; margin-=
+right:0; margin-bottom:0; margin-left:0;" />
+-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"=
+100%" class=3D"mcnTextBlock" style=3D"min-width:100%;">
+    <tbody class=3D"mcnTextBlockOuter">
+        <tr>
+            <td valign=3D"top" class=3D"mcnTextBlockInner" style=3D"paddi=
+ng-top:9px;">
+              	<!--[if mso]>
+				<table align=3D"left" border=3D"0" cellspacing=3D"0" cellpadding=3D"0=
+" width=3D"100%" style=3D"width:100%;">
+				<tr>
+				<![endif]-->
+			    =
+
+				<!--[if mso]>
+				<td valign=3D"top" width=3D"600" style=3D"width:600px;">
+				<![endif]-->
+                <table align=3D"left" border=3D"0" cellpadding=3D"0" cell=
+spacing=3D"0" style=3D"max-width:100%; min-width:100%;" width=3D"100%" cl=
+ass=3D"mcnTextContentContainer">
+                    <tbody><tr>
+                        =
+
+                        <td valign=3D"top" class=3D"mcnTextContent" style=
+=3D"padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:1=
+8px;">
+                        =
+
+                            <div style=3D"text-align: justify;"><span sty=
+le=3D"font-family:verdana,geneva,sans-serif">Somos un centro de entrenami=
+ento crossfit, especializado en en el cuidado de la salud, el cuerpo y su=
+ organismo. Contamos con los mejores entrenadores dispuestos a prestarte =
+el mejor acompa=C3=B1amiento f=C3=ADsico que puedas tener. Ven conoce nue=
+stras instalaciones y las diversas formas de cuidarte y de verte bien.</s=
+pan><br>
+Estamos ubicados al frente del centro comercial porto alegre<br>
+Carrera 58 #137a-10.<br>
+Tercer piso<br>
+<a href=3D"https://www.facebook.com/elitefitnesscenter.co/info/?entry_poi=
+nt=3Dpage_nav_about_item&amp;tab=3Dpage_info" target=3D"_blank"><img alig=
+n=3D"none" height=3D"110" src=3D"https://gallery.mailchimp.com/3a146a8b7c=
+0ea3962150ab21d/images/2a90c42e-2d94-4b97-8b64-78c877e11cd1.png" style=3D=
+"width: 181px; height: 110px; margin: 0px; float: left;" width=3D"181"></=
+a><img align=3D"none" height=3D"110" src=3D"https://gallery.mailchimp.com=
+/3a146a8b7c0ea3962150ab21d/images/ca2a5ac4-fa21-4173-b0fa-c70969eee4e5.pn=
+g" style=3D"width: 201px; height: 110px; margin: 0px; float: right;" widt=
+h=3D"201"></div>
+
+                        </td>
+                    </tr>
+                </tbody></table>
+				<!--[if mso]>
+				</td>
+				<![endif]-->
+                =
+
+				<!--[if mso]>
+				</tr>
+				</table>
+				<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table></td>
+                            </tr>
+                        </table>
+						<!--[if gte mso 9]>
+						</td>
+						</tr>
+						</table>
+						<![endif]-->
+                        <!-- // END TEMPLATE -->
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </body>
+</html>
+  </body>
+</html>
+
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "users" SET "last_email" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["last_email", "2016-09-05 20:22:00.525126"], ["updated_at", "2016-09-05 20:22:00.525825"], ["id", 50]]
+  [1m[35m (1.5ms)[0m  commit transaction
+  Rendered gymail/reminder.html.erb within layouts/mailer (1.7ms)
+
+Gymail#reminder: processed outbound mail in 15.0ms
+
+Sent mail to dianita1893@hotmail.coms (6978.6ms)
+Date: Mon, 05 Sep 2016 15:22:00 -0500
+From: elitefitnesscenterco@gmail.com
+To: dianita1893@hotmail.coms
+Message-ID: <57cdd3e885bf8_9af3ff24c8e5570394b3@MacBook-Pro-de-Mario.local.mail>
+Subject: Hace rato no sabemos de ti DIANA CONTRERAS
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<html>
+  <body>
+    <!doctype html>
+<html xmlns=3D"http://www.w3.org/1999/xhtml" xmlns:v=3D"urn:schemas-micro=
+soft-com:vml" xmlns:o=3D"urn:schemas-microsoft-com:office:office">
+	<head>
+		<!-- NAME: 1 COLUMN -->
+		<!--[if gte mso 15]>
+		<xml>
+			<o:OfficeDocumentSettings>
+			<o:AllowPNG/>
+			<o:PixelsPerInch>96</o:PixelsPerInch>
+			</o:OfficeDocumentSettings>
+		</xml>
+		<![endif]-->
+		<meta charset=3D"UTF-8">
+        <meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge">
+        <meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-=
+scale=3D1">
+		<title>*|MC:SUBJECT|*</title>
+        =
+
+    <style type=3D"text/css">
+		p{
+			margin:10px 0;
+			padding:0;
+		}
+		table{
+			border-collapse:collapse;
+		}
+		h1,h2,h3,h4,h5,h6{
+			display:block;
+			margin:0;
+			padding:0;
+		}
+		img,a img{
+			border:0;
+			height:auto;
+			outline:none;
+			text-decoration:none;
+		}
+		body,#bodyTable,#bodyCell{
+			height:100%;
+			margin:0;
+			padding:0;
+			width:100%;
+		}
+		#outlook a{
+			padding:0;
+		}
+		img{
+			-ms-interpolation-mode:bicubic;
+		}
+		table{
+			mso-table-lspace:0pt;
+			mso-table-rspace:0pt;
+		}
+		.ReadMsgBody{
+			width:100%;
+		}
+		.ExternalClass{
+			width:100%;
+		}
+		p,a,li,td,blockquote{
+			mso-line-height-rule:exactly;
+		}
+		a[href^=3Dtel],a[href^=3Dsms]{
+			color:inherit;
+			cursor:default;
+			text-decoration:none;
+		}
+		p,a,li,td,body,table,blockquote{
+			-ms-text-size-adjust:100%;
+			-webkit-text-size-adjust:100%;
+		}
+		.ExternalClass,.ExternalClass p,.ExternalClass td,.ExternalClass div,.E=
+xternalClass span,.ExternalClass font{
+			line-height:100%;
+		}
+		a[x-apple-data-detectors]{
+			color:inherit !important;
+			text-decoration:none !important;
+			font-size:inherit !important;
+			font-family:inherit !important;
+			font-weight:inherit !important;
+			line-height:inherit !important;
+		}
+		#bodyCell{
+			padding:10px;
+		}
+		.templateContainer{
+			max-width:600px !important;
+		}
+		a.mcnButton{
+			display:block;
+		}
+		.mcnImage{
+			vertical-align:bottom;
+		}
+		.mcnTextContent{
+			word-break:break-word;
+		}
+		.mcnTextContent img{
+			height:auto !important;
+		}
+		.mcnDividerBlock{
+			table-layout:fixed !important;
+		}
+	/*
+	@tab Page
+	@section Background Style
+	@tip Set the background color and top border for your email. You may wan=
+t to choose colors that match your company's branding.
+	*/
+		body,#bodyTable{
+			/*@editable*/background-color:#FAFAFA;
+		}
+	/*
+	@tab Page
+	@section Background Style
+	@tip Set the background color and top border for your email. You may wan=
+t to choose colors that match your company's branding.
+	*/
+		#bodyCell{
+			/*@editable*/border-top:0;
+		}
+	/*
+	@tab Page
+	@section Email Border
+	@tip Set the border for your email.
+	*/
+		.templateContainer{
+			/*@editable*/border:0;
+		}
+	/*
+	@tab Page
+	@section Heading 1
+	@tip Set the styling for all first-level headings in your emails. These =
+should be the largest of your headings.
+	@style heading 1
+	*/
+		h1{
+			/*@editable*/color:#202020;
+			/*@editable*/font-family:Helvetica;
+			/*@editable*/font-size:26px;
+			/*@editable*/font-style:normal;
+			/*@editable*/font-weight:bold;
+			/*@editable*/line-height:125%;
+			/*@editable*/letter-spacing:normal;
+			/*@editable*/text-align:left;
+		}
+	/*
+	@tab Page
+	@section Heading 2
+	@tip Set the styling for all second-level headings in your emails.
+	@style heading 2
+	*/
+		h2{
+			/*@editable*/color:#202020;
+			/*@editable*/font-family:Helvetica;
+			/*@editable*/font-size:22px;
+			/*@editable*/font-style:normal;
+			/*@editable*/font-weight:bold;
+			/*@editable*/line-height:125%;
+			/*@editable*/letter-spacing:normal;
+			/*@editable*/text-align:left;
+		}
+	/*
+	@tab Page
+	@section Heading 3
+	@tip Set the styling for all third-level headings in your emails.
+	@style heading 3
+	*/
+		h3{
+			/*@editable*/color:#202020;
+			/*@editable*/font-family:Helvetica;
+			/*@editable*/font-size:20px;
+			/*@editable*/font-style:normal;
+			/*@editable*/font-weight:bold;
+			/*@editable*/line-height:125%;
+			/*@editable*/letter-spacing:normal;
+			/*@editable*/text-align:left;
+		}
+	/*
+	@tab Page
+	@section Heading 4
+	@tip Set the styling for all fourth-level headings in your emails. These=
+ should be the smallest of your headings.
+	@style heading 4
+	*/
+		h4{
+			/*@editable*/color:#202020;
+			/*@editable*/font-family:Helvetica;
+			/*@editable*/font-size:18px;
+			/*@editable*/font-style:normal;
+			/*@editable*/font-weight:bold;
+			/*@editable*/line-height:125%;
+			/*@editable*/letter-spacing:normal;
+			/*@editable*/text-align:left;
+		}
+	/*
+	@tab Preheader
+	@section Preheader Style
+	@tip Set the background color and borders for your email's preheader are=
+a.
+	*/
+		#templatePreheader{
+			/*@editable*/background-color:#FAFAFA;
+			/*@editable*/border-top:0;
+			/*@editable*/border-bottom:0;
+			/*@editable*/padding-top:9px;
+			/*@editable*/padding-bottom:9px;
+		}
+	/*
+	@tab Preheader
+	@section Preheader Text
+	@tip Set the styling for your email's preheader text. Choose a size and =
+color that is easy to read.
+	*/
+		#templatePreheader .mcnTextContent,#templatePreheader .mcnTextContent p=
+{
+			/*@editable*/color:#656565;
+			/*@editable*/font-family:Helvetica;
+			/*@editable*/font-size:12px;
+			/*@editable*/line-height:150%;
+			/*@editable*/text-align:left;
+		}
+	/*
+	@tab Preheader
+	@section Preheader Link
+	@tip Set the styling for your email's preheader links. Choose a color th=
+at helps them stand out from your text.
+	*/
+		#templatePreheader .mcnTextContent a,#templatePreheader .mcnTextContent=
+ p a{
+			/*@editable*/color:#656565;
+			/*@editable*/font-weight:normal;
+			/*@editable*/text-decoration:underline;
+		}
+	/*
+	@tab Header
+	@section Header Style
+	@tip Set the background color and borders for your email's header area.
+	*/
+		#templateHeader{
+			/*@editable*/background-color:#FFFFFF;
+			/*@editable*/border-top:0;
+			/*@editable*/border-bottom:0;
+			/*@editable*/padding-top:9px;
+			/*@editable*/padding-bottom:0;
+		}
+	/*
+	@tab Header
+	@section Header Text
+	@tip Set the styling for your email's header text. Choose a size and col=
+or that is easy to read.
+	*/
+		#templateHeader .mcnTextContent,#templateHeader .mcnTextContent p{
+			/*@editable*/color:#202020;
+			/*@editable*/font-family:Helvetica;
+			/*@editable*/font-size:16px;
+			/*@editable*/line-height:150%;
+			/*@editable*/text-align:left;
+		}
+	/*
+	@tab Header
+	@section Header Link
+	@tip Set the styling for your email's header links. Choose a color that =
+helps them stand out from your text.
+	*/
+		#templateHeader .mcnTextContent a,#templateHeader .mcnTextContent p a{
+			/*@editable*/color:#2BAADF;
+			/*@editable*/font-weight:normal;
+			/*@editable*/text-decoration:underline;
+		}
+	/*
+	@tab Body
+	@section Body Style
+	@tip Set the background color and borders for your email's body area.
+	*/
+		#templateBody{
+			/*@editable*/background-color:#FFFFFF;
+			/*@editable*/border-top:0;
+			/*@editable*/border-bottom:2px solid #EAEAEA;
+			/*@editable*/padding-top:0;
+			/*@editable*/padding-bottom:9px;
+		}
+	/*
+	@tab Body
+	@section Body Text
+	@tip Set the styling for your email's body text. Choose a size and color=
+ that is easy to read.
+	*/
+		#templateBody .mcnTextContent,#templateBody .mcnTextContent p{
+			/*@editable*/color:#202020;
+			/*@editable*/font-family:Helvetica;
+			/*@editable*/font-size:16px;
+			/*@editable*/line-height:150%;
+			/*@editable*/text-align:left;
+		}
+	/*
+	@tab Body
+	@section Body Link
+	@tip Set the styling for your email's body links. Choose a color that he=
+lps them stand out from your text.
+	*/
+		#templateBody .mcnTextContent a,#templateBody .mcnTextContent p a{
+			/*@editable*/color:#2BAADF;
+			/*@editable*/font-weight:normal;
+			/*@editable*/text-decoration:underline;
+		}
+	/*
+	@tab Footer
+	@section Footer Style
+	@tip Set the background color and borders for your email's footer area.
+	*/
+		#templateFooter{
+			/*@editable*/background-color:#FAFAFA;
+			/*@editable*/border-top:0;
+			/*@editable*/border-bottom:0;
+			/*@editable*/padding-top:9px;
+			/*@editable*/padding-bottom:9px;
+		}
+	/*
+	@tab Footer
+	@section Footer Text
+	@tip Set the styling for your email's footer text. Choose a size and col=
+or that is easy to read.
+	*/
+		#templateFooter .mcnTextContent,#templateFooter .mcnTextContent p{
+			/*@editable*/color:#656565;
+			/*@editable*/font-family:Helvetica;
+			/*@editable*/font-size:12px;
+			/*@editable*/line-height:150%;
+			/*@editable*/text-align:center;
+		}
+	/*
+	@tab Footer
+	@section Footer Link
+	@tip Set the styling for your email's footer links. Choose a color that =
+helps them stand out from your text.
+	*/
+		#templateFooter .mcnTextContent a,#templateFooter .mcnTextContent p a{
+			/*@editable*/color:#656565;
+			/*@editable*/font-weight:normal;
+			/*@editable*/text-decoration:underline;
+		}
+	@media only screen and (min-width:768px){
+		.templateContainer{
+			width:600px !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		body,table,td,p,a,li,blockquote{
+			-webkit-text-size-adjust:none !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		body{
+			width:100% !important;
+			min-width:100% !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		#bodyCell{
+			padding-top:10px !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		.mcnImage{
+			width:100% !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		.mcnCartContainer,.mcnCaptionTopContent,.mcnRecContentContainer,.mcnCap=
+tionBottomContent,.mcnTextContentContainer,.mcnBoxedTextContentContainer,=
+.mcnImageGroupContentContainer,.mcnCaptionLeftTextContentContainer,.mcnCa=
+ptionRightTextContentContainer,.mcnCaptionLeftImageContentContainer,.mcnC=
+aptionRightImageContentContainer,.mcnImageCardLeftTextContentContainer,.m=
+cnImageCardRightTextContentContainer{
+			max-width:100% !important;
+			width:100% !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		.mcnBoxedTextContentContainer{
+			min-width:100% !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		.mcnImageGroupContent{
+			padding:9px !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		.mcnCaptionLeftContentOuter .mcnTextContent,.mcnCaptionRightContentOute=
+r .mcnTextContent{
+			padding-top:9px !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		.mcnImageCardTopImageContent,.mcnCaptionBlockInner .mcnCaptionTopConten=
+t:last-child .mcnTextContent{
+			padding-top:18px !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		.mcnImageCardBottomImageContent{
+			padding-bottom:9px !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		.mcnImageGroupBlockInner{
+			padding-top:0 !important;
+			padding-bottom:0 !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		.mcnImageGroupBlockOuter{
+			padding-top:9px !important;
+			padding-bottom:9px !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		.mcnTextContent,.mcnBoxedTextContentColumn{
+			padding-right:18px !important;
+			padding-left:18px !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		.mcnImageCardLeftImageContent,.mcnImageCardRightImageContent{
+			padding-right:18px !important;
+			padding-bottom:0 !important;
+			padding-left:18px !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		.mcpreview-image-uploader{
+			display:none !important;
+			width:100% !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+	/*
+	@tab Mobile Styles
+	@section Heading 1
+	@tip Make the first-level headings larger in size for better readability=
+ on small screens.
+	*/
+		h1{
+			/*@editable*/font-size:22px !important;
+			/*@editable*/line-height:125% !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+	/*
+	@tab Mobile Styles
+	@section Heading 2
+	@tip Make the second-level headings larger in size for better readabilit=
+y on small screens.
+	*/
+		h2{
+			/*@editable*/font-size:20px !important;
+			/*@editable*/line-height:125% !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+	/*
+	@tab Mobile Styles
+	@section Heading 3
+	@tip Make the third-level headings larger in size for better readability=
+ on small screens.
+	*/
+		h3{
+			/*@editable*/font-size:18px !important;
+			/*@editable*/line-height:125% !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+	/*
+	@tab Mobile Styles
+	@section Heading 4
+	@tip Make the fourth-level headings larger in size for better readabilit=
+y on small screens.
+	*/
+		h4{
+			/*@editable*/font-size:16px !important;
+			/*@editable*/line-height:150% !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+	/*
+	@tab Mobile Styles
+	@section Boxed Text
+	@tip Make the boxed text larger in size for better readability on small =
+screens. We recommend a font size of at least 16px.
+	*/
+		.mcnBoxedTextContentContainer .mcnTextContent,.mcnBoxedTextContentConta=
+iner .mcnTextContent p{
+			/*@editable*/font-size:14px !important;
+			/*@editable*/line-height:150% !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+	/*
+	@tab Mobile Styles
+	@section Preheader Visibility
+	@tip Set the visibility of the email's preheader on small screens. You c=
+an hide it to save space.
+	*/
+		#templatePreheader{
+			/*@editable*/display:block !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+	/*
+	@tab Mobile Styles
+	@section Preheader Text
+	@tip Make the preheader text larger in size for better readability on sm=
+all screens.
+	*/
+		#templatePreheader .mcnTextContent,#templatePreheader .mcnTextContent p=
+{
+			/*@editable*/font-size:14px !important;
+			/*@editable*/line-height:150% !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+	/*
+	@tab Mobile Styles
+	@section Header Text
+	@tip Make the header text larger in size for better readability on small=
+ screens.
+	*/
+		#templateHeader .mcnTextContent,#templateHeader .mcnTextContent p{
+			/*@editable*/font-size:16px !important;
+			/*@editable*/line-height:150% !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+	/*
+	@tab Mobile Styles
+	@section Body Text
+	@tip Make the body text larger in size for better readability on small s=
+creens. We recommend a font size of at least 16px.
+	*/
+		#templateBody .mcnTextContent,#templateBody .mcnTextContent p{
+			/*@editable*/font-size:16px !important;
+			/*@editable*/line-height:150% !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+	/*
+	@tab Mobile Styles
+	@section Footer Text
+	@tip Make the footer content text larger in size for better readability =
+on small screens.
+	*/
+		#templateFooter .mcnTextContent,#templateFooter .mcnTextContent p{
+			/*@editable*/font-size:14px !important;
+			/*@editable*/line-height:150% !important;
+		}
+
+}</style></head>
+    <body>
+        <center>
+            <table align=3D"center" border=3D"0" cellpadding=3D"0" cellsp=
+acing=3D"0" height=3D"100%" width=3D"100%" id=3D"bodyTable">
+                <tr>
+                    <td align=3D"center" valign=3D"top" id=3D"bodyCell">
+                        <!-- BEGIN TEMPLATE // -->
+						<!--[if gte mso 9]>
+						<table align=3D"center" border=3D"0" cellspacing=3D"0" cellpadding=3D=
+"0" width=3D"600" style=3D"width:600px;">
+						<tr>
+						<td align=3D"center" valign=3D"top" width=3D"600" style=3D"width:60=
+0px;">
+						<![endif]-->
+                        <table border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" width=3D"100%" class=3D"templateContainer">
+                            <tr>
+                                <td valign=3D"top" id=3D"templatePreheade=
+r"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%"=
+ class=3D"mcnTextBlock" style=3D"min-width:100%;">
+    <tbody class=3D"mcnTextBlockOuter">
+        <tr>
+            <td valign=3D"top" class=3D"mcnTextBlockInner" style=3D"paddi=
+ng-top:9px;">
+              	<!--[if mso]>
+				<table align=3D"left" border=3D"0" cellspacing=3D"0" cellpadding=3D"0=
+" width=3D"100%" style=3D"width:100%;">
+				<tr>
+				<![endif]-->
+			    =
+
+				<!--[if mso]>
+				<td valign=3D"top" width=3D"390" style=3D"width:390px;">
+				<![endif]-->
+                <table align=3D"left" border=3D"0" cellpadding=3D"0" cell=
+spacing=3D"0" style=3D"max-width:390px;" width=3D"100%" class=3D"mcnTextC=
+ontentContainer">
+                    <tbody><tr>
+                        =
+
+                        <td valign=3D"top" class=3D"mcnTextContent" style=
+=3D"padding-top:0; padding-left:18px; padding-bottom:9px; padding-right:1=
+8px;">
+                        =
+
+                            =
+
+                        </td>
+                    </tr>
+                </tbody></table>
+				=
+
+            </td>
+        </tr>
+    </tbody>
+</table></td>
+                            </tr>
+                            <tr>
+                                <td valign=3D"top" id=3D"templateHeader">=
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" cl=
+ass=3D"mcnImageBlock" style=3D"min-width:100%;">
+    <tbody class=3D"mcnImageBlockOuter">
+            <tr>
+                <td valign=3D"top" style=3D"padding:9px" class=3D"mcnImag=
+eBlockInner">
+                    <table align=3D"left" width=3D"100%" border=3D"0" cel=
+lpadding=3D"0" cellspacing=3D"0" class=3D"mcnImageContentContainer" style=
+=3D"min-width:100%;">
+                        <tbody><tr>
+                            <td class=3D"mcnImageContent" valign=3D"top" =
+style=3D"padding-right: 9px; padding-left: 9px; padding-top: 0; padding-b=
+ottom: 0; text-align:center;">
+                                =
+
+                                    <a href=3D"http://www.elitefitnesscol=
+ina.com/consejos-para-disfrutar-y-sacarle-el-maximo-al-ejerciciio/" title=
+=3D"" class=3D"" target=3D"_blank">
+                                        <img align=3D"center" alt=3D"" sr=
+c=3D"http://panel.elitefitnesscolina.com/assets/Elite-Logo-PNG-5ce3f413d4=
+1ce310ce8f9c08d97b8ac0d4784714d9d2d9af1dc7722de46f0eb6.png" width=3D"564"=
+ style=3D"width: 80% ;max-width:5212px; padding-bottom: 0; display: inlin=
+e !important; vertical-align: bottom;" class=3D"mcnImage">
+                                    </a>
+                                =
+
+                            </td>
+                        </tr>
+                    </tbody></table>
+                </td>
+            </tr>
+    </tbody>
+</table></td>
+                            </tr>
+                            <tr>
+                                <td valign=3D"top" id=3D"templateBody"><t=
+able border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" clas=
+s=3D"mcnTextBlock" style=3D"min-width:100%;">
+    <tbody class=3D"mcnTextBlockOuter">
+        <tr>
+            <td valign=3D"top" class=3D"mcnTextBlockInner" style=3D"paddi=
+ng-top:9px;">
+              	<!--[if mso]>
+				<table align=3D"left" border=3D"0" cellspacing=3D"0" cellpadding=3D"0=
+" width=3D"100%" style=3D"width:100%;">
+				<tr>
+				<![endif]-->
+			    =
+
+				<!--[if mso]>
+				<td valign=3D"top" width=3D"600" style=3D"width:600px;">
+				<![endif]-->
+                <table align=3D"left" border=3D"0" cellpadding=3D"0" cell=
+spacing=3D"0" style=3D"max-width:100%; min-width:100%;" width=3D"100%" cl=
+ass=3D"mcnTextContentContainer">
+                    <tbody><tr>
+                        =
+
+                        <td valign=3D"top" class=3D"mcnTextContent" style=
+=3D"padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:1=
+8px;">
+                        =
+
+                            =
+
+                        </td>
+                    </tr>
+                </tbody></table>
+				<!--[if mso]>
+				</td>
+				<![endif]-->
+                =
+
+				<!--[if mso]>
+				</tr>
+				</table>
+				<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"=
+100%" class=3D"mcnTextBlock" style=3D"min-width:100%;">
+    <tbody class=3D"mcnTextBlockOuter">
+        <tr>
+            <td valign=3D"top" class=3D"mcnTextBlockInner" style=3D"paddi=
+ng-top:9px;">
+              	<!--[if mso]>
+				<table align=3D"left" border=3D"0" cellspacing=3D"0" cellpadding=3D"0=
+" width=3D"100%" style=3D"width:100%;">
+				<tr>
+				<![endif]-->
+			    =
+
+				<!--[if mso]>
+				<td valign=3D"top" width=3D"600" style=3D"width:600px;">
+				<![endif]-->
+                <table align=3D"left" border=3D"0" cellpadding=3D"0" cell=
+spacing=3D"0" style=3D"max-width:100%; min-width:100%;" width=3D"100%" cl=
+ass=3D"mcnTextContentContainer">
+                    <tbody><tr>
+                        =
+
+                        <td valign=3D"top" class=3D"mcnTextContent" style=
+=3D"padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:1=
+8px;">
+                        =
+
+                            <p style=3D"text-align: justify;"><strong><sp=
+an style=3D"font-size:18px"><span style=3D"font-family:verdana,geneva,san=
+s-serif">Hola <span style=3D"color: #E1BC29" >DIANA CONTRERAS</span></spa=
+n></span></strong></p>
+
+<p style=3D"text-align: justify;"><br>
+<span style=3D"font-size:18px"><span style=3D"font-family:verdana,geneva,=
+sans-serif">Hemos notado que no agendas tus sesiones desde el <b>2016-07-=
+28.</b> Recuerda que para alcanzar tus metas debes ser constante en tu en=
+trenamiento!</span></span></p>
+
+<p style=3D"text-align: justify;"><br>
+<span style=3D"font-size:18px"><span style=3D"font-family:verdana,geneva,=
+sans-serif">No olvides que para agendar debes entrar a <a href=3D"http://=
+panel.elitefitnesscolina.com">http://panel.elitefitnesscolina.com</a></b>=
+</span></span></p>
+
+<p style=3D"text-align: justify;"><span style=3D"font-size:18px"><span st=
+yle=3D"font-family:verdana,geneva,sans-serif"><b>Tu usuario:</b> dianita1=
+893@hotmail.coms</span></span></p>
+<p style=3D"text-align: justify;"><span style=3D"font-size:18px"><span st=
+yle=3D"font-family:verdana,geneva,sans-serif"><b>Tu contrase=C3=B1a:</b> =
+1020781685</span></span></p>
+
+<p style=3D"text-align: left;"><br>
+<span style=3D"font-size:18px"><span style=3D"font-family:verdana,geneva,=
+sans-serif">Esperamos verte pronto :)</span></span></p>
+
+                        </td>
+                    </tr>
+                </tbody></table>
+				<!--[if mso]>
+				</td>
+				<![endif]-->
+                =
+
+				<!--[if mso]>
+				</tr>
+				</table>
+				<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table></td>
+                            </tr>
+                            <tr>
+                                <td valign=3D"top" id=3D"templateFooter">=
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" cl=
+ass=3D"mcnDividerBlock" style=3D"min-width:100%;">
+    <tbody class=3D"mcnDividerBlockOuter">
+        <tr>
+            <td class=3D"mcnDividerBlockInner" style=3D"min-width: 100%; =
+padding: 10px 18px 25px;">
+                <table class=3D"mcnDividerContent" border=3D"0" cellpaddi=
+ng=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"min-width: 100%;border=
+-top-width: 2px;border-top-style: solid;border-top-color: #EEEEEE;">
+                    <tbody><tr>
+                        <td>
+                            <span></span>
+                        </td>
+                    </tr>
+                </tbody></table>
+<!--            =
+
+                <td class=3D"mcnDividerBlockInner" style=3D"padding: 18px=
+;">
+                <hr class=3D"mcnDividerContent" style=3D"border-bottom-co=
+lor:none; border-left-color:none; border-right-color:none; border-bottom-=
+width:0; border-left-width:0; border-right-width:0; margin-top:0; margin-=
+right:0; margin-bottom:0; margin-left:0;" />
+-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"=
+100%" class=3D"mcnTextBlock" style=3D"min-width:100%;">
+    <tbody class=3D"mcnTextBlockOuter">
+        <tr>
+            <td valign=3D"top" class=3D"mcnTextBlockInner" style=3D"paddi=
+ng-top:9px;">
+              	<!--[if mso]>
+				<table align=3D"left" border=3D"0" cellspacing=3D"0" cellpadding=3D"0=
+" width=3D"100%" style=3D"width:100%;">
+				<tr>
+				<![endif]-->
+			    =
+
+				<!--[if mso]>
+				<td valign=3D"top" width=3D"600" style=3D"width:600px;">
+				<![endif]-->
+                <table align=3D"left" border=3D"0" cellpadding=3D"0" cell=
+spacing=3D"0" style=3D"max-width:100%; min-width:100%;" width=3D"100%" cl=
+ass=3D"mcnTextContentContainer">
+                    <tbody><tr>
+                        =
+
+                        <td valign=3D"top" class=3D"mcnTextContent" style=
+=3D"padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:1=
+8px;">
+                        =
+
+                            <div style=3D"text-align: justify;"><span sty=
+le=3D"font-family:verdana,geneva,sans-serif">Somos un centro de entrenami=
+ento crossfit, especializado en en el cuidado de la salud, el cuerpo y su=
+ organismo. Contamos con los mejores entrenadores dispuestos a prestarte =
+el mejor acompa=C3=B1amiento f=C3=ADsico que puedas tener. Ven conoce nue=
+stras instalaciones y las diversas formas de cuidarte y de verte bien.</s=
+pan><br>
+Estamos ubicados al frente del centro comercial porto alegre<br>
+Carrera 58 #137a-10.<br>
+Tercer piso<br>
+<a href=3D"https://www.facebook.com/elitefitnesscenter.co/info/?entry_poi=
+nt=3Dpage_nav_about_item&amp;tab=3Dpage_info" target=3D"_blank"><img alig=
+n=3D"none" height=3D"110" src=3D"https://gallery.mailchimp.com/3a146a8b7c=
+0ea3962150ab21d/images/2a90c42e-2d94-4b97-8b64-78c877e11cd1.png" style=3D=
+"width: 181px; height: 110px; margin: 0px; float: left;" width=3D"181"></=
+a><img align=3D"none" height=3D"110" src=3D"https://gallery.mailchimp.com=
+/3a146a8b7c0ea3962150ab21d/images/ca2a5ac4-fa21-4173-b0fa-c70969eee4e5.pn=
+g" style=3D"width: 201px; height: 110px; margin: 0px; float: right;" widt=
+h=3D"201"></div>
+
+                        </td>
+                    </tr>
+                </tbody></table>
+				<!--[if mso]>
+				</td>
+				<![endif]-->
+                =
+
+				<!--[if mso]>
+				</tr>
+				</table>
+				<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table></td>
+                            </tr>
+                        </table>
+						<!--[if gte mso 9]>
+						</td>
+						</tr>
+						</table>
+						<![endif]-->
+                        <!-- // END TEMPLATE -->
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </body>
+</html>
+  </body>
+</html>
+
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "last_email" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["last_email", "2016-09-05 20:22:07.532412"], ["updated_at", "2016-09-05 20:22:07.533732"], ["id", 61]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 50]]
+Redirected to http://192.168.1.113:8080/users/50
+Completed 302 Found in 14615ms (ActiveRecord: 3.7ms)
+
+
+Started GET "/users/50" for 192.168.1.113 at 2016-09-05 15:22:07 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"50"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 50]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", "50"]]
+  [1m[36mPlan Load (0.1ms)[0m  [1mSELECT  "plans".* FROM "plans" WHERE "plans"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 50]]
+  [1m[36mEvent Load (0.2ms)[0m  [1mSELECT "events".* FROM "events" WHERE "events"."user_id" = ?[0m  [["user_id", 50]]
+  [1m[35mPlan Load (0.2ms)[0m  SELECT "plans".* FROM "plans"
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "schedules" WHERE "schedules"."user_id" = ? AND ("schedules"."created_at" BETWEEN '2016-09-01 05:00:00.000000' AND '2016-10-01 04:59:59.999999')[0m  [["user_id", 50]]
+  [1m[35mSchedule Load (0.1ms)[0m  SELECT "schedules".* FROM "schedules" WHERE "schedules"."user_id" = ? AND ("schedules"."created_at" BETWEEN '2016-09-01 05:00:00.000000' AND '2016-10-01 04:59:59.999999')  [["user_id", 50]]
+  [1m[36mLesson Load (0.1ms)[0m  [1mSELECT  "lessons".* FROM "lessons" WHERE "lessons"."id" = ? LIMIT 1[0m  [["id", 1302]]
+  [1m[35mLesson Load (0.1ms)[0m  SELECT  "lessons".* FROM "lessons" WHERE "lessons"."id" = ? LIMIT 1  [["id", 1306]]
+  [1m[36mLesson Load (0.1ms)[0m  [1mSELECT  "lessons".* FROM "lessons" WHERE "lessons"."id" = ? LIMIT 1[0m  [["id", 1301]]
+  [1m[35mLesson Load (0.1ms)[0m  SELECT  "lessons".* FROM "lessons" WHERE "lessons"."id" = ? LIMIT 1  [["id", 1250]]
+  Rendered schedules/_schedule.html.erb (10.1ms)
+  Rendered users/show.html.erb within layouts/application (25.1ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 91ms (Views: 69.8ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/assets/bootstrap-datetimepicker.min.scss.self-d5787e4379cc4bcde60bb2e38d3f52dd4e847581ecafd44ea47385db6c1ca350.css?body=1" for 192.168.1.113 at 2016-09-05 15:22:07 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/bootstrap.min.scss.self-1f98fb16c9e1f565fe9924fadc2a8523a7bc42353d76aa42a0eb8ac320ce9bdc.css?body=1" for 192.168.1.113 at 2016-09-05 15:22:07 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/bootstrap.scss.self-f945c3a27ed1c16090096c999c7583ddc3934af7a5b21febb698614c7a550ce0.css?body=1" for 192.168.1.113 at 2016-09-05 15:22:07 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/events.self-b60acab5af8d245ed2b3012f77d11d8d207d8eada27756badaf4ef05770d60f6.css?body=1" for 192.168.1.113 at 2016-09-05 15:22:07 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/font-awesome.min.scss.self-6bb04114c00dc0f2115b700bce976c1d368c4c641247d3f2bd520b3067efef45.css?body=1" for 192.168.1.113 at 2016-09-05 15:22:07 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/fullcalendar.scss.self-13bfc7d614771e5f27776eaf4e370a0cfcfc5195614e5bf4ed0c22a4a101294e.css?body=1" for 192.168.1.113 at 2016-09-05 15:22:07 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery-ui.scss.self-8597c5928b743edeb10a9fa3c6c09263e8d78de4083ae3ea895f5e86651db158.css?body=1" for 192.168.1.113 at 2016-09-05 15:22:07 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery.cleditor.scss.self-d21d6b21ae972c0bf700d0c40dc9e98a7441f3adf03bc8eafd6ccf14ebf366e1.css?body=1" for 192.168.1.113 at 2016-09-05 15:22:07 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery.dataTables.scss.self-aa0637dfdab07b07281fc4afa8ef4be877493be1fc5f7b68e6ec25a7a3601874.css?body=1" for 192.168.1.113 at 2016-09-05 15:22:07 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery.onoff.scss.self-6ca085ed645ccc2e36028469002b2780926d46cfd2f614e366d6f33315122725.css?body=1" for 192.168.1.113 at 2016-09-05 15:22:07 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/prettyPhoto.scss.self-72229f85b6fbf92a6a861cc308a88d02394607bc8f05f4d715d0bbf1d9a78a62.css?body=1" for 192.168.1.113 at 2016-09-05 15:22:07 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/rateit.scss.self-d35550488387421fc64b29b1e34dd70f5a5baf01b37e9b09c0b0ad77d50c02f6.css?body=1" for 192.168.1.113 at 2016-09-05 15:22:07 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/style.scss.self-2cb380e8e6fa3c55b4222f3df4afbce2c210bc468b11f0101d690f7ad002287c.css?body=1" for 192.168.1.113 at 2016-09-05 15:22:07 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/widgets.scss.self-35b0ad21c250e09ed8fd977caa32f614ff5742a7d9db08e2100aa95a49f2a833.css?body=1" for 192.168.1.113 at 2016-09-05 15:22:07 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/application.self-d1c15f463c52528c60d5acc3cc89ac075c399bfd57e27593b10d011bbaad53a0.css?body=1" for 192.168.1.113 at 2016-09-05 15:22:07 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/sweetalert.self-93ae81483be2e9705db4cd911fa410bc2cf6c24f355dc5ac899de49fab854e63.css?body=1" for 192.168.1.113 at 2016-09-05 15:22:07 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 192.168.1.113 at 2016-09-05 15:22:07 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 192.168.1.113 at 2016-09-05 15:22:07 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/Chart.js/Chart.bundle.self-c11f584663002f049e839927ca9137dceee340c8d67ec91df0cfaaa3bf7b71dd.js?body=1" for 192.168.1.113 at 2016-09-05 15:22:07 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/Chart.js/Chart.bundle.min.self-e2785196d72dd3a3601cc2d56a5d269ea2ef4b789cd96652426b9facf906dcdb.js?body=1" for 192.168.1.113 at 2016-09-05 15:22:07 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/Chart.js/Chart.self-6a8d08dda71696d48153f33a0e7fed483876051ded8a0a3c76466f3640512e10.js?body=1" for 192.168.1.113 at 2016-09-05 15:22:07 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/Chart.js/Chart.min.self-7bf1ca1b6e7988ee8756e86335c2f10e17c0a1dcd3a81d8d20edea4e09204ef4.js?body=1" for 192.168.1.113 at 2016-09-05 15:22:07 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/courtesies.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 192.168.1.113 at 2016-09-05 15:22:07 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/stats.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 192.168.1.113 at 2016-09-05 15:22:07 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/sweetalert.self-2f4d106e0b5bd7c2cd59eea258597298f81d0b8ca8eb60b1d1cc6a5c45ac4ba5.js?body=1" for 192.168.1.113 at 2016-09-05 15:22:07 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/events.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 192.168.1.113 at 2016-09-05 15:22:07 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/application.self-7862a8a8b42407b4741a1adeeea35f0d13ddc4f702ec532adb0674491d296495.js?body=1" for 192.168.1.113 at 2016-09-05 15:22:07 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/Elite-Logo-PNG-5ce3f413d41ce310ce8f9c08d97b8ac0d4784714d9d2d9af1dc7722de46f0eb6.png" for 192.168.1.113 at 2016-09-05 15:22:07 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/2000-4a88d406d6a5f501e24fba370965b16206c25581752326870c495cb30dc12610.png" for 192.168.1.113 at 2016-09-05 15:22:07 -0500
+Cannot render console from 192.168.1.113! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
