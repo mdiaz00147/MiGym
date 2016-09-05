@@ -21,6 +21,6 @@ class StatsController < ApplicationController
 	        	@lessons_evening << 1
 	        end
         end
-
+        
 	end
 end

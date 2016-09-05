@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   post    'referer/new', to: 'events#referer'
   get     'events', to: 'events#index'
   get     '/admin/estadisticas', to: 'stats#admin_index'
-  
+  get     '/admin/reminder', to: 'events#reminder'
   root    'sessions#new'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
