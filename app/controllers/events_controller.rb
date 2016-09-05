@@ -39,9 +39,11 @@ class EventsController < ApplicationController
 	end
 	def reminder
 		@user = User.where("last_login < '#{(Time.now) -1.weeks}'")
-		Gymail.reminder(userReminder).deliver_now
-					userReminder.update_attribute(:last_email, DateTime.now)
+		
+
 		@user.each do |userReminder|
+			Gymail.reminder(userReminder).deliver_now
+					userReminder.update_attribute(:last_email, DateTime.now)
 		if userReminder.last_email.present?
 			if Date.parse(userReminder.last_email.to_s) != Date.parse(Time.now.to_s)
 				if Date.parse(userReminder.last_email.to_s) < Date.parse(((Time.now) -3.days).to_s)
