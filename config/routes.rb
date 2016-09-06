@@ -28,6 +28,9 @@ Rails.application.routes.draw do
   get     'events', to: 'events#index'
   get     '/admin/estadisticas', to: 'stats#admin_index'
   get     '/admin/reminder', to: 'events#reminder'
+  get     '/admin/estadisticas/tendencias', to: 'stats#trends'
+  get     '/admin/estadisticas/tendencias/:user_id', to: 'stats#trends'
+
   root    'sessions#new'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -55,16 +55,18 @@ class LessonsController < ApplicationController
     redirect_to lessons_path
   end
   def multiply
-    @lessons  = Lesson.where(start_date: (Time.zone.now.beginning_of_week.beginning_of_day)..Time.zone.now.end_of_week.end_of_day)
-    #@lessons   =  Lesson.all
+    @lessons  = Lesson.where(start_date: (Time.zone.now.last_week.beginning_of_week.beginning_of_day)..Time.zone.now.last_week.end_of_week.end_of_day)
     @lessons.each do |newl|
       @new_lesson_date  = (newl.start_date) + 1.weeks
-      @new_lesson       = Lesson.new(start_date: @new_lesson_date, 
-                                     users_allowed: newl.users_allowed, 
-                                     name: newl.name, 
-                                     description: newl.description, 
-                                     users_enrolled: 0)
-      @new_lesson.save
+      @check  = Lesson.where(start_date: @new_lesson_date)
+      if !@check.present?
+        @new_lesson       = Lesson.new(start_date: @new_lesson_date, 
+                                       users_allowed: newl.users_allowed, 
+                                       name: newl.name, 
+                                       description: newl.description, 
+                                       users_enrolled: 0)
+        @new_lesson.save
+      end
     end
     flash[:success] = "Semana actualizada!!!"
     redirect_to lessons_path

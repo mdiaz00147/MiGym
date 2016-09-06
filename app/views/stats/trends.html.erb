@@ -1,0 +1,39 @@
+
+
+<% @user_lesson.each_with_index do |like, index| %>
+<%=  %> <% like.start_date.strftime('%k:%M') %>
+<%end%>
+<br>
+clases de 6 a 8 am = <%= @six_to_eight.count %>
+<br>
+clases de 8 a 10 am = <%= @eigth_to_ten.count %>
+<br>
+clases de 10 a 12 am = <%= @ten_to_twelve.count %>
+<br>
+clases de 12 a 14 am = <%= @twelve_to_fourteen.count %>
+<br>
+clases de 14 a 16 am = <%= @fourteen_to_sixteen.count %>
+<br>
+clases de 16 a 18 am = <%= @sixteen_to_eighteen.count %>
+<br>
+clases de 18 a 20 am = <%= @eighteen_to_twenty.count %>
+<br>
+clases de 20 a 21 am = <%= @twenty_to_twentyone.count %>
+
+<br>
+<h2>A este usuario seguramente le gustan mas las clases de <%= @mensaje%>, ya que agendo un total de <%= @gusto %>% de clases a esta hora</h2>
+
+<table>
+	<thead>
+		<th>usuario</th>
+		<th>accion</th>
+	</thead>
+	<tbody>
+	<% @users.each do |user| %>
+		<tr>
+			<td><%=user.name%></td>
+			<td><a class="btn btn-primary" href="<%=admin_estadisticas_tendencias_path%>/<%=user.id%>">Analizar</a></td>
+		</tr>
+	<%end%>
+	</tbody>
+</table>

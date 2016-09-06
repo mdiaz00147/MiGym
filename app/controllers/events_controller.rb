@@ -33,9 +33,11 @@ class EventsController < ApplicationController
 				redirect_to current_user
 			end
 		end
+
 	end
 	def index
 		@event = Event.all.order(id: :asc)
+		
 	end
 	def reminder
 		@user = User.where("last_login < '#{(Time.now) -1.weeks}'")
