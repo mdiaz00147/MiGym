@@ -24,6 +24,7 @@ class StatsController < ApplicationController
         
 	end
 	def trends
+
 		@users = User.all
 		@user_lesson = Schedule.where(user_id: params[:user_id])
 

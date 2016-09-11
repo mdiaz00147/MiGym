@@ -8,7 +8,7 @@ class SchedulesController < ApplicationController
         fecha_end       =   fecha.to_time.end_of_day
         @assistance     =   Schedule.where(start_date: (fecha_start)..fecha_end).order(start_date: :asc)
       else 
-        @assistance    =  Schedule.where(start_date: (Time.now.beginning_of_day)..Time.now.end_of_day).order(start_date: :asc)
+        @assistance    =    Schedule.where(start_date: (Time.now.beginning_of_day)..Time.now.end_of_day).order(start_date: :asc)
       end
       
     
