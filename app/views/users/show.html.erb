@@ -12,37 +12,7 @@
       <div class="container">
 <% if logged_in? %> 
  <div class="row">
-   <div class="col-md-5">
-      <div class="widget">
-      
-                <div class="widget-head">
-                  <div class="pull-left">Mi perfil</div>
-                  <div class="clearfix"></div>
-                </div>
-                <div class="widget-content">
-                  <div class="padd">
-                    <div class="user">
-                      <div class="user-pic">
-                          <a href="#" ><img src="<%=@user.avatar.url%>" style="width: 200px; border:solid 1px "></a>
-                          <%= link_to 'Mi perfil', edit_user_path(current_user) %>
-                      </div>
-                      <div class="user-details">
-                        <h5><%= @user.name %></h5>
-                        <p> <%= @user.email%></p>
-                        <p> <%= @user.lessons%> Clases restantes</p>
-                        <p><%= @plan.name %></p>
-                       
-                      </div>
-                    
-                    </div>                   
-                  </div>
-                  <div class="widget-foot">
-                   
-                  </div>
-                </div>
-        </div>  
-    </div>
-            <div class="col-md-6">
+ <div class="col-md-6">
               <div class="widget wblack">
                 <div class="widget-head">
                   <div class="text-center"><i class="fa fa-flag" aria-hidden="true" style="color: red"></i>
@@ -124,6 +94,38 @@
                 </div>
               </div>   
             </div>
+            
+   <div class="col-md-5">
+      <div class="widget">
+      
+                <div class="widget-head">
+                  <div class="pull-left">Mi perfil</div>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="widget-content">
+                  <div class="padd">
+                    <div class="user">
+                      <div class="user-pic">
+                          <a href="#" ><img src="<%=@user.avatar.url%>" style="width: 200px; border:solid 1px "></a>
+                          <%= link_to 'Mi perfil', edit_user_path(current_user) %>
+                      </div>
+                      <div class="user-details">
+                        <h5><%= @user.name %></h5>
+                        <p> <%= @user.email%></p>
+                        <p> <%= @user.lessons%> Clases restantes</p>
+                        <p><%= @plan.name %></p>
+                       
+                      </div>
+                    
+                    </div>                   
+                  </div>
+                  <div class="widget-foot">
+                   
+                  </div>
+                </div>
+        </div>  
+    </div>
+            
             <!--<div class="col-md-6">
               <div class="widget">
                 <div class="widget-head">
