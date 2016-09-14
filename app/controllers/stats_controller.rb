@@ -70,29 +70,37 @@ class StatsController < ApplicationController
 
 		case @pick.first
 		when @six_to_eight.count.to_i
-			@mensaje = "6AM - 8AM"
-			@mayor_franja = @six_to_eight
+ 			@mayor_franja = @six_to_eight
+			@franja_i = 5.9
+			@franja_f = 7.9
 		when @eigth_to_ten.count.to_i
-			@mensaje = "8AM - 10AM"
-			@mayor_franja = @eigth_to_ten
+ 			@mayor_franja = @eigth_to_ten
+			@franja_i = 7.9
+			@franja_f = 9.9
 		when @ten_to_twelve.count.to_i
-			@mensaje = "10AM - 12PM"
-			@mayor_franja = @ten_to_twelve
+ 			@mayor_franja = @ten_to_twelve
+ 			@franja_i = 9.9
+ 			@franja_f = 10.9
 		when @twelve_to_fourteen.count.to_i
-			@mensaje = "12PM - 14PM"
-			@mayor_franja = @twelve_to_fourteen
+ 			@mayor_franja = @twelve_to_fourteen
+ 			@franja_i = 11.9
+ 			@franja_f = 13.9
 		when @fourteen_to_sixteen.count.to_i
-			@mensaje = "14PM - 16PM"
-			@mayor_franja = @fourteen_to_sixteen
+ 			@mayor_franja = @fourteen_to_sixteen
+ 			@franja_i = 13.9
+ 			@franja_f = 15.9
 		when @sixteen_to_eighteen.count.to_i
-			@mensaje = "16PM - 18PM"
-			@mayor_franja = @sixteen_to_eighteen
+ 			@mayor_franja = @sixteen_to_eighteen
+ 			@franja_i = 15.9
+ 			@franja_f = 17.9
 		when @eighteen_to_twenty.count.to_i
-			@mensaje = "18PM - 20PM"
-			@mayor_franja = @eighteen_to_twenty
+ 			@mayor_franja = @eighteen_to_twenty
+ 			@franja_i = 17.9
+ 			@franja_f = 19.9
 		when @twenty_to_twentyone.count.to_i
-			@mensaje = "20PM - 21PM"
-			@mayor_franja = @twenty_to_twentyone
+ 			@mayor_franja = @twenty_to_twentyone
+ 			@franja_i = 19.9
+ 			@franja_f = 20.9
 		end
 
 
@@ -100,5 +108,19 @@ class StatsController < ApplicationController
 		@total = @user_lesson.count
 		x = (@mayor_franja.count.to_f * 100)	/	@total.to_f
 		@gusto = x.to_f
+
+			year 	= Time.now.year
+			month 	= Time.now.month
+			day 	= Time.now.day
+			hour 	= @franja_i
+			minute 	= 0
+
+		# @start_hour = Time.new(year, month, day, hour, minute)
+		@apropiada = Lesson.where(users_enrolled: 0, start_date: (Time.now.beginning_of_week)..Time.now.end_of_week) 
+
+
+
+
+
 	end
 end

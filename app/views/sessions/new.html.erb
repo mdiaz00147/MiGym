@@ -1,4 +1,7 @@
 <% provide(:title, "Iniciar sesion") %>
+<br>
+<br>
+<br>
   <div class="row">
     <div class="col-md-8 col-lg-offset-2">
       <div class="widget wred">
@@ -7,9 +10,6 @@
         </div>
         <div class="widget-content">
           <div class="padd">
-
-
-
                <% flash.each do |message_type, message| %>
               <div class="alert alert-<%= message_type %>"><%= message %></div>
             <% end %>

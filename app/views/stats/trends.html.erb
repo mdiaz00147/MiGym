@@ -1,4 +1,13 @@
 
+<% @apropiada.each do |dsdf| %>
+<% if (dsdf.start_date > dsdf.start_date.beginning_of_day + 9.9.hours) && (dsdf.start_date < dsdf.start_date.beginning_of_day + 10.9.hours) %>
+<br>
+<%=dsdf.start_date %>
+
+<% end %>
+
+<% end %>
+
 
 <% @user_lesson.each_with_index do |like, index| %>
 <%=  %> <% like.start_date.strftime('%k:%M') %>
@@ -21,7 +30,7 @@ clases de 18 a 20 am = <%= @eighteen_to_twenty.count %>
 clases de 20 a 21 am = <%= @twenty_to_twentyone.count %>
 
 <br>
-<h2>A este usuario seguramente le gustan mas las clases de <%= @mensaje%>, ya que agendo un total de <%= @gusto %>% de clases a esta hora</h2>
+<h2>A este usuario seguramente le gustan mas las clases de <%= @franja_i%>, ya que agendo un total de <%= @gusto %>% de clases a esta hora</h2>
 
 <table>
 	<thead>
