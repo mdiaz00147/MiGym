@@ -1,6 +1,6 @@
 
 <% @apropiada.each do |dsdf| %>
-<% if (dsdf.start_date > dsdf.start_date.beginning_of_day + 9.9.hours) && (dsdf.start_date < dsdf.start_date.beginning_of_day + 10.9.hours) %>
+<% if (dsdf.start_date > dsdf.start_date.beginning_of_day + @franja_i.hours) && (dsdf.start_date < dsdf.start_date.beginning_of_day + @franja_f.hours) %>
 <br>
 <%=dsdf.start_date %>
 
