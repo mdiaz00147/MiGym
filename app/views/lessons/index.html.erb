@@ -26,7 +26,13 @@
                 </div>
                 <div class="widget-content">
                   <div class="padd">
-                    
+                    <div class="dataTables_paginate paging_simple_numbers" id="data-table-lessons_paginate">
+                        <a class="paginate_button" href="<%=params[:id].to_i - 1%>">Anterior</a>
+                        <% @pages.times.each_with_index do |page,index| %>
+                        <span><a class="paginate_button current" href="<%=index + 1 %>"><%=index+1%></a></span>
+                        <%end%>
+                        <a class="paginate_button " href="<%=params[:id].to_i + 1%>">Siguiente</a>
+                    </div>
               <!-- Table Page -->
               <div class="page-tables">
                 <!-- Table -->
@@ -68,7 +74,7 @@
           
                   </div>
                   <div class="widget-foot">
-                    <!-- Footer goes here -->
+                    
                   </div>
                 </div>
               </div>  

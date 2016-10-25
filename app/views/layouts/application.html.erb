@@ -7,36 +7,36 @@
     <%= stylesheet_link_tag    'application', media: 'all',
                                               'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <script src="../js/bootstrap.min.js"></script> <!-- Bootstrap -->
-    <script src="../js/jquery-ui.min.js"></script> <!-- jQuery UI -->
-    <script src="../js/fullcalendar.min.js"></script> <!-- Full Google Calendar - Calendar -->
-    <script src="../js/jquery.rateit.min.js"></script> <!-- RateIt - Star rating -->
-    <script src="../js/jquery.prettyPhoto.js"></script> <!-- prettyPhoto -->
-    <script src="../js/jquery.slimscroll.min.js"></script> <!-- jQuery Slim Scroll -->
-    <script src="../js/jquery.dataTables.min.js"></script> <!-- Data tables -->
+    <script src="http://<%=request.host%>:<%=request.port%>/js/bootstrap.min.js"></script> <!-- Bootstrap -->
+    <script src="http://<%=request.host%>:<%=request.port%>/js/jquery-ui.min.js"></script> <!-- jQuery UI -->
+    <script src="http://<%=request.host%>:<%=request.port%>/js/fullcalendar.min.js"></script> <!-- Full Google Calendar - Calendar -->
+    <script src="http://<%=request.host%>:<%=request.port%>/js/jquery.rateit.min.js"></script> <!-- RateIt - Star rating -->
+    <script src="http://<%=request.host%>:<%=request.port%>/js/jquery.prettyPhoto.js"></script> <!-- prettyPhoto -->
+    <script src="http://<%=request.host%>:<%=request.port%>/js/jquery.slimscroll.min.js"></script> <!-- jQuery Slim Scroll -->
+    <script src="http://<%=request.host%>:<%=request.port%>/js/jquery.dataTables.min.js"></script> <!-- Data tables -->
 
     <!-- jQuery Flot -->
-    <script src="../js/excanvas.min.js"></script>
-    <script src="../js/jquery.flot.js"></script>
-    <script src="../js/jquery.flot.resize.js"></script>
-    <script src="../js/jquery.flot.pie.js"></script>
-    <script src="../js/jquery.flot.stack.js"></script>
+    <script src="http://<%=request.host%>:<%=request.port%>/js/excanvas.min.js"></script>
+    <script src="http://<%=request.host%>:<%=request.port%>/js/jquery.flot.js"></script>
+    <script src="http://<%=request.host%>:<%=request.port%>/js/jquery.flot.resize.js"></script>
+    <script src="http://<%=request.host%>:<%=request.port%>/js/jquery.flot.pie.js"></script>
+    <script src="http://<%=request.host%>:<%=request.port%>/js/jquery.flot.stack.js"></script>
 
     <!-- jQuery Notification - Noty -->
-    <script src="../js/jquery.noty.js"></script> <!-- jQuery Notify -->
-    <script src="../js/themes/default.js"></script> <!-- jQuery Notify -->
-    <script src="../js/layouts/bottom.js"></script> <!-- jQuery Notify -->
-    <script src="../js/layouts/topRight.js"></script> <!-- jQuery Notify -->
-    <script src="../js/layouts/top.js"></script> <!-- jQuery Notify -->
+    <script src="http://<%=request.host%>:<%=request.port%>/js/jquery.noty.js"></script> <!-- jQuery Notify -->
+    <script src="http://<%=request.host%>:<%=request.port%>/js/themes/default.js"></script> <!-- jQuery Notify -->
+    <script src="http://<%=request.host%>:<%=request.port%>/js/layouts/bottom.js"></script> <!-- jQuery Notify -->
+    <script src="http://<%=request.host%>:<%=request.port%>/js/layouts/topRight.js"></script> <!-- jQuery Notify -->
+    <script src="http://<%=request.host%>:<%=request.port%>/js/layouts/top.js"></script> <!-- jQuery Notify -->
     <!-- jQuery Notification ends -->
 
-    <script src="../js/sparklines.js"></script> <!-- Sparklines -->
-    <script src="../js/jquery.cleditor.min.js"></script> <!-- CLEditor -->
-    <script src="../js/bootstrap-datetimepicker.min.js"></script> <!-- Date picker -->
-    <script src="../js/jquery.onoff.min.js"></script> <!-- Bootstrap Toggle -->
-    <script src="../js/filter.js"></script> <!-- Filter for support page -->
-    <script src="../js/custom.js"></script> <!-- Custom codes -->
-    <script src="../js/charts.js"></script> <!-- Charts & Graphs -->
+    <script src="http://<%=request.host%>:<%=request.port%>/js/sparklines.js"></script> <!-- Sparklines -->
+    <script src="http://<%=request.host%>:<%=request.port%>/js/jquery.cleditor.min.js"></script> <!-- CLEditor -->
+    <script src="http://<%=request.host%>:<%=request.port%>/js/bootstrap-datetimepicker.min.js"></script> <!-- Date picker -->
+    <script src="http://<%=request.host%>:<%=request.port%>/js/jquery.onoff.min.js"></script> <!-- Bootstrap Toggle -->
+    <script src="http://<%=request.host%>:<%=request.port%>/js/filter.js"></script> <!-- Filter for support page -->
+    <script src="http://<%=request.host%>:<%=request.port%>/js/custom.js"></script> <!-- Custom codes -->
+    <script src="http://<%=request.host%>:<%=request.port%>/js/charts.js"></script> <!-- Charts & Graphs -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   </head>
 <body>
@@ -100,7 +100,7 @@
 
           <li class="has_sub <%= active_class('/lessons') %>"><a href="#"><i class="fa fa-list-alt"></i> Clases  <span class="pull-right"><i class="fa fa-chevron-right"></i></span></a>
             <ul>
-              <li><%= link_to 'Listar clases', lessons_path %></li>
+              <li><%= link_to 'Listar clases', lessons_paginated_path.to_s + '/1' %></li>
               <li><%= link_to 'Crear clase', new_lesson_path %></li>
               <li><%= link_to 'Actualizar semana', actualizarC_path %></li>
             </ul>
@@ -135,7 +135,7 @@
         <% else %>
         <ul id="nav">
           <li><%= link_to '<i class="fa fa-home"></i> Iniciar sesion'.html_safe, login_path %></li>
-          <li><%= link_to '<i class="fa fa-smile-o"></i> Contactanos'.html_safe, login_path %></li>
+          <li><%= link_to '<i class="fa fa-smile-o"></i> Contactanos'.html_safe, contactanos_path %></li>
         </ul>
           
         <% end %>

@@ -3,22 +3,24 @@ Rails.application.routes.draw do
   resources :lessons
   resources :users
   get     '/actualizarC', to: 'lessons#multiply'
-  get     'dynash', to: 'schedules#dynash'
+  get     '/dynash', to: 'schedules#dynash'
   get     '/logout',  to: 'sessions#destroy'
   get     '/login',   to: 'sessions#new'
   post    '/login',   to: 'sessions#create'
-
+  get     '/lessons/p/:id',  to: 'lessons#index'
+  get     '/lessons/p/',  to: 'lessons#index', as: 'lessons_paginated'
   get     '/cortesias/nueva',   to: 'courtesies#new'
   post    '/cortesias/nueva',   to: 'courtesies#create'
   get     '/cortesias/:id',     to: 'courtesies#show', as: 'courtesie'
   delete  '/cortesias/:id',     to: 'courtesies#delete', as: 'courtesie_delete'
 
-  get     'cortesias', to: 'courtesies#index'
+  get     '/cortesias', to: 'courtesies#index'
 
   get     '/calendario',  to: 'schedules#new'
+  get     '/calendario2', to: 'schedules#new2'
   post    '/calendario',  to: 'schedules#appointment'
   get     '/asistencia',  to: 'schedules#index'
-  post     '/asistencia',  to: 'schedules#index'
+  post    '/asistencia',  to: 'schedules#index'
 
   get     'signup',  to:  'users#new'
   get     'contactanos', to: 'static_pages#contact'

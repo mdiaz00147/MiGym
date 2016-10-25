@@ -1,8 +1,9 @@
 class StatsController < ApplicationController
+	before_action :check_login
 	def index
-	@user		  		=	User.find(current_user.id)
-	@schedules    		= 	@user.schedules
-	@schedules_month    = 	@user.schedules.where(created_at: (Time.now.beginning_of_month)..Time.now.end_of_month)
+		@user		  		=	User.find(current_user.id)
+		@schedules    		= 	@user.schedules
+		@schedules_month    = 	@user.schedules.where(created_at: (Time.now.beginning_of_month)..Time.now.end_of_month)
 	end
 	def admin_index
 		@users_active =	User.where(last_login: (Time.now.beginning_of_month)..Time.now.end_of_day)
@@ -118,9 +119,11 @@ class StatsController < ApplicationController
 		# @start_hour = Time.new(year, month, day, hour, minute)
 		@apropiada = Lesson.where(users_enrolled: 0, start_date: (Time.now.beginning_of_week)..Time.now.end_of_week) 
 
-
-
-
-
 	end
+	private
+	def check_login
+      if !logged_in?
+        redirect_to root_path
+      end
+    end
 end

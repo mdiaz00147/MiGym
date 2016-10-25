@@ -100,7 +100,7 @@
             						<tr>
                           <td>
                           <% unless assist.options.present? %>
-                          <%= link_to assist.user.name, assist.user %>
+                            <%= link_to assist.user.name, assist.user %>
                           <% else %>
                           <%= assist.options %> - <%= link_to assist.user.name, assist.user %>
                           <% end %>

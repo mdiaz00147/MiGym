@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+	before_action :check_login
 	def referer
 		phone_1 	 = params[:referer][:phone_1]
 		name_1 		 = params[:referer][:name_1]
@@ -57,4 +58,10 @@ class EventsController < ApplicationController
 		end
 		redirect_to current_user
 	end
+	private
+	def check_login
+      if !logged_in?
+        redirect_to root_path
+      end
+    end
 end

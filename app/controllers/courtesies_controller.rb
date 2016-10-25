@@ -1,4 +1,5 @@
 class CourtesiesController < ApplicationController
+	before_action :check_login
 	def index
 		@courtesies = Courtesie.all.order(created_at: :desc)
 	end
@@ -62,4 +63,9 @@ private
 	def courtesie_params
 		params.require(:courtesie).permit(:name, :start_hour, :email, :phone)
 	end
+	def check_login
+      if !logged_in?
+        redirect_to root_path
+      end
+    end
 end

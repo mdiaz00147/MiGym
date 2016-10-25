@@ -6,6 +6,7 @@ gem 'rails', '4.2.6'
 gem 'materialize-sass'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+gem	'mysql2'
 gem	'mail'
 # Use SCSS for stylesheets
 #gem 'sass-rails', '~> 5.0', '>= 5.0.4'

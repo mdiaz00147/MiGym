@@ -3,5 +3,5 @@ class Schedule < ActiveRecord::Base
 
 	belongs_to :user
 	belongs_to :lesson
-	#has_many :lessons
+	#has_one :lesson
 end

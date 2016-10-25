@@ -1,5 +1,6 @@
 class PlansController < ApplicationController
   before_action :set_plan, only: [:show, :edit, :update, :destroy]
+  before_action :check_login
   def index
     @plans = Plan.all
   end
@@ -45,5 +46,10 @@ class PlansController < ApplicationController
     end
     def plan_params
       params.require(:plan).permit(:name, :lessons, :price, :start_hour, :end_hour)
+    end
+    def check_login
+      if !logged_in?
+        redirect_to root_path
+      end
     end
 end

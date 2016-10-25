@@ -5,8 +5,7 @@ class SessionsController < ApplicationController
     end
   end
   def create
-  	 user = User.find_by(email: params[:session][:email].downcase)
-     
+  	user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
       user.update_attribute(:last_login, DateTime.now)
       log_in user
@@ -17,7 +16,6 @@ class SessionsController < ApplicationController
       flash[:danger] = 'Email invalido/Contrasena incorrecta' # Not quite right!
       render 'new'
     end
-    
   end
   def destroy
     log_out

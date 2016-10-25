@@ -1,14 +1,27 @@
 class LessonsController < ApplicationController
   before_action :set_lesson, only: [:show, :edit, :update, :destroy]
-
+  before_action :check_login
   # GET /lessons
   # GET /lessons.json
-  
   def index
-    @lessons = Lesson.all.order(start_date: :desc)
-    auth = {:username => "elite_fitness", :password => "3li73Services+-*"}
-    @blah = HTTParty.get("http://services.dynash.com/index.php/users/sessionsatdate/", 
-                     :basic_auth => auth)
+    lessons = Lesson.all.select(:id,:name,:start_date,:users_allowed).order(start_date: :desc)
+    results_per_page  = 30
+    total_results     = lessons.size
+    @pages             = lessons.size / results_per_page
+    page_nume = params[:id].to_i
+    
+
+    arr = []
+    @pages.times.each_with_index do |res, index|
+      current_page = index + 1
+      if page_nume == current_page
+        results_per_page - total_results
+        @result_no = current_page*results_per_page
+      end
+    end
+
+    
+    @lessons   = Lesson.all.select(:id,:name,:start_date,:users_allowed).order(start_date: :desc).offset(@result_no).limit(results_per_page)
 
   end
   def show
@@ -79,24 +92,29 @@ class LessonsController < ApplicationController
     def lesson_params
       params.require(:lesson).permit(:users_allowed, :name, :start_date, :description)
     end
+    def check_login
+      if !logged_in?
+        redirect_to root_path
+      end
+    end
 end
 
 
 
-class Dynash
-  response = HTTParty.get('http://services.dynash.com/index.php/users/listactive')
+# class Dynash
+#   response = HTTParty.get('http://services.dynash.com/index.php/users/listactive')
 
-  include HTTParty
-  base_uri 'http://services.dynash.com/'
+#   include HTTParty
+#   base_uri 'http://services.dynash.com/'
 
-  def initialize(u, p)
-    @auth = {username: u, password: p}
-  end
+#   def initialize(u, p)
+#     @auth = {username: u, password: p}
+#   end
 
-  def lessons
-    self.class.get("/index.php/users/listactive")
-  end
+#   def lessons
+#     self.class.get("/index.php/users/listactive")
+#   end
 
 
-end
+# end
 

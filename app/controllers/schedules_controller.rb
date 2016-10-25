@@ -1,4 +1,5 @@
 class SchedulesController < ApplicationController
+  before_action :check_login, only: [:index, :new, :appointment]
   before_action :check_expiration, only: [:new, :appointment]
 
   def index
@@ -6,14 +7,10 @@ class SchedulesController < ApplicationController
         fecha           =   params[:search][:start_date]
         fecha_start     =   fecha.to_time.beginning_of_day
         fecha_end       =   fecha.to_time.end_of_day
-        @assistance     =   Schedule.where(start_date: (fecha_start)..fecha_end).order(start_date: :asc)
+        @assistance     =   Schedule.joins(:lesson).select('lessons.start_date as start_date',:options,:user_id,:lesson_id).where("lessons.start_date BETWEEN '#{fecha_start}' AND '#{fecha_end}'").order("lessons.start_date ASC")     
       else 
-        @assistance    =    Schedule.where(start_date: (Time.now.beginning_of_day)..Time.now.end_of_day).order(start_date: :asc)
+        @assistance   = Schedule.joins(:lesson).select('lessons.start_date as start_date',:options,:user_id,:lesson_id).where("lessons.start_date BETWEEN '#{Time.now.beginning_of_day}' AND '#{Time.now.end_of_day}'").order("lessons.start_date ASC")
       end
-      
-    
-
-
   end
   def dynash
     auth = {:username => "elite_fitness", :password => "3li73Services+-*"}
@@ -40,6 +37,33 @@ class SchedulesController < ApplicationController
       flash["success"]  = "dynash actualizado"
       redirect_to asistencia_path
   end
+  def new2
+      @todas = Lesson.all.select(:id,:name,:users_enrolled,:users_allowed,:start_date).where(start_date: (Time.now.beginning_of_week.beginning_of_day)..Time.now.end_of_week.end_of_day).order(start_date: :asc)
+      @mon = []
+      @tue = []
+      @wed = []
+      @thu = []
+      @fri = []
+      @sat = []
+      @sun = []
+      @todas.each do |lesson|
+      case (lesson.start_date.wday).to_i
+        when 1
+          @mon << lesson
+        when 2
+          @tue << lesson
+         when 3
+          @wed << lesson
+         when 4
+          @thu << lesson
+         when 5
+          @fri << lesson
+         when 6
+          @sat << lesson
+        end
+      end
+      # render json: @mon
+  end
   def new
     @user               = User.find(current_user.id)
     @plan               = @user.plan
@@ -47,6 +71,7 @@ class SchedulesController < ApplicationController
     @arr_lessons_user   = Array(@schedules)
 
     if Time.now.wday == 0
+
       if @plan.start_hour == '06:00'
       @lessons_0  = Lesson.where(start_date: (Time.now.beginning_of_week.next_week.beginning_of_day)..Time.now.next_week.beginning_of_week.end_of_day).order(start_date: :asc)
       @lessons_1  = Lesson.where(start_date: (Time.now.beginning_of_week.next_week.beginning_of_day + 1.days)..Time.now.next_week.beginning_of_week.end_of_day + 1.days).order(start_date: :asc)
@@ -123,7 +148,7 @@ class SchedulesController < ApplicationController
             @lesson_new         =   Lesson.find(lesson_id)
             @users_enrolled     =   users_enrolled + 1
             @new_user_lessons   =   current_user.lessons - 1
-            @appointment.start_date = @lesson_new.start_date
+            # @appointment.start_date = @lesson_new.start_date
             @user_new.update_attribute(:lessons, @new_user_lessons)
             @lesson_new.update_attribute(:users_enrolled, @users_enrolled)
 
@@ -161,5 +186,10 @@ end
       if @expiration_user.expiry_at < Time.zone.now
           flash[:warning] = "Ooops..."
           redirect_to contactanos_path
+      end
+    end
+    def check_login
+      if !logged_in?
+        redirect_to root_path
       end
     end
