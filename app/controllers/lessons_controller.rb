@@ -5,9 +5,9 @@ class LessonsController < ApplicationController
   # GET /lessons.json
   def index
     lessons = Lesson.all.select(:id,:name,:start_date,:users_allowed).order(start_date: :desc)
-    results_per_page  = 30
-    total_results     = lessons.size
-    @pages             = lessons.size / results_per_page
+    results_per_page    = 30
+    total_results       = lessons.size
+    @pages              = lessons.size / results_per_page
     page_nume = params[:id].to_i
     
 

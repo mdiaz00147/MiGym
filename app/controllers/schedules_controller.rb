@@ -1,6 +1,7 @@
+
 class SchedulesController < ApplicationController
-  before_action :check_login, only: [:index, :new, :appointment]
-  before_action :check_expiration, only: [:new, :appointment]
+  # before_action :check_login, only: [:index, :new, :appointment]
+  # before_action :check_expiration, only: [:new, :appointment]
 
   def index
       if params[:search].present?
@@ -37,15 +38,46 @@ class SchedulesController < ApplicationController
       flash["success"]  = "dynash actualizado"
       redirect_to asistencia_path
   end
+  def btce
+    require 'btce'
+    require 'json'
+    login   = Btce::TradeAPI.new(key: 'IK3CWYP2-E0BK49OV-I5HM6H47-8EXPEMRF-HVGMHZFT', secret: '0575f08d23450cad862925e4af06b70c0177d722d00a2b745ac66de56b610a2c')
+    accion  = params[:string].to_s
+    @price  = Btce::Ticker.new "btc_usd"
+    @cuenta_orders      = login.order_list
+    @cuenta_info        = login.get_info
+
+    @compra = (@price.buy.to_f - 1.5.to_f).round(2)
+    @venta  = (@price.sell.to_f + 1.5.to_f).round(2)
+
+    @cantidad_btc  = ((@cuenta_info['return']['funds']['usd'].to_f / @compra) - 0.0001).round(4)
+    @cantidad_usd  = (@cuenta_info['return']['funds']['btc'] - 0.0001).round(4)
+    case accion
+      when 'compra'
+          @trade = login.trade(pair: 'btc_usd', type: 'buy', rate: @compra, amount: @cantidad_btc)
+      when 'venta'        
+          @trade = login.trade(pair: 'btc_usd', type: 'sell', rate: @venta, amount: @cantidad_usd)
+      when 'ordenes'
+          @cuenta_orders  = @cuenta_orders
+     end
+      
+
+
+
+  end
   def new2
       @todas = Lesson.all.select(:id,:name,:users_enrolled,:users_allowed,:start_date).where(start_date: (Time.now.beginning_of_week.beginning_of_day)..Time.now.end_of_week.end_of_day).order(start_date: :asc)
-      @mon = []
-      @tue = []
-      @wed = []
-      @thu = []
-      @fri = []
-      @sat = []
-      @sun = []
+      @days =  [@mon = [], @tue = [], @wed = [], @thu = [], @fri = [], @sat = []]
+
+      @schedules          = current_user.schedules.pluck(:lesson_id)
+      @arr_lessons_user   = Array(@schedules)
+      @lessons = []
+      stores = Struct.new(:day, :lessons)
+
+      @days.each do |ri, ro|
+        @lessons.push stores.new(ri, 0)
+      end
+ 
       @todas.each do |lesson|
       case (lesson.start_date.wday).to_i
         when 1
@@ -154,7 +186,7 @@ class SchedulesController < ApplicationController
 
             if @appointment.save
                 flash[:success] = "Sesion agendada!!!"
-                redirect_to calendario_path
+                redirect_to calendario2_path
             else
                 flash[:warning]  = "Ooops... algo ha fallado, intentalo de nuevo"
                 redirect_to calendario_path
