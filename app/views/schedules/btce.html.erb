@@ -12,6 +12,40 @@
 
 <div class="row">
   <div class="col-md-4">
+  <div class="widget">
+    <div class="widget-head">
+                  <div class="pull-left">Precios en btc-e</div>  
+                  <div class="clearfix"></div>
+                </div>
+    <div class="widget-content referer">
+                  <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover">
+                    <tbody><tr>
+                      <th>Nombre</th>
+                      <th>Precio</th>
+                     </tr>
+                    <tr>
+                      <td>Vamos a comprar a  </td>
+                      <td>$<%= @compra %></td>
+                     </tr>
+                    <tr>
+                      <td>Vamos a vender a</td>
+                      <td>$<%= @venta %></td>
+                     </tr>
+                     
+                     
+                    </tbody></table>
+                  </div>
+                  <div class="clearfix"></div>  
+
+                  <div class="widget-foot">
+                  </div>
+
+                </div>
+ 
+    </div>  
+
+
     <div class="widget">
     <div class="widget-head">
                   <div class="pull-left">Precios en btc-e</div>  
@@ -45,24 +79,8 @@
                   </div>
 
                 </div>
-    <p>
-      
-    </p>
-
-    <hr>
-    <p>
-      <%= @cantidad_btc %>
-    </p>
-    <hr>
-    <p>
-      vamos a comprar a  <%= @compra.round(2) %>
-      <br>
-      vamos a vender a  <%= @venta %>
-    </p>
-    <hr>
-    <p>
-      Operacion final <%=@trade%>
-    </p>
+ 
+     
     </div>  
               
   </div>
@@ -82,14 +100,16 @@
                       <th>Amount</th>
                       <th>Rate</th>
                      </tr>
+                     <% id = @cuenta_orders["return"].to_s.split('"')[1] %>
+                     <% if id.present? %>
                     <tr>
                       <td>1</td>
-                      <% id = @cuenta_orders['return'].to_s.split('"')[1] %>
                       <td><%= @cuenta_orders['return'][id]['pair'] %></td>
                       <td><%= @cuenta_orders['return'][id]['type'] %></td>
                       <td><%= @cuenta_orders['return'][id]['amount'] %></td>
                       <td><%= @cuenta_orders['return'][id]['rate'] %></td>
-                    </tr>                     
+                    </tr>  
+                    <%end%>                   
                     </tbody>
                     </table>
                   </div>
@@ -103,14 +123,10 @@
       
     </p>
       <hr>
-    <p>
-      vamos a comprar a  <%= @compra.round(2) %>
-      <br>
-      vamos a vender a  <%= @venta %>
-    </p>
+     
     <hr>
     <p>
-      Operacion final <%=@trade%>
+      Operacion final <%= @trade %>
     </p>
     </div>  
               

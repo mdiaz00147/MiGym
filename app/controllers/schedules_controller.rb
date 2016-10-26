@@ -50,8 +50,8 @@ class SchedulesController < ApplicationController
     @compra = (@price.buy.to_f - 1.5.to_f).round(2)
     @venta  = (@price.sell.to_f + 1.5.to_f).round(2)
 
-    @cantidad_btc  = ((@cuenta_info['return']['funds']['usd'].to_f / @compra) - 0.0001).round(4)
-    @cantidad_usd  = (@cuenta_info['return']['funds']['btc'] - 0.0001).round(4)
+    @cantidad_btc  = ((@cuenta_info["return"]["funds"]["usd"].to_f / @compra) - 0.0001).round(4)
+    @cantidad_usd  = (@cuenta_info["return"]["funds"]["btc"].to_f - 0.0001).round(4)
     case accion
       when 'compra'
           @trade = login.trade(pair: 'btc_usd', type: 'buy', rate: @compra, amount: @cantidad_btc)
