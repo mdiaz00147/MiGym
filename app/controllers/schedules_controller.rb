@@ -69,9 +69,6 @@ class SchedulesController < ApplicationController
           # render html: trans_id.class
           @trade = login.cancel_order(order_id: trans_id)
      end
-      
-
-
 
   end
   def btce_automated
@@ -85,21 +82,21 @@ class SchedulesController < ApplicationController
     @cuenta_orders      = login.order_list
 
     if !@cuenta_orders['return'].present?
+        @cuenta_history     = login.trade_history['return']
         @cuenta_history_type = (@cuenta_history.to_s.split('"')[9])
         @cuenta_info        = login.get_info
-        @cuenta_history     = login.trade_history['return']
         @compra = (@price.buy.to_f - 1.5.to_f).round(2)
         @venta  = ((@cuenta_history.to_s.split('>')[5]).to_f + 1.5)
         
         @cantidad_btc  = ((@cuenta_info["return"]["funds"]["usd"].to_f / @compra) - 0.0001).round(4)
         @cantidad_usd  = (@cuenta_info["return"]["funds"]["btc"].to_f - 0.0001).round(4)
 
-      if @cuenta_history_type == 'buy'
+      if @cuenta_history_type.to_s == 'buy'
         @trade = login.trade(pair: 'btc_usd', type: 'sell', rate: @venta, amount: @cantidad_usd)
-        render html: @trade
+        render html: { :test => @trade, :tess => 'venta', :sj => @cuenta_info }
       else
         @trade = login.trade(pair: 'btc_usd', type: 'buy', rate: @compra, amount: @cantidad_btc)
-        render html: @trade
+        render html: { :test => @trade, :tess => 'compra', :sj => @cuenta_history_type }
       end
 
     else
