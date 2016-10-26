@@ -14,7 +14,7 @@
   <div class="col-md-4">
   <div class="widget">
     <div class="widget-head">
-                  <div class="pull-left">Precios en btc-e</div>  
+                  <div class="pull-left">Mi cuenta</div>  
                   <div class="clearfix"></div>
                 </div>
     <div class="widget-content referer">
@@ -25,12 +25,12 @@
                       <th>Precio</th>
                      </tr>
                     <tr>
-                      <td>Vamos a comprar a  </td>
-                      <td>$<%= @compra %></td>
+                      <td>USD Disponible</td>
+                      <td>$<%= @cuenta_info["return"]["funds"]["usd"] %></td>
                      </tr>
                     <tr>
-                      <td>Vamos a vender a</td>
-                      <td>$<%= @venta %></td>
+                      <td>BTC Disponible</td>
+                      <td>$<%= @cuenta_info["return"]["funds"]["btc"] %></td>
                      </tr>
                      
                      
@@ -85,6 +85,17 @@
               
   </div>
   <div class="col-md-8">
+  <div class="row">
+    <div class="col-md-4">
+    <a href="compra" class="btn btn-success">Comprar $<%=@compra%></a>
+    </div>
+    <div class="col-md-4">
+    <a href="ordenes" class="btn btn-default">Ordenes</a>
+    </div>
+    <div class="col-md-4">
+    <a href="venta" class="btn btn-danger">Vender $<%=@venta%></a>
+    </div>
+  </div>
     <div class="widget">
     <div class="widget-head">
                   <div class="pull-left">Transacciones pendientes</div>  
@@ -99,6 +110,7 @@
                       <th>Type</th>
                       <th>Amount</th>
                       <th>Rate</th>
+                      <th></th>
                      </tr>
                      <% id = @cuenta_orders["return"].to_s.split('"')[1] %>
                      <% if id.present? %>
@@ -108,6 +120,7 @@
                       <td><%= @cuenta_orders['return'][id]['type'] %></td>
                       <td><%= @cuenta_orders['return'][id]['amount'] %></td>
                       <td><%= @cuenta_orders['return'][id]['rate'] %></td>
+                      <td><a href="cancelar/<%= id %>">Cancelar</a></td>
                     </tr>  
                     <%end%>                   
                     </tbody>

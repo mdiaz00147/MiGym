@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
 
   get     '/btce/:string', to: 'schedules#btce'
-
+  get     '/btce/:string/:trans_id', to: 'schedules#btce'
 
 
   get     '/calendario',  to: 'schedules#new'

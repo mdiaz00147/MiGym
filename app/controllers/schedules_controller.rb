@@ -61,6 +61,10 @@ class SchedulesController < ApplicationController
           @trade = login.trade(pair: 'btc_usd', type: 'sell', rate: @venta, amount: @cantidad_usd)
       when 'ordenes'
           @cuenta_orders  = @cuenta_orders
+      when 'cancelar'
+          trans_id = (params[:trans_id]).to_i
+          # render html: trans_id.class
+          @trade = login.cancel_order(trans_id)
      end
       
 
