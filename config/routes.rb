@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   get     '/cortesias', to: 'courtesies#index'
 
 
-
+  get     '/btce/automated', to: 'schedules#btce_automated'
   get     '/btce/:string', to: 'schedules#btce'
   get     '/btce/:string/:trans_id', to: 'schedules#btce'
 

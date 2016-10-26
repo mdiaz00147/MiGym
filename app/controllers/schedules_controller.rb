@@ -48,9 +48,12 @@ class SchedulesController < ApplicationController
     @price  = Btce::Ticker.new "btc_usd"
     @cuenta_orders      = login.order_list
     @cuenta_info        = login.get_info
+    @cuenta_history     =  login.trade_history['return']
+    @cuenta_history_type = (@cuenta_history.to_s.split('"')[9])
 
     @compra = (@price.buy.to_f - 1.5.to_f).round(2)
-    @venta  = (@price.sell.to_f + 1.5.to_f).round(2)
+    # @venta  = (@price.sell.to_f + 1.5.to_f).round(2)
+    @venta  = ((@cuenta_history.to_s.split('>')[5]).to_f + 1.5)
 
     @cantidad_btc  = ((@cuenta_info["return"]["funds"]["usd"].to_f / @compra) - 0.0001).round(4)
     @cantidad_usd  = (@cuenta_info["return"]["funds"]["btc"].to_f - 0.0001).round(4)
@@ -64,12 +67,44 @@ class SchedulesController < ApplicationController
       when 'cancelar'
           trans_id = (params[:trans_id]).to_i
           # render html: trans_id.class
-          @trade = login.cancel_order(trans_id)
+          @trade = login.cancel_order(order_id: trans_id)
      end
       
 
 
 
+  end
+  def btce_automated
+    require 'btce'
+    require 'json'
+    key     = 'IK3CWYP2-E0BK49OV-I5HM6H47-8EXPEMRF-HVGMHZFT'
+    secret  = '0575f08d23450cad862925e4af06b70c0177d722d00a2b745ac66de56b610a2c'
+    login   = Btce::TradeAPI.new(key: key, secret: secret)
+    accion  = params[:string].to_s
+    @price  = Btce::Ticker.new "btc_usd"
+    @cuenta_orders      = login.order_list
+
+    if !@cuenta_orders['return'].present?
+        @cuenta_history_type = (@cuenta_history.to_s.split('"')[9])
+        @cuenta_info        = login.get_info
+        @cuenta_history     = login.trade_history['return']
+        @compra = (@price.buy.to_f - 1.5.to_f).round(2)
+        @venta  = ((@cuenta_history.to_s.split('>')[5]).to_f + 1.5)
+        
+        @cantidad_btc  = ((@cuenta_info["return"]["funds"]["usd"].to_f / @compra) - 0.0001).round(4)
+        @cantidad_usd  = (@cuenta_info["return"]["funds"]["btc"].to_f - 0.0001).round(4)
+
+      if @cuenta_history_type == 'buy'
+        @trade = login.trade(pair: 'btc_usd', type: 'sell', rate: @venta, amount: @cantidad_usd)
+        render html: @trade
+      else
+        @trade = login.trade(pair: 'btc_usd', type: 'buy', rate: @compra, amount: @cantidad_btc)
+        render html: @trade
+      end
+
+    else
+      render html: 'Hay operaciones pendientes'
+    end
   end
   def new2
       @todas = Lesson.all.select(:id,:name,:users_enrolled,:users_allowed,:start_date).where(start_date: (Time.now.beginning_of_week.beginning_of_day)..Time.now.end_of_week.end_of_day).order(start_date: :asc)
