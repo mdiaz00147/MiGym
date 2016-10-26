@@ -41,7 +41,9 @@ class SchedulesController < ApplicationController
   def btce
     require 'btce'
     require 'json'
-    login   = Btce::TradeAPI.new(key: 'IK3CWYP2-E0BK49OV-I5HM6H47-8EXPEMRF-HVGMHZFT', secret: '0575f08d23450cad862925e4af06b70c0177d722d00a2b745ac66de56b610a2c')
+    key     = 'IK3CWYP2-E0BK49OV-I5HM6H47-8EXPEMRF-HVGMHZFT'
+    secret  = '0575f08d23450cad862925e4af06b70c0177d722d00a2b745ac66de56b610a2c'
+    login   = Btce::TradeAPI.new(key: key, secret: secret)
     accion  = params[:string].to_s
     @price  = Btce::Ticker.new "btc_usd"
     @cuenta_orders      = login.order_list
