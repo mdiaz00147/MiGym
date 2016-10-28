@@ -9,8 +9,20 @@ class SchedulesController < ApplicationController
         fecha_start     =   fecha.to_time.beginning_of_day
         fecha_end       =   fecha.to_time.end_of_day
         @assistance     =   Schedule.joins(:lesson).select('lessons.start_date as start_date',:options,:user_id,:lesson_id).where("lessons.start_date BETWEEN '#{fecha_start}' AND '#{fecha_end}'").order("lessons.start_date ASC")     
-      else 
-        @assistance   = Schedule.joins(:lesson).select('lessons.start_date as start_date',:options,:user_id,:lesson_id).where("lessons.start_date BETWEEN '#{Time.now.beginning_of_day}' AND '#{Time.now.end_of_day}'").order("lessons.start_date ASC")
+      else
+        # cookie_assistance = cookies[:clases]
+        # if cookie_assistance.present?
+        #   @assistance       = cookies.encrypted[:clases]
+        # else
+          @assistance       = Schedule.joins(:lesson).select('lessons.start_date as start_date',:options,:user_id,:lesson_id).where("lessons.start_date BETWEEN '#{Time.now.beginning_of_day}' AND '#{Time.now.end_of_day}'").order("lessons.start_date ASC")
+          @assistance2      = @assistance
+          cookies.encrypted[:clases]    = @assistance
+        # end
+
+        # @assistance.each_with_index do |assist, index| 
+        #   cookies[index]  = assist.lesson_id
+        # end
+ 
       end
   end
   def dynash
@@ -103,8 +115,8 @@ class SchedulesController < ApplicationController
       render html: 'Hay operaciones pendientes'
     end
   end
-  def new2
-      @todas = Lesson.all.select(:id,:name,:users_enrolled,:users_allowed,:start_date).where(start_date: (Time.now.beginning_of_week.beginning_of_day)..Time.now.end_of_week.end_of_day).order(start_date: :asc)
+  def new
+      @todas      =   Lesson.all.select(:id,:name,:users_enrolled,:users_allowed,:start_date).where(start_date: (Time.now.beginning_of_week.beginning_of_day)..Time.now.end_of_week.end_of_day).order(start_date: :asc)
       @days =  [@mon = [], @tue = [], @wed = [], @thu = [], @fri = [], @sat = []]
 
       @schedules          = current_user.schedules.pluck(:lesson_id)
@@ -134,7 +146,7 @@ class SchedulesController < ApplicationController
       end
       # render json: @mon
   end
-  def new
+  def new2
     @user               = User.find(current_user.id)
     @plan               = @user.plan
     @schedules          = @user.schedules.pluck(:lesson_id)
@@ -224,7 +236,7 @@ class SchedulesController < ApplicationController
 
             if @appointment.save
                 flash[:success] = "Sesion agendada!!!"
-                redirect_to calendario2_path
+                redirect_to calendario_path
             else
                 flash[:warning]  = "Ooops... algo ha fallado, intentalo de nuevo"
                 redirect_to calendario_path

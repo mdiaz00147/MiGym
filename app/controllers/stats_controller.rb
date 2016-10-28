@@ -1,9 +1,34 @@
 class StatsController < ApplicationController
 	before_action :check_login
 	def index
-		@user		  		=	User.find(current_user.id)
-		@schedules    		= 	@user.schedules
-		@schedules_month    = 	@user.schedules.where(created_at: (Time.now.beginning_of_month)..Time.now.end_of_month)
+		@user_schedules    		= 	current_user.schedules.order(created_at: :asc)
+		@schedules_month    	= 	current_user.schedules.where(created_at: (Time.now.beginning_of_month)..Time.now.end_of_month)
+		
+		start_month				=	current_user.schedules.first.lesson.start_date
+		current_month			=	Time.now.strftime("%m")
+		@dif 					=	(current_month.to_i - start_month.strftime("%m").to_i).to_i + 1
+		lessons = Struct.new(:month, :lessons_used)
+
+		@array_months 	= 	[]
+		@dif.times.each_with_index do |arrays, index|
+			@array_months << lessons.new(((start_month + index.months).strftime("%Y_%m")), 0)
+		end
+
+		@user_schedules.each do |sche| 
+			@array_months.each_with_index do |month, index|
+				if month[:month] == sche.lesson.start_date.strftime("%Y_%m")
+					sum = @array_months[index][:lessons_used] + 1
+					@array_months[index].lessons_used = sum
+				end
+			end
+		end
+		@graph_month = []
+		@graph_lessons 	=	[]
+		@array_months.each do |t|
+			@graph_month 	<< t[:month]
+			@graph_lessons 	<< t[:lessons_used].to_s
+		end
+
 	end
 	def admin_index
 		@users_active =	User.where(last_login: (Time.now.beginning_of_month)..Time.now.end_of_day)

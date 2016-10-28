@@ -23,9 +23,8 @@ Rails.application.routes.draw do
 
 
   get     '/calendario',  to: 'schedules#new'
-  get     '/calendario2', to: 'schedules#new2'
-  post    '/calendario2',  to: 'schedules#appointment'
   post    '/calendario',  to: 'schedules#appointment'
+  
   get     '/asistencia',  to: 'schedules#index'
   post    '/asistencia',  to: 'schedules#index'
 

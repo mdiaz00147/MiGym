@@ -1,4 +1,5 @@
 <% provide(:title, "Asistencia") %>
+
 <div class="page-head">
         <h2 class="pull-left"><i class="fa fa-calendar"></i> Asistencia</h2>
         <div class="bread-crumb pull-right">
@@ -99,8 +100,9 @@
                         <% @assistance.each do |assist| %>
             						<tr>
                           <td>
+                          <%= link_to assist.user.name, assist.user %>
                           <% unless assist.options.present? %>
-                            <%= link_to assist.user.name, assist.user %>
+                            
                           <% else %>
                           <%= assist.options %> - <%= link_to assist.user.name, assist.user %>
                           <% end %>

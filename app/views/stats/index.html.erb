@@ -1,6 +1,5 @@
 <% provide(:title, "Estadisticas") %>
 
-
 <div class="col-md-12">
 
               <div class="widget">
@@ -30,7 +29,7 @@
  
                       <div class="col-md-4  text-center">
                         <div class="well">
-                          <h2><%= @schedules.count  %></h2>
+                          <h2><%= @user_schedules.count  %></h2>
                           <p>Sesiones tomadas de todos los tiempos</p>                        
                         </div>
                       </div>
@@ -57,7 +56,7 @@
 								</tr>
 							  </thead>
 							  <tbody>
-								<% @schedules.each_with_index do |lessons, index| %>
+								<% @user_schedules.each_with_index do |lessons, index| %>
 									
 								<tr>
 								  <td><%= index %></td>
@@ -137,7 +136,7 @@
                   <div class="padd">
                     <!-- Barchart. jQuery Flot plugin used. -->
                        <div style="width:100	%;">
-					        <canvas id="canvas"></canvas>
+					        <canvas id="myChart"></canvas>
 					    </div>
 
                     <hr />
@@ -150,76 +149,75 @@
               </div>
             </div>
 <script>
-        var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-        
-        var randomScalingFactor = function() {
-            return Math.round(Math.random() * 100);
-            //return 0;
-        };
-        var randomColorFactor = function() {
-            return Math.round(Math.random() * 255);
-        };
-        var randomColor = function(opacity) {
-            return 'rgba(' + randomColorFactor() + ',' + randomColorFactor() + ',' + randomColorFactor() + ',' + (opacity || '.3') + ')';
-        };
-
-        var config = {
-            type: 'line',
-            data: {
-                xLabels: ["Mayo", "Junio", "Julio"],
-                yLabels: ['10','9','8','7','6','5','4','3','2','1','0'],
-                datasets: [{
-                    label: "My primera",
-                    data: ['0', '5', '4'],
-                    fill: true,
+      
+        // var config = {
+        //     type: 'line',
+        //     data: {
+        //         xLabels: <%= raw @graph_month %>,
+        //         yLabels: ['10','9','8','7','6','5','4','3','2','1','0'],
+        //         datasets: [{
+        //             label: "My primera",
+        //             data: <%= raw @graph_lessons %>,
+        //             fill: true,
                     
-                }]
-            },
-            options: {
-                responsive: true,
-                title:{
-                    display:true,
-                    text:'Mis clases por mes'
-                },
-                scales: {
-                    xAxes: [{
-                        display: true,
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Mes'
-                        }
-                    }],
-                    yAxes: [{
-                        type: 'category',
-                        position: 'left',
-                        display: true,
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Clases agendadas'
-                        },
-                        ticks: {
-                            reverse: true
-                        }
-                    }]
-                }
-            }
-        };
+        //         }]
+        //     },
+        //     options: {
+        //         responsive: true,
+        //         title:{
+        //             display:true,
+        //             text:'Mis clases por mes'
+        //         },
+        //         scales: {
+        //             xAxes: [{
+        //                 display: true,
+        //                 scaleLabel: {
+        //                     display: true,
+        //                     labelString: 'Mes'
+        //                 }
+        //             }],
+        //             yAxes: [{
+        //                 type: 'category',
+        //                 position: 'left',
+        //                 display: true,
+        //                 scaleLabel: {
+        //                     display: true,
+        //                     labelString: 'Clases agendadas'
+        //                 },
+        //                 ticks: {
+        //                     reverse: true
+        //                 }
+        //             }]
+        //         }
+        //     }
+        // };
 
-        $.each(config.data.datasets, function(i, dataset) {
-        	dataset.type = 'line';
+        // $.each(config.data.datasets, function(i, dataset) {
+        // 	 dataset.type = 'line';
 
-            dataset.borderColor = "#F45D01";
-            /*dataset.backgroundColor = randomColor(0.5);
-            dataset.pointBorderColor = randomColor(0.7);
-            dataset.pointBackgroundColor = randomColor(0.5);
-            dataset.pointBorderWidth = 3;*/
+        //     dataset.borderColor = "#F45D01";
+        //     dataset.borderJoinStyle = 'miter';
+        // });
 
-            dataset.borderJoinStyle = 'miter';
-        });
+        // window.onload = function() {
+        //     var ctx = document.getElementById("canvas").getContext("2d");
+        //     window.myLine = new Chart(ctx, config);
+        // };
 
-        window.onload = function() {
-            var ctx = document.getElementById("canvas").getContext("2d");
-            window.myLine = new Chart(ctx, config);
-        };
+        var ctx = document.getElementById("myChart");
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: <%= raw @graph_month %>,
+        datasets: [{
+            borderWidth: 1,
+            label: 'Clases tomadas',
+            data: <%= raw @graph_lessons %>,
+            backgroundColor: 'rgba(255, 159, 64, 0.2)',
+            borderColor: '#F45D01'
+        }],
+
+    },
+});
     </script>
 
