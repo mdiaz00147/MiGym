@@ -77,7 +77,7 @@
                     </thead>    
                      <tbody>              
                       <% lesson.each do |less| %>  
-                      <% if (less.start_date.strftime("%k:%M") >= current_user.plan.start_hour.to_time.strftime("%k:%M")) || (less.start_date.strftime("%k:%M") <= current_user.plan.end_hour.to_time.strftime("%k:%M"))  %>                             
+                      <% if (less.start_date.strftime("%k:%M") >= current_user.plan.start_hour.to_time.strftime("%k:%M")) && (less.start_date.strftime("%k:%M") <= current_user.plan.end_hour.to_time.strftime("%k:%M"))  %>                             
                        <tr>
                        <%= form_for :schedule do |f| %>
                        <%= f.hidden_field(:lesson_id, :value => less.id) %>
