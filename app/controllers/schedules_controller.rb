@@ -1,7 +1,6 @@
-
 class SchedulesController < ApplicationController
-  # before_action :check_login, only: [:index, :new, :appointment]
-  # before_action :check_expiration, only: [:new, :appointment]
+  before_action :check_login, only: [:index, :new, :appointment]
+  before_action :check_expiration, only: [:new, :appointment]
 
   def index
       if params[:search].present?
@@ -116,7 +115,11 @@ class SchedulesController < ApplicationController
     end
   end
   def new
-      @todas      =   Lesson.all.select(:id,:name,:users_enrolled,:users_allowed,:start_date).where(start_date: (Time.now.beginning_of_week.beginning_of_day)..Time.now.end_of_week.end_of_day).order(start_date: :asc)
+      if Time.now.wday == 6
+        @todas      =   Lesson.all.select(:id,:name,:users_enrolled,:users_allowed,:start_date).where(start_date: (Time.now.next_week.beginning_of_week.beginning_of_day)..Time.now.next_week.end_of_week.end_of_day).order(start_date: :asc)
+      else
+        @todas      =   Lesson.all.select(:id,:name,:users_enrolled,:users_allowed,:start_date).where(start_date: (Time.now.beginning_of_week.beginning_of_day)..Time.now.end_of_week.end_of_day).order(start_date: :asc)
+      end
       @days =  [@mon = [], @tue = [], @wed = [], @thu = [], @fri = [], @sat = []]
 
       @schedules          = current_user.schedules.pluck(:lesson_id)

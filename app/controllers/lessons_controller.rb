@@ -1,6 +1,6 @@
 class LessonsController < ApplicationController
   before_action :set_lesson, only: [:show, :edit, :update, :destroy]
-  before_action :check_login
+  before_action :check_login, except: [:multiply]
   # GET /lessons
   # GET /lessons.json
   def index
