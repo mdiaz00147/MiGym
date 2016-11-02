@@ -11,77 +11,89 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160905163854) do
+ActiveRecord::Schema.define(version: 20161102195458) do
 
   create_table "courtesies", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "phone",      limit: 8
-    t.string   "email"
+    t.string   "name",        limit: 255
+    t.integer  "phone",       limit: 8
+    t.string   "email",       limit: 255
     t.datetime "start_hour"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.boolean  "status"
+    t.integer  "schedule_id", limit: 4
   end
 
   create_table "events", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "event_name"
-    t.string   "option_1"
-    t.string   "option_2"
-    t.string   "option_3"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "user_id",    limit: 4
+    t.string   "event_name", limit: 255
+    t.string   "option_1",   limit: 255
+    t.string   "option_2",   limit: 255
+    t.string   "option_3",   limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "lessons", force: :cascade do |t|
     t.datetime "start_date"
-    t.integer  "users_allowed"
-    t.string   "name"
-    t.integer  "users_enrolled"
-    t.text     "description"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.integer  "users_allowed",  limit: 4
+    t.string   "name",           limit: 255
+    t.integer  "users_enrolled", limit: 4
+    t.text     "description",    limit: 65535
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   create_table "plans", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "lessons"
-    t.integer  "price"
-    t.string   "start_hour"
-    t.string   "end_hour"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",       limit: 255
+    t.integer  "lessons",    limit: 4
+    t.integer  "price",      limit: 4
+    t.string   "start_hour", limit: 255
+    t.string   "end_hour",   limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.text     "content",    limit: 65535
+    t.string   "image",      limit: 255
+    t.integer  "user_id",    limit: 4
+    t.boolean  "active"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "schedules", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "lesson_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "options"
-    t.datetime "start_date"
+    t.integer  "user_id",    limit: 4
+    t.integer  "lesson_id",  limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "options",    limit: 255
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "password_digest"
-    t.string   "remember_digest"
-    t.integer  "lessons"
+    t.string   "name",                limit: 255
+    t.string   "email",               limit: 255
+    t.string   "password_digest",     limit: 255
+    t.string   "remember_digest",     limit: 255
+    t.integer  "lessons",             limit: 4
     t.datetime "expiry_at"
-    t.integer  "plan_id"
-    t.boolean  "admin",                         default: false
-    t.datetime "created_at",                                    null: false
-    t.datetime "updated_at",                                    null: false
+    t.integer  "plan_id",             limit: 4
+    t.boolean  "admin",                           default: false
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
     t.integer  "phone",               limit: 8
     t.integer  "document",            limit: 8
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
-    t.integer  "avatar_file_size"
+    t.string   "avatar_file_name",    limit: 255
+    t.string   "avatar_content_type", limit: 255
+    t.integer  "avatar_file_size",    limit: 4
     t.datetime "avatar_updated_at"
     t.datetime "last_login"
     t.datetime "last_email"
+    t.string   "token",               limit: 255
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
 end

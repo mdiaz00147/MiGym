@@ -20,3 +20,15 @@
 	
 	height: 150px;
 }
+.table-courtesies > tbody > tr	{
+	background-color: #dff0d8 !important;
+	border-color: #d6e9c6 !important;
+}
+.cortesia-check {
+	color: #5CB860;
+	font-size: 15px;
+}
+.cortesia-uncheck {
+	color: #c9302c;
+	font-size: 15px;
+}

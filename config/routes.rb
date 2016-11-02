@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   post    '/cortesias/nueva',   to: 'courtesies#create'
   get     '/cortesias/:id',     to: 'courtesies#show', as: 'courtesie'
   delete  '/cortesias/:id',     to: 'courtesies#delete', as: 'courtesie_delete'
+  post    '/cortesias/:id',       to:   'courtesies#check', as: 'courtesie_check'
+  post    '/cortesias/status/:id',       to:   'courtesies#uncheck',    as: 'courtesie_uncheck'
 
   get     '/cortesias', to: 'courtesies#index'
 

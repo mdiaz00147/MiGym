@@ -7,21 +7,10 @@ class SchedulesController < ApplicationController
         fecha           =   params[:search][:start_date]
         fecha_start     =   fecha.to_time.beginning_of_day
         fecha_end       =   fecha.to_time.end_of_day
-        @assistance     =   Schedule.joins(:lesson).select('lessons.start_date as start_date',:options,:user_id,:lesson_id).where("lessons.start_date BETWEEN '#{fecha_start}' AND '#{fecha_end}'").order("lessons.start_date ASC")     
+        @assistance     =   Schedule.joins(:lesson).select(:id,'lessons.start_date as start_date',:options,:user_id,:lesson_id).where("lessons.start_date BETWEEN '#{fecha_start}' AND '#{fecha_end}'").order("lessons.start_date ASC")     
       else
-        # cookie_assistance = cookies[:clases]
-        # if cookie_assistance.present?
-        #   @assistance       = cookies.encrypted[:clases]
-        # else
-          @assistance       = Schedule.joins(:lesson).select('lessons.start_date as start_date',:options,:user_id,:lesson_id).where("lessons.start_date BETWEEN '#{Time.now.beginning_of_day}' AND '#{Time.now.end_of_day}'").order("lessons.start_date ASC")
-          @assistance2      = @assistance
-          cookies.encrypted[:clases]    = @assistance
-        # end
-
-        # @assistance.each_with_index do |assist, index| 
-        #   cookies[index]  = assist.lesson_id
-        # end
- 
+          @assistance       = Schedule.joins(:lesson ).select(:id,'lessons.start_date as start_date', :options,:user_id,:lesson_id ).where("lessons.start_date BETWEEN '#{Time.now.beginning_of_day}' AND '#{Time.now.end_of_day}'").order("lessons.start_date ASC")
+           
       end
   end
   def dynash
@@ -29,20 +18,21 @@ class SchedulesController < ApplicationController
     @blah = HTTParty.get("http://services.dynash.com/index.php/users/sessionsatdate/", 
                      :basic_auth => auth)
 
-    @array_lessons    = Array(@blah)[1][1]
+    @array_lessons      = Array(@blah)[1][1]
 
     @array_lessons.each do |ass|
       @user_start_hour  = (Array(ass)[5][1]).to_time(:utc)
       @user_complete    = (Array(ass)[3][1]).to_s + (Array(ass)[4][1]).to_s
-      @check            = Schedule.where("options = '#{@user_complete}' AND start_date = '#{(Array(ass)[5][1])}.000000'")
-      if @check.empty?
+      # @check            = Schedule.where("options = '#{@user_complete}' AND start_date = '#{(Array(ass)[5][1])}.000000'")
+      @lesson = Lesson.find_by(start_date: @user_start_hour)
+      @check  = Schedule.where(options: @user_complete, lesson_id: @lesson.id).first
+      if !@check.present?
         @lesson_find      = Lesson.find_by(start_date: @user_start_hour)
         @new_enrolled     = @lesson_find.users_enrolled + 1
         @lesson_find.update_attribute(:users_enrolled, @new_enrolled)
         @lesson_dy        = Schedule.new(user_id: 60,
                                          lesson_id: @lesson_find.id,
-                                         options: @user_complete,
-                                         start_date: @user_start_hour)
+                                         options: @user_complete)
         @lesson_dy.save
       end
     end

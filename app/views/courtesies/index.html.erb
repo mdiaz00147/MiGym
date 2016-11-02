@@ -25,10 +25,11 @@
                   <div class="padd">
               <div class="page-tables">
                 <div class="table-responsive">
-                  <table cellpadding="0" cellspacing="0" border="0" id="data-table-1" width="100%">
+                  <table class="table-courtesies" cellpadding="0" cellspacing="0" border="0" id="data-table-courtesies" width="100%">
                     <thead>
                       <tr>
                         <th>Nombre</th>
+                        <th></th>
                         <th>Fecha de cortesia</th>
                         <th>Hora de cortesia</th>
                         <th>Email</th>
@@ -38,15 +39,22 @@
                     </thead>
                     <tbody>
                       <% @courtesies.each do |courtesie| %>
-                        <tr>
+                        <tr >
                           <td><%= courtesie.name %></td>
-                          <td><%= (courtesie.start_hour).strftime("%d/%m/%Y") %></td>
+                          <td><% if courtesie.status==true%>
+                              <i class="fa fa-check-square cortesia-check" aria-hidden="true"></i>
+                              <%else  %>
+                              <i class="fa fa-times-circle cortesia-uncheck" aria-hidden="true"></i>
+                              <%end%>
+                          </td>
+                          <td><%= (courtesie.start_hour).strftime("%d %B, %Y") %></td>
                           <td><%= (courtesie.start_hour).strftime("%k:%M") %></td>
                           <td><%= courtesie.email %></td>
                           <td><%= courtesie.phone %></td>
                           <td>
-                              <%= link_to '<i class="fa fa-pencil"></i>'.html_safe, courtesie_path(courtesie), class: "btn btn-xs btn-default" %>
-                              <%= link_to '<i class="fa fa-times"></i>'.html_safe, courtesie_delete_path(courtesie), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %>
+                              <%= link_to 'Asistió <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>'.html_safe, courtesie_check_path(courtesie), method: :post, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-success" %>
+                              <%= link_to 'No aistió <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>'.html_safe, courtesie_uncheck_path(courtesie), method: :post, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-default" %>
+                              <%= link_to 'Eliminar <i class="fa fa-times"></i>'.html_safe, courtesie_delete_path(courtesie), method: :delete, data: { confirm: 'Estas seguro?' }, class: "btn btn-xs btn-danger" %>
                               </td>
                         </tr>
                       <% end %>
@@ -70,6 +78,27 @@
               
             </div>
           </div>
+<script type="text/javascript">
+            $(document).ready(function() {
+              $('#data-table-courtesies').dataTable({
+                 "pageLength": 30,
+                 "order": [],
+                 "language": {
+                            "search": "Buscar: ",
+                            "lengthMenu":     "Mostrar _MENU_ resultados",
+                            "info":           "Mostrando _START_ a _END_ de _TOTAL_ resultados",
+                            "infoEmpty":      "Mostrando 0 a 0 de 0 resultados",
+                            "paginate": {
+                                "first":      "Primero",
+                                "last":       "Ultimo",
+                                "next":       "Siguiente",
+                                "previous":   "Anterior",
+                                
+                            }
+                        }
+              });
+            });
+          </script>
 <% flash.each do |message_type, message| %>
   <% if message_type == "success" %>
   <script>

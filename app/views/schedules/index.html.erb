@@ -94,22 +94,38 @@
             							<th>Usuario</th>
             							<th>Hora Inicio</th>  
             							<th>Clase</th>
+                          <th>Accion</th>
             							</tr>
             						</thead>
             						<tbody>
                         <% @assistance.each do |assist| %>
             						<tr>
                           <td>
-                          <%= link_to assist.user.name, assist.user %>
-                          <% unless assist.options.present? %>
-                            
-                          <% else %>
-                          <%= assist.options %> - <%= link_to assist.user.name, assist.user %>
-                          <% end %>
+                          <% if (assist.courtesie).present? %>
+                            <b>Cortesia:</b> <%= assist.courtesie.name.capitalize %>
+                          <%else%>
+                            <%if assist.options.present?%>
+                              <b>Dynash:</b> <%= assist.options.capitalize %>
+                            <%else%>
+                              <%= link_to assist.user.name.capitalize, assist.user %>
+                            <%end%>
+                          <%end%>
+
+
+                          <% if (assist.courtesie).present? %>
+                            <% if assist.courtesie.status==true%>
+                              <i class="fa fa-check-square cortesia-check" aria-hidden="true"></i>
+                              <%else  %>
+                              <i class="fa fa-times-circle cortesia-uncheck" aria-hidden="true"></i>
+                            <%end%>
+                          <%end%>
                           </td>
-                          <td><%= assist.lesson.start_date.to_formatted_s(:db) %></td>
-                          <td><% assist.lesson_id %><%= link_to  assist.lesson.name, assist.lesson %></td>
-                         
+                          <td><%= assist.lesson.start_date.strftime("%H:%M") %></td>
+                          <td><%  assist.lesson_id %><%= link_to  assist.lesson.name, assist.lesson %></td>
+                          <td><% if (assist.courtesie).present? %>
+                            <%= link_to 'Asistió <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>'.html_safe, courtesie_check_path(assist.courtesie.id), method: :post, data: { confirm: 'Estas seguro de actualizar?' }, class: "btn btn-xs btn-success" %>
+                              <%= link_to 'No aistió <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>'.html_safe, courtesie_uncheck_path(assist.courtesie.id), method: :post, data: { confirm: 'Estas seguro de actualizar?' }, class: "btn btn-xs btn-default" %>
+                          <%end%></td>
                         </tr>
                         <% end %>
 
@@ -125,3 +141,28 @@
     </div>
 
   </div>
+  <% flash.each do |message_type, message| %>
+  <% if message_type == "success" %>
+  <script>
+  swal({
+      title: "<%= message %>",
+      text:  "",
+      type: "<%= message_type %>",
+      timer: 3000,
+      showConfirmButton: false
+   })
+  </script>
+  <% end %>
+
+  <% if message_type == "warning" %>
+  <script>
+  swal({
+      title: "<%= message %>",
+      text:  "",
+      type: "<%= message_type %>",
+      timer: 3000,
+      showConfirmButton: false
+   })
+  </script>
+  <% end %>
+<% end %>

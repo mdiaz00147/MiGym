@@ -1,11 +1,34 @@
 class CourtesiesController < ApplicationController
 	before_action :check_login
 	def index
-		@courtesies = Courtesie.all.order(created_at: :desc)
+		@courtesies = Courtesie.all.select(:id,:name,:start_hour,:email,:phone,:status).order(created_at: :desc)
 	end
 	def new
 		@lessons 	= 	Lesson.all
 		@courtesie 	=	Courtesie.new
+	end
+	def check
+		referer =	URI(request.referer).path
+		@check 	=	Courtesie.find(params[:id]).update_attribute(:status, 1)
+		if referer == '/asistencia'
+			flash[:success]	= 	'Estado actualizado'
+			redirect_to asistencia_path
+		else
+			flash[:success]	= 	'Estado actualizado'
+			redirect_to cortesias_path
+		end
+	end
+	def uncheck
+		referer =	URI(request.referer).path
+		@uncheck 	=	Courtesie.find(params[:id]).update_attribute(:status, 0)
+		if referer == '/asistencia'
+			flash[:success]	= 	'Estado actualizado'
+			redirect_to asistencia_path
+		else
+			flash[:success]	= 	'Estado actualizado'
+			redirect_to cortesias_path
+		end
+		
 	end
 	def create
 		datetime_params = params[:courtesie]
@@ -24,11 +47,12 @@ class CourtesiesController < ApplicationController
 			@new_schedule.options	=	params[:courtesie][:name]
 			@new_schedule.lesson_id	=	@lesson_check.id
 			@new_schedule.user_id	=	'50'
-			@new_schedule.start_date =	@lesson_check.start_date
+			# @new_schedule.start_date =	@lesson_check.start_date
 			@new_enrolled	=	@lesson_check.users_enrolled + 1
 			@lesson_check.update_attribute(:users_enrolled, @new_enrolled)
-
-			if @new_courtesie.save && @new_schedule.save
+			@new_schedule.save
+			@new_courtesie.schedule_id = @new_schedule.id
+			if @new_courtesie.save
 				flash[:success] = "Cortesia agendada"
 				redirect_to 	cortesias_path
 			end
