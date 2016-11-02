@@ -39,15 +39,12 @@ class CourtesiesController < ApplicationController
 			minute 	= datetime_params["start_hour(5i)"]
 		@start_hour = Time.new(year, month, day, hour, minute)
 		@start_hour = @start_hour.to_formatted_s(:db)
-
-		@lesson_check 	=	Lesson.find_by(start_date: @start_hour.to_time(:utc))
+		@lesson_check 		=	Lesson.find_by(start_date: @start_hour.to_time(:utc))
 		if @lesson_check.present?
 			@new_courtesie 	=	Courtesie.new(courtesie_params)
 			@new_schedule	=	Schedule.new()
-			@new_schedule.options	=	params[:courtesie][:name]
 			@new_schedule.lesson_id	=	@lesson_check.id
 			@new_schedule.user_id	=	'50'
-			# @new_schedule.start_date =	@lesson_check.start_date
 			@new_enrolled	=	@lesson_check.users_enrolled + 1
 			@lesson_check.update_attribute(:users_enrolled, @new_enrolled)
 			@new_schedule.save
@@ -69,7 +66,7 @@ class CourtesiesController < ApplicationController
 		@courtesie 		= params[:id]
 		@find_courtesie = Courtesie.find(@courtesie)
 		@find_lesson 	= Lesson.find_by(start_date: @find_courtesie.start_hour)
-		@find_schedule	= Schedule.find_by(options: @find_courtesie.name)
+		@find_schedule	= Schedule.find(@find_courtesie.schedule_id)
 
 		@new_enrolled	= @find_lesson.users_enrolled - 1
 		@find_lesson.update_attribute(:users_enrolled, @new_enrolled)
