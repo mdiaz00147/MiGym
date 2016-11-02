@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-	before_action :check_login, except: [:promo, :reminder]
+	before_action :check_login, except: [:promo, :reminder ]
 	def promo
 		
 	end
@@ -46,20 +46,25 @@ class EventsController < ApplicationController
 	def reminder
 		@user = User.where("last_login < '#{(Time.now) -1.weeks}'")
 		@user.each do |userReminder|
-		if !userReminder.last_email.blank?
-			if Date.parse(userReminder.last_email.to_s) != Date.parse(Time.now.to_s)
-				if Date.parse(userReminder.last_email.to_s) < Date.parse(((Time.now) -3.days).to_s)
-					Gymail.reminder(userReminder).deliver_now
-					userReminder.update_attribute(:last_email, DateTime.now)
+			if !userReminder.last_email.blank?
+				if Date.parse(userReminder.last_email.to_s) != Date.parse(Time.now.to_s)
+					if Date.parse(userReminder.last_email.to_s) < Date.parse(((Time.now) -3.days).to_s)
+						Gymail.reminder(userReminder).deliver_now
+						userReminder.update_attribute(:last_email, DateTime.now)
+					end
 				end
+			else
+				Gymail.reminder(userReminder).deliver_now
+				userReminder.update_attribute(:last_email, DateTime.now)
 			end
+		end
+		if !current_user.blank?
+			flash[:success]	=	'Emails enviados con exito'
+			redirect_to current_user
 		else
-			Gymail.reminder(userReminder).deliver_now
-			userReminder.update_attribute(:last_email, DateTime.now)
+			flash[:success]	=	'Emails enviados con exito'
+			redirect_to root_path
 		end
-			
-		end
-		redirect_to current_user
 	end
 	private
 	def check_login
