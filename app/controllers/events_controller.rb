@@ -1,5 +1,8 @@
 class EventsController < ApplicationController
-	before_action :check_login
+	before_action :check_login, except: [:promo, :reminder]
+	def promo
+		
+	end
 	def referer
 		phone_1 	 = params[:referer][:phone_1]
 		name_1 		 = params[:referer][:name_1]

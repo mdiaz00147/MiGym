@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   get     '/cortesias', to: 'courtesies#index'
 
-
+  get     '/promo', to:   'events#promo'
   get     '/btce/automated', to: 'schedules#btce_automated'
   get     '/btce/:string', to: 'schedules#btce'
   get     '/btce/:string/:trans_id', to: 'schedules#btce'
@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 
   get     '/calendario',  to: 'schedules#new'
   post    '/calendario',  to: 'schedules#appointment'
-  
+
   get     '/asistencia',  to: 'schedules#index'
   post    '/asistencia',  to: 'schedules#index'
 
