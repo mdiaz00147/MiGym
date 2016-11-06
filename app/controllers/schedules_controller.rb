@@ -105,7 +105,7 @@ class SchedulesController < ApplicationController
     end
   end
   def new
-      if Time.now.wday == 7
+      if Time.now.wday == 0
         @todas      =   Lesson.all.select(:id,:name,:users_enrolled,:users_allowed,:start_date).where(start_date: (Time.now.next_week.beginning_of_week.beginning_of_day)..Time.now.next_week.end_of_week.end_of_day).order(start_date: :asc)
       else
         @todas      =   Lesson.all.select(:id,:name,:users_enrolled,:users_allowed,:start_date).where(start_date: (Time.now.beginning_of_week.beginning_of_day)..Time.now.end_of_week.end_of_day).order(start_date: :asc)
