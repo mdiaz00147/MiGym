@@ -8,6 +8,7 @@ gem	'mysql2'
 gem	'mail'
 gem 'btce'
 gem 'json'
+gem	'sass'
 # Use SCSS for stylesheets
 #gem 'sass-rails', '~> 5.0', '>= 5.0.4'
 # Use Uglifier as compressor for JavaScript assets
