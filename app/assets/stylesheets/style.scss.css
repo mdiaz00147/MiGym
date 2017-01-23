@@ -429,6 +429,7 @@ background: -ms-linear-gradient(top, #f8f8f8, #f2f2f2);
 background: -o-linear-gradient(top, #f8f8f8, #f2f2f2);
 background: linear-gradient(top, #f8f8f8, #f2f2f2);
 border-bottom: 1px solid #ddd;
+
 box-shadow: inset 0px 1px 1px #fff;
 }
 
