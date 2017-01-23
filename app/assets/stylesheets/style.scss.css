@@ -52,11 +52,15 @@ p{
 }
 
 a{
-	color: #026b9c;
+	/*color: #026b9c;*/
+	color: #0b9444;
 }
 
 a:hover{
-	color: #003f5c;
+	/*color: #003f5c;*/
+	color: #a4cd39;
+	
+	
 	text-decoration: none;
 }
 
@@ -728,11 +732,11 @@ header .header-data .hdata em{
 
 .sidebar #nav > li > a:hover, .sidebar #nav > li.open > a { 
   color: #e9e9e9;
-  border-bottom: 1px solid #167cac;
-  border-top: 1px solid #2094ca;
+  border-bottom: 1px solid #7f9e2d;
+  border-top: 1px solid #98bb3a;
   background-color: #aaa;
-  background: -webkit-gradient(linear, left top, left bottom, from(#1aaef3), to(#0993d3));
-  background: -webkit-linear-gradient(top, #1aaef3, #0993d3);
+  background: -webkit-gradient(linear, left top, left bottom, from(#a4cd39), to(#a4cd39));
+  background: -webkit-linear-gradient(top, #a4cd39, #a4cd39);
   background: -moz-linear-gradient(top, #1aaef3, #0993d3);
   background: -ms-linear-gradient(top, #1aaef3, #0993d3);
   background: -o-linear-gradient(top, #1aaef3, #0993d3);
@@ -744,8 +748,8 @@ header .header-data .hdata em{
 
 .sidebar #nav > li > a:hover i, .sidebar #nav > li.open > a  i{
 	color: #fff;
-  background-color: #167cac !important;
-  border: 1px solid #167cac;
+  background-color: #0b9444 !important;
+  border: 1px solid #0b9444;
 }
 
 .sidebar #nav > li > a:hover span i, .sidebar #nav > li.open > a span i{

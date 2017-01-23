@@ -35,6 +35,7 @@ gem 'bootstrap'
 gem 'sweetalert-rails'
 gem 'paperclip', '~> 5.0.0'
 gem	'httparty'
+gem	'haml'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

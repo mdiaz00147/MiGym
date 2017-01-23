@@ -91,7 +91,7 @@
                         <td class="hidden-xs"><%= less.users_enrolled %></td>
                        <td align="center">
                        <% unless @arr_lessons_user.include?(less.id) %>
-                        <%= (f.submit "Agendar", class: "btn btn-primary")   %>
+                        <%= (f.submit "Agendar", class: "btn btn-success")   %>
                         <% else %>
                         <%= f.hidden_field(:delete, :value => 1) %>
                         <%= (f.submit "Cancelar", class: "btn btn-default")   %>

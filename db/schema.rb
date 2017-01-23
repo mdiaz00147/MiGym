@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161102195458) do
+ActiveRecord::Schema.define(version: 20170111205755) do
 
   create_table "courtesies", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -52,6 +52,13 @@ ActiveRecord::Schema.define(version: 20161102195458) do
     t.string   "end_hour",   limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+  end
+
+  create_table "points", force: :cascade do |t|
+    t.datetime "valid_thru"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.integer  "user_id",    limit: 4
   end
 
   create_table "posts", force: :cascade do |t|

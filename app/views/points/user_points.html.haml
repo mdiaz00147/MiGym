@@ -1,0 +1,89 @@
+.page-head
+	%h2.pull-left
+		%i.fa.fa-list
+		Mis puntos
+	.bread-crumb.pull-right
+		%a
+			%i.fa.fa-list 
+			Home
+		%span.divider
+			='/'
+		%a.bread-current 
+			Mis puntos
+	.clearfix
+.container
+	.row
+		.col-md-6
+			.widget.wred
+				.widget-head
+					Mis puntos
+
+				.widget-content
+					.padd
+						.page-tables
+							.table-responsive
+								%table#points
+									%thead
+										%tr
+											%th #
+											%th Fecha de consumo
+											%th Valido hasta
+									%tbody
+										-@user.points.each_with_index do |pointU,index|
+											%tr
+												%td= index+1
+												%td= pointU.created_at.strftime('%d de %b, %y')
+												%td= pointU.valid_thru.strftime('%d de %b, %y')
+									%tfoot		
+				.widget-foot
+		.col-md-3
+			
+			.widget.well.text-center
+				
+				%h1
+					=@user.points.count
+				%hr
+				Puntos vigentes
+			.widget.well.text-center
+				
+				%h1
+					=@user.points.count
+				%hr
+				Puntos Utilizados
+		.col-md-3
+			
+			.widget.well.text-center
+				
+				%h1
+					=@user.points.count
+				%hr
+				Total puntos ganados
+			.widget.well.text-center
+				
+				%h1
+					=@user.points.count
+				%hr
+				Puntos vencidos
+					
+				
+%script
+	$('#users').select2();
+	$(document).ready(function() {
+	$('#points').dataTable({
+	"pageLength": 30,
+	"order": [],
+	"language": {
+	"search": "Buscar: ",
+	"lengthMenu":     "Mostrar _MENU_ resultados",
+	"info":           "Mostrando _START_ a _END_ de _TOTAL_ resultados",
+	"infoEmpty":      "Mostrando 0 a 0 de 0 resultados",
+	"paginate": {
+	"first":      "Primero",
+	"last":       "Ultimo",
+	"next":       "Siguiente",
+	"previous":   "Anterior",
+
+	}
+	}
+	});
+	});		

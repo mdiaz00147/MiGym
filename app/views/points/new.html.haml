@@ -1,0 +1,108 @@
+.page-head
+	%h2.pull-left
+		%i.fa.fa-list
+		Asignar puntos
+	.bread-crumb.pull-right
+		%a
+			%i.fa.fa-list 
+			Home
+		%span.divider
+			='/'
+		%a.bread-current 
+			Puntos
+	.clearfix
+.container
+	.row
+		.col-md-12
+			.widget.wred
+				.widget-head
+					Agrega puntos
+				.widget-content
+					.padd
+						=form_for(:points, url:puntos_path, method:'POST', html: { class: "form-horizontal" }) do |f|
+							.form-group
+								%label.control-label.col-md-3
+									Usuario
+								.col-md-9
+									%select.form-control#users{name:'points[user_id]',style:'width:100%'}
+										-@user.each do |userDo|
+											%option{value:userDo.id}
+												=userDo.name.capitalize
+							.form-group
+								%label.control-label.col-md-3
+									Puntos a asignar
+								.col-md-4
+									%select.form-control{name:'points[number_points]'}
+										%option 1
+										%option	2
+										%option	3	
+										%option	4
+										%option	5
+							.form-group
+								%label.control-label.col-md-3
+									
+								.col-md-4
+									=f.submit('Guardar',class: 'btn btn-success')
+				.widget-foot
+	.row
+		.col-md-12
+			.widget.wred
+				.widget-head
+					Puntos asignados
+				.widget-content
+					.padd
+						.page-tables
+							.table-responsive
+								%table#points
+									%thead
+										%tr
+											%th ID
+											%th Usuario
+											%th Valido hasta
+											%th Creado
+											%th
+									%tbody
+										-@points.each do |pointA|
+											%tr
+												%td=pointA.id
+												%td=link_to pointA.user.name, pointA.user unless !pointA.user.present?
+												%td=pointA.valid_thru.strftime('%d de %b, %y')
+												%td=pointA.created_at.strftime('%d de %b, %y')
+												%td.text-center
+													%a.btn.btn-danger.btn-xs{href:punto_delete_path(pointA),"data-method"	=>	"delete", data: { confirm: 'Estas seguro?' }}
+														%i.fa.fa-times
+									%tfoot		
+				.widget-foot		
+%script
+	$('#users').select2();
+	$(document).ready(function() {
+	$('#points').dataTable({
+	"pageLength": 30,
+	"order": [],
+	"language": {
+	"search": "Buscar: ",
+	"lengthMenu":     "Mostrar _MENU_ resultados",
+	"info":           "Mostrando _START_ a _END_ de _TOTAL_ resultados",
+	"infoEmpty":      "Mostrando 0 a 0 de 0 resultados",
+	"paginate": {
+	"first":      "Primero",
+	"last":       "Ultimo",
+	"next":       "Siguiente",
+	"previous":   "Anterior",
+
+	}
+	}
+	});
+	});
+:erb
+	<% flash.each do |message_type, message| %>
+	<script>
+	swal({
+	title: "<%= message %>",
+	text:  "",
+	type: "<%= message_type %>",
+	timer: 3000,
+	showConfirmButton: false
+	})
+	</script>
+	<% end %>

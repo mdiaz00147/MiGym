@@ -1,0 +1,192 @@
+-provide(:title, "Estadisticas")
+.page-head
+  %h2.pull-left
+    %i.fa.fa-area-chart
+    Mis estadisticas
+  .bread-crumb.pull-right
+    %a
+      %i.fa.fa-list 
+      Home
+    %span.divider
+      ='/'
+    %a.bread-current 
+      Mis estadisticas
+  .clearfix
+.container
+  .row
+    .col-md-12
+      .row
+        .col-md-4
+          .widget.well.text-center
+            
+            %h2
+              =current_user.lessons.to_i
+            %hr
+            %p
+              Sesiones restantes
+        .col-md-4
+          .widget.well.text-center
+            
+            %h2
+              =@schedules_month.count.to_i
+            %hr
+            %p
+              Sesiones tomadas este mes
+        .col-md-4
+          .widget.well.text-center
+            %h2
+              =@user_schedules.count.to_i
+            %hr
+            %p
+              Sesiones tomadas de todos los tiempos
+  .row
+    .col-md-6
+      .widget
+        .widget-head
+          Historico de sesiones agendadas
+          .clearfix
+        .panel-body
+          .page-tables
+            .table-responsive
+
+              %table.table.table-striped.table-hover.table-responsive.table-bordered#stats_user
+                %thead
+                  %tr
+                    %th ID
+                    %th Nombre
+                    %th Fecha
+                    %th Hora
+                %tbody
+                  -@user_schedules.each do |schedule|
+                    %tr
+                      %td=schedule.id
+                      %td=schedule.lesson.name
+                      %td=schedule.lesson.start_date.strftime('%d %B, %Y')
+                      %td=schedule.lesson.start_date.strftime('%H:%M')
+    .col-md-6
+      .widget
+        .widget-head
+          Mi usuario
+          .clearfix
+        .panel-body
+          .page-tables
+            .table-responsive
+
+              %table.table.table-striped.table-hover.table-responsive.table-bordered#stats_user
+
+                %tbody
+                  %tr
+                    %td Vencimiento plan actual 
+                    %td=current_user.expiry_at.strftime('%d %B, %Y')
+                  %tr
+                    %td Nombre plan actual  
+                    %td=current_user.plan.name.capitalize
+                  %tr
+                    %td Iniciaste a entrenar el 
+                    %td=current_user.created_at.strftime('%d %B, %Y')
+                  %tr
+                    %td Ultima carga de clases  
+                    %td=current_user.updated_at.strftime('%d %B, %Y')
+  .row
+    .col-md-12  
+      .widget
+        .widget-head
+          .pull-left
+            Grafico de asistencia
+          .clearfix
+        .widget-content
+          .padd
+            .div{style:'width:100%'}     
+              %canvas#myChart     
+
+
+%script
+  $(document).ready(function() {
+  $('#stats_user').dataTable({
+  "pageLength": 10,
+  "order": [],
+  "language": {
+  "search": "Buscar: ",
+  "lengthMenu":     "Mostrar _MENU_ resultados",
+  "info":           "Mostrando _START_ a _END_ de _TOTAL_ Sesiones",
+  "infoEmpty":      "Mostrando 0 a 0 de 0 resultados",
+  "paginate": {
+  "first":      "Primero",
+  "last":       "Ultimo",
+  "next":       "Siguiente",
+  "previous":   "Anterior",
+
+  }
+  }
+  });
+  });
+%script
+  // var config = {
+  //     type: 'line',
+  //     data: {
+  //         xLabels: <%= raw @graph_month %>,
+  //         yLabels: ['10','9','8','7','6','5','4','3','2','1','0'],
+  //         datasets: [{
+  //             label: "My primera",
+  //             data: <%= raw @graph_lessons %>,
+  //             fill: true,
+
+  //         }]
+  //     },
+  //     options: {
+  //         responsive: true,
+  //         title:{
+  //             display:true,
+  //             text:'Mis clases por mes'
+  //         },
+  //         scales: {
+  //             xAxes: [{
+  //                 display: true,
+  //                 scaleLabel: {
+  //                     display: true,
+  //                     labelString: 'Mes'
+  //                 }
+  //             }],
+  //             yAxes: [{
+  //                 type: 'category',
+  //                 position: 'left',
+  //                 display: true,
+  //                 scaleLabel: {
+  //                     display: true,
+  //                     labelString: 'Clases agendadas'
+  //                 },
+  //                 ticks: {
+  //                     reverse: true
+  //                 }
+  //             }]
+  //         }
+  //     }
+  // };
+
+  // $.each(config.data.datasets, function(i, dataset) {
+  //   dataset.type = 'line';
+
+  //     dataset.borderColor = "#F45D01";
+  //     dataset.borderJoinStyle = 'miter';
+  // });
+
+  // window.onload = function() {
+  //     var ctx = document.getElementById("canvas").getContext("2d");
+  //     window.myLine = new Chart(ctx, config);
+  // };
+  var ctx = document.getElementById("myChart");
+  var myChart = new Chart(ctx, {
+  type: 'line',
+  data: {
+  labels: #{raw @graph_month},
+  datasets: [{
+  borderWidth: 1,
+  label: 'Clases tomadas',
+  data: #{raw @graph_lessons},
+  backgroundColor: '#0b9444',
+  borderColor: '#a4cd39'
+  }],
+
+  },
+  });
+
