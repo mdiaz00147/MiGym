@@ -421,15 +421,14 @@ text-decoration:none;
 
 .navbar{
 	background-color: #f8f8f8;
-  background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#f2f2f2));
-  background: -webkit-linear-gradient(top, #f8f8f8, #f2f2f2);
-  background: -moz-linear-gradient(top, #f8f8f8, #f2f2f2);
-  background: -ms-linear-gradient(top, #f8f8f8, #f2f2f2);
-  background: -o-linear-gradient(top, #f8f8f8, #f2f2f2);
-  background: linear-gradient(top, #f8f8f8, #f2f2f2);
-  
-  border-bottom: 1px solid #ddd;
-  box-shadow: inset 0px 1px 1px #fff;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#f2f2f2));
+	background: -webkit-linear-gradient(top, #f8f8f8, #f2f2f2);
+	background: -moz-linear-gradient(top, #f8f8f8, #f2f2f2);
+	background: -ms-linear-gradient(top, #f8f8f8, #f2f2f2);
+	background: -o-linear-gradient(top, #f8f8f8, #f2f2f2);
+	background: linear-gradient(top, #f8f8f8, #f2f2f2);
+	border-bottom: 1px solid #ddd;
+	box-shadow: inset 0px 1px 1px #fff;
 }
 
 .navbar .caret{
@@ -658,19 +657,19 @@ header .header-data .hdata em{
 	color: #fff !important;  
 	box-shadow: inset 0px 0px 1px #000;
 	background-color: #343434;
-  background: -webkit-gradient(linear, left top, left bottom, from(#343434), to(#292929));
-  background: -webkit-linear-gradient(top, #343434, #292929);
-  background: -moz-linear-gradient(top, #343434, #292929);
-  background: -ms-linear-gradient(top, #343434, #292929);
-  background: -o-linear-gradient(top, #343434, #292929);
-  background: linear-gradient(top, #343434, #292929);	
-  padding:6px;
-  text-transform: uppercase;
-  text-align: center;
-  font-size: 11px;
-  display: block;
-  border-top: 2px solid #666;
-  border-bottom: 1px solid #333;
+	background: -webkit-gradient(linear, left top, left bottom, from(#343434), to(#292929));
+	background: -webkit-linear-gradient(top, #343434, #292929);
+	background: -moz-linear-gradient(top, #343434, #292929);
+	background: -ms-linear-gradient(top, #343434, #292929);
+	background: -o-linear-gradient(top, #343434, #292929);
+	background: linear-gradient(top, #343434, #292929);	
+	padding:6px;
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 11px;
+	display: block;
+	border-top: 2px solid #666;
+	border-bottom: 1px solid #333;
   
 }
 
