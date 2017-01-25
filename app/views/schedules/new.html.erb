@@ -92,9 +92,16 @@
                         <%= f.hidden_field(:users_enrolled, :value => less.users_enrolled) %>
                        <td class="hidden-xs"><%= less.id %></td>
                         <td><%= (less.start_date.strftime("%k:%M")) %></td>
-                        <td><%= link_to(less.name, less) %>
-                        <span class="visible-xs"><b>Inscritos: <%= less.users_enrolled %></b></span></td>
-                        <td class="hidden-xs"><%= less.users_enrolled %></td>
+                        <td>
+                          <%= link_to(less.name, less) %>
+                          <span class="visible-xs"><b>Inscritos: <%= less.users_enrolled %></b>
+                          </span>
+                        </td>
+                        <td class="hidden-xs">
+                          <% less.users_enrolled.to_i.times do |users| %>
+                            <i class="fa fa-user"></i>
+                          <%end%>
+                        </td>
                        <td align="center">
                        <% unless @arr_lessons_user.include?(less.id) %>
                         <%= (f.submit "Agendar", class: "btn btn-success")   %>
