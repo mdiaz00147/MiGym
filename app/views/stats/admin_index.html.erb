@@ -179,7 +179,7 @@
           <td><%= userT.id %></td>
           <td><%= userT.name %></td>
           <td><%= userT.email %></td>
-          <td><%= userT.plan.name %></td>
+          <td><%= userT.plan ? (userT.plan.name) : ('No asignado') %></td>
         </tr>
         <%end%>
       </tbody>

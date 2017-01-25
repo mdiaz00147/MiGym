@@ -68,17 +68,23 @@
                           </div>
                     </div>
                     <div class="form-group">
-                          <label class="control-label col-md-2" for="sitename">Confirmacíon de password</label>
+                          <label class="control-label col-md-2" for="sitename">Confirmacíon</label>
                           <div class="col-md-6">
         			      <%= f.password_field :password_confirmation, class: 'form-control' %>
 
-                  <%= f.file_field :avatar %>
+                  
                           </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-md-2" for="sitename">Avatar</label>
+                      <div class="col-md-6">
+                        <%= f.file_field :avatar, id:'user_avatar' %>
+                      </div>
                     </div>
                     <div class="form-group">
                            <!-- Buttons -->
                            <div class="col-lg-9 col-lg-offset-2">
-        			      <%= f.submit "Crear usuario", class: "btn btn-primary" %>
+        			      <%= f.submit "Crear usuario", class: "btn btn-success" %>
                             <a class="btn btn-default" href="<%= users_path %>">Cancelar</a>
                            </div>
                     </div>
@@ -91,6 +97,31 @@
             </div>
    </div>                
   </div> 
+<script type="text/javascript">
+  $('#user_avatar').fileinput(
+    {
+  uploadUrl: '#',
+  language: 'es',
+  "showCaption":false,
+  "showRemove":false,
+  "showUpload":false,
+  "browseClass":"btn btn-primary btn-block",
+  "browseIcon":"\u003Ci class=\u0022fa fa-camera\u0022\u003E\u003C\/i\u003E ",
+  "browseLabel":"<b>Selecciona una foto</b>",
+  "purifyHtml":true,
+  allowedFileExtensions : ['jpg', 'png','gif'],
+  overwriteInitial: false,
+  maxFileSize: 1000,
+  maxFilesNum: 5,
+  showUpload: false,
+  allowedFileTypes: ['image', 'video', 'flash'],
+  slugCallback: function(filename) {
+  return filename.replace('(', '_').replace(']', '_');
+  }
+  }
+  // {,"browseClass":"btn btn-primary btn-block","browseIcon":"\u003Ci class=\u0022glyphicon glyphicon-camera\u0022\u003E\u003C\/i\u003E ",,"language":"en","purifyHtml":true}
+  );
+</script>
   <% flash.each do |message_type, message| %>
   <% if message_type == "warning" %>
   <script>
