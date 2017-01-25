@@ -80,7 +80,7 @@
                           </label>
                           <div class="col-md-6">
                           <select class="form-control" name="user[plan_id]">
-                            <option value="<%= @user.plan.id %>"><%= @user.plan.name %></option>
+                            <option value="<%= @user.plan ? (@user.plan) : (nil)%>"><%= @user.plan ? (@user.plan.name) : ('No asignado') %></option>
                           <% @plans.each do |plan| %>
                             <option value="<%= plan.id %>"><%= plan.name %> | $<%= plan.price %> COP</option>
                           <% end %>

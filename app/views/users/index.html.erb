@@ -12,7 +12,7 @@
       <div class="container">
 <% if current_user.admin? %> 
 <div class="row">
-
+<%= current_user.plan%>
             <div class="col-md-12">
               <div class="widget">
                 <div class="widget-head">
@@ -49,7 +49,7 @@
                           <td><%= user.name %></td>
                           <td><%= user.email %></td>
                           <td><%= user.phone.to_i %></td>
-                          <td><%= user.plan.name %></td>
+                          <td><%= user.plan ? (user.plan.name) : ('No asignado') %></td>
                           <td><%= user.lessons %></td>
                           <td><%= (user.expiry_at).strftime("%d/%m/%Y") %></td>
                           <td><%= user.document %></td>

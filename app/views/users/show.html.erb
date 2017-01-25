@@ -107,7 +107,7 @@
                         <h5><%= @user.name %></h5>
                         <p> <%= @user.email%></p>
                         <p> <%= @user.lessons%> Clases restantes</p>
-                        <p><%= @plan.name %></p>
+                        <p><%= @plan.name unless !@plan.present?  %></p>
                        
                       </div>
                     
