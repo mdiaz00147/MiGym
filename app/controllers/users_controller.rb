@@ -22,6 +22,9 @@ class UsersController < ApplicationController
   def edit
     @plans        = Plan.all
   end
+  def admin_edit
+    
+  end
 
   def create
   plan        =   params[:user][:plan_id]
@@ -47,10 +50,11 @@ class UsersController < ApplicationController
     @plans        = Plan.all
       if @user.update(user_params)
         flash[:success] = "Actualizado correctamente"
-        redirect_to user_path
+        redirect_to request.referer
       else
-        flash[:warning] = "Ooops... algo ha fallado :O #{@user.errors}"
-        redirect_to user
+        # flash[:warning] = "Ooops... algo ha fallado :O #{@user.errors}"
+        # redirect_to user_path
+        render 'edit'
       end
   end
   def destroy

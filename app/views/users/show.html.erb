@@ -1,10 +1,10 @@
 <% provide(:title, "Dashboard") %>
     <div class="page-head">
-        <h2 class="pull-left"><i class="fa fa-tachometer"></i> Dashboard</h2>
+        <h2 class="pull-left"><i class="fa fa-tachometer"></i> Inicio</h2>
         <div class="bread-crumb pull-right">
           <a href="index.html"><i class="fa fa-tachometer"></i> Home</a> 
           <span class="divider">/</span> 
-          <a href="#" class="bread-current">Dashboard</a>
+          <a href="#" class="bread-current">Inicio</a>
         </div>
         <div class="clearfix"></div>
     </div>
@@ -93,15 +93,18 @@
       <div class="widget">
       
                 <div class="widget-head">
-                  <div class="pull-left">Mi perfil</div>
+                  <div class="text-center">
+                    Mi perfil
+                    <i class="fa fa-user"></i>
+                  </div>
                   <div class="clearfix"></div>
                 </div>
                 <div class="widget-content">
                   <div class="padd">
                     <div class="user">
                       <div class="user-pic">
-                          <a href="#" ><img src="<%=@user.avatar.url%>" style="width: 200px; border:solid 1px "></a>
-                          <%= link_to 'Mi perfil', edit_user_path(current_user) %>
+                          <a href="#" ><img src="<%=@user.avatar.url(:medium)%>"  class="img-responsive img-rounded"></a>
+                          <%= link_to 'EDITAR MI PERFIL', edit_user_path(current_user) %>
                       </div>
                       <div class="user-details">
                         <h5><%= @user.name %></h5>
@@ -123,7 +126,10 @@
             <div class="col-md-5">
               <div class="widget">
                 <div class="widget-head">
-                  <div class="pull-left">Algunos tips para tu entrenamiento</div>  
+                  <div class="text-center">
+                    Algunos tips para tu entrenamiento
+                    <i class="fa fa-bell"></i>
+                  </div>  
                   <div class="clearfix"></div>
                 </div>
                 <div class="widget-content">
@@ -184,7 +190,9 @@
     <div class="col-md-6">
     <div class="widget">
         <div class="widget-head">
-                  <div class="pull-left">Mis sesiones agendadas este mes (<%=  @schedules.count %>)</div>
+                  <div class="pull-left">
+                    <i class="fa fa-list"></i>
+                    Mis sesiones agendadas este mes (<%=  @schedules.count %>)</div>
                   <div class="clearfix"></div>
         </div>
         <div class="widget-content">
@@ -227,7 +235,10 @@
     <div class="col-md-5">
         <div class="widget">
                 <div class="widget-head">
-                  <div class="pull-left">Nuestros planes disponibles</div>  
+                  <div class="pull-left">
+                    <i class="fa fa-list"></i>
+                    Nuestros planes disponibles
+                  </div>  
                   <div class="clearfix"></div>
                 </div>
                 <div class="widget-content referer">

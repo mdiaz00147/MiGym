@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   get     '/dynash', to: 'schedules#dynash'
   get     '/logout',  to: 'sessions#destroy'
   get     '/login',   to: 'sessions#new'
-  
+  get     'usuario/:id/editar', to: 'users#admin_edit'
+  get     'mi-perfil', to: 'users#edit'
   get     '/lessons/p/:id',  to: 'lessons#index'
   get     '/lessons/p/',  to: 'lessons#index', as: 'lessons_paginated'
   get     '/cortesias/nueva',   to: 'courtesies#new'

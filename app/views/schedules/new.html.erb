@@ -1,9 +1,9 @@
  <div class="page-head">
-        <h2 class="pull-left"><i class="fa fa-thumbs-up"></i> Asistencia</h2>
+        <h2 class="pull-left"><i class="fa fa-thumbs-up"></i> Agendar mis sesiónes</h2>
         <div class="bread-crumb pull-right">
           <a href="/"><i class="fa fa-thumbs-up"></i> Home</a> 
           <span class="divider">/</span> 
-          <a href="#" class="bread-current">Asistencia</a>
+          <a href="#" class="bread-current">Agendar mis sesiónes</a>
         </div>
         <div class="clearfix"></div>
     </div>
@@ -19,9 +19,15 @@
                 <div class="widget-head">
 
                   <% if Time.now.wday == 0 %>
-                  <div class="text-center"> Clases semana del <%= Time.now.next_week.beginning_of_week.strftime("%d/%m/%Y") %> a <%= Time.now.next_week.end_of_week.strftime("%d/%m/%Y") %></div>
+                  <div class="text-center"> 
+                    <i class="fa fa-calendar"></i>
+                    Clases semana del <%= Time.now.next_week.beginning_of_week.strftime("%d/%m/%Y") %> a <%= Time.now.next_week.end_of_week.strftime("%d/%m/%Y") %>
+                  </div>
                   <% else %>
-                  <div class="text-center"> Clases semana del <%= Time.now.beginning_of_week.strftime("%d %b %Y") %> a <%= Time.now.end_of_week.strftime("%d %b %Y") %></div>
+                  <div class="text-center"> 
+                    <i class="fa fa-calendar"></i>
+                    Clases semana del <%= Time.now.beginning_of_week.strftime("%d %b %Y") %> a <%= Time.now.end_of_week.strftime("%d %b %Y") %>
+                  </div>
                   <% end %>
                  
                   <div class="clearfix"></div>

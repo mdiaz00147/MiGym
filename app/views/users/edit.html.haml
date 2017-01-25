@@ -1,0 +1,124 @@
+-provide(:title,@user.name.capitalize)
+.page-head
+	%h2.pull-left
+		%i.fa.fa-user
+		Mi perfil -
+		=@user.name.capitalize
+	.bread-crumb.pull-right
+		%a
+			%i.fa.fa-list 
+			Home
+		%span.divider
+			='/'
+		%a.bread-current 
+			Mi perfil
+	.clearfix
+.container
+	.row
+		= form_for(@user, html: { class: "form-horizontal" }) do |f|
+			.col-md-4
+				.widget
+					.widget-head
+						.text-center
+							%i.fa.fa-camera
+							Mi foto de perfil
+						.clearfix
+					.widget-content
+						.padd
+							.form-group
+								.col-md-12.col-md-offset-0
+									= f.file_field :avatar, id:'user_avatar'
+					.widget-foot
+			.col-md-8
+				.widget
+					.widget-head
+						.text-center
+							%i.fa.fa-list
+							Mis datos
+						.clearfix
+					.widget-content
+						.padd
+							.form-group
+								.col-md-12.col-md-offset-0
+									%label.control-label.col-md-2
+										Nombre
+									.col-md-10
+										= f.text_field :name, class: 'form-control'
+							.form-group
+								.col-md-12.col-md-offset-0
+									%label.control-label.col-md-2
+										Email
+									.col-md-10
+										= f.text_field :email, class: 'form-control'
+							.form-group
+								.col-md-12.col-md-offset-0
+									%label.control-label.col-md-2
+										Telefono
+									.col-md-10
+										= f.text_field :phone, class: 'form-control'
+							.form-group
+								.col-md-12.col-md-offset-0
+									%label.control-label.col-md-2
+										Expiracion
+									.col-md-10
+										= f.text_field :expiry_at, class: 'form-control', value:@user.expiry_at.strftime('%d de %b, %Y'),disabled:'disabled'
+							.form-group
+								.col-md-12.col-md-offset-0
+									%label.control-label.col-md-2
+										Plan actual
+									.col-md-10
+										= f.text_field :plan, class: 'form-control', disabled:'disabled', value: @user.plan ? (@user.plan.name) : ('No asignado')
+							.form-group
+								.col-md-12.col-md-offset-0
+									.col-md-2
+									.col-md-10
+										.row
+											.col-md-6
+												= f.password_field :password, class: 'form-control', placeholder:'Contraseña'
+											.col-md-6
+												= f.password_field :password_confirmation, class: 'form-control', placeholder:'Confirmacón'
+							.form-group
+								.col-md-12.col-md-offset-5
+									=f.submit('Guardar cambios', class:'btn btn-success')
+									
+					.widget-foot
+
+-flash.each do |message_type, message|
+	%script
+		swal({
+		title: "#{ message }",
+		text:  "",
+		type: "#{ message_type }",
+		timer: 3000,
+		showConfirmButton: false
+		})
+
+%script{type:'text/javascript'}
+	$('#user_avatar').fileinput(
+	{
+	language: 'es',
+	"showCaption":false,
+	"showRemove":false,
+	"showUpload":false,
+	"showZoom":false,
+	"browseClass":"btn btn-success btn-block",
+	"browseIcon":"\u003Ci class=\u0022fa fa-camera\u0022\u003E\u003C\/i\u003E ",
+	"browseLabel":"<b>Selecciona una foto</b>",
+	"purifyHtml":true,
+	"showActions":false,
+	allowedFileExtensions : ['jpg', 'png','gif'],
+	overwriteInitial: true,
+	maxFileSize: 1000,
+	maxFilesNum: 1,
+	initialPreview: ["#{@user.avatar.url(:medium)}",],
+	initialPreviewAsData: true,
+	initialPreviewFileType: 'image', 
+	initialPreviewConfig: [
+	{caption: "#{@user.avatar.name}", size: "#{@user.avatar.size}", width: "50px", key: 1,extra: {contentType: "application/json; charset=utf-8"} 
+	}],
+	allowedFileTypes: ['image', 'video', 'flash'],
+	slugCallback: function(filename) {
+	return filename.replace('(', '_').replace(']', '_');
+	}
+	}
+	);
