@@ -33,13 +33,13 @@
         	<%= form_for(@plan, html: { class: "form-horizontal" }) do |f| %>
 
         			      <div class="form-group">
-                          <label class="control-label col-md-2" for="sitename">Nombre</label>
+                          <label class="control-label col-md-3" for="sitename">Nombre</label>
                           <div class="col-md-9">
         			      <%= f.text_field :name, class: 'form-control' %>
                           </div>
                     </div>
                     <div class="form-group">
-                          <label class="control-label col-md-2" for="sitename">Numero de clases
+                          <label class="control-label col-md-3" for="sitename">Numero de clases
                           </label>
                           <div class="col-md-9">
         			      <%= f.number_field :lessons, class: 'form-control' %>
@@ -47,7 +47,7 @@
                     </div>
 
                     <div class="form-group">
-                          <label class="control-label col-md-2" for="sitename">Precio
+                          <label class="control-label col-md-3" for="sitename">Precio
                           </label>
                           <div class="col-md-3">
                     		<%= f.text_field :price, class: 'form-control' %>
@@ -55,18 +55,23 @@
                     </div>
 
                     <div class="form-group">
-                          <label class="control-label col-md-2" for="sitename">Horas de inscripcíon
+                          <label class="control-label col-md-3" for="sitename">Horas de inscripcíon
                           </label>
                           <div class="col-md-3">
-		                    <%= f.text_field :start_hour, class: 'form-control' %>
-		                    <%= f.text_field :end_hour, class: 'form-control' %>
+		                        <%= f.text_field :start_hour, class: 'form-control', placeholder:'E.g: 06:00' %>
+                          </div>
+                          <div class="col-md-1 text-center">
+                            A
+                          </div>
+                          <div class="col-md-3">
+		                        <%= f.text_field :end_hour, class: 'form-control', placeholder:'E.g: 21:00' %>
                           </div>
                     </div>
   
                     <div class="form-group">
                            <!-- Buttons -->
-                           <div class="col-lg-9 col-lg-offset-2">
-        			      <%= f.submit "Crear Plan", class: "btn btn-primary" %>
+                           <div class="col-lg-9 col-lg-offset-3">
+        			      <%= f.submit "Crear Plan", class: "btn btn-success" %>
                            </div>
                     </div>
         	<% end %>

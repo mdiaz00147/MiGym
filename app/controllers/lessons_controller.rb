@@ -4,24 +4,25 @@ class LessonsController < ApplicationController
   # GET /lessons
   # GET /lessons.json
   def index
-    lessons = Lesson.all.select(:id,:name,:start_date,:users_allowed).order(start_date: :desc)
-    results_per_page    = 30
-    total_results       = lessons.size
-    @pages              = lessons.size / results_per_page
-    page_nume = params[:id].to_i
+    @lessons  = Lesson.all 
+    # lessons = Lesson.all.select(:id,:name,:start_date,:users_allowed).order(start_date: :desc)
+    # results_per_page    = 30
+    # total_results       = lessons.size
+    # @pages              = lessons.size / results_per_page
+    # page_nume = params[:id].to_i
     
 
-    arr = []
-    @pages.times.each_with_index do |res, index|
-      current_page = index + 1
-      if page_nume == current_page
-        results_per_page - total_results
-        @result_no = current_page*results_per_page
-      end
-    end
+    # arr = []
+    # @pages.times.each_with_index do |res, index|
+    #   current_page = index + 1
+    #   if page_nume == current_page
+    #     results_per_page - total_results
+    #     @result_no = current_page*results_per_page
+    #   end
+    # end
 
     
-    @lessons   = Lesson.all.select(:id,:name,:start_date,:users_allowed).order(start_date: :desc).offset(@result_no).limit(results_per_page)
+    # @lessons   = Lesson.all.select(:id,:name,:start_date,:users_allowed).order(start_date: :desc).offset(@result_no).limit(results_per_page)
 
   end
   def show

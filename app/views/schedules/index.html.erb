@@ -28,7 +28,7 @@
 
                 <%= form_for :search do |f| %>
                     <%= f.hidden_field(:start_date, :value => Time.now.yesterday.beginning_of_day.to_formatted_s(:db)) %>
-                    <%= (f.submit "Ayer", class: "btn btn-primary")   %>
+                    <%= (f.submit "Ayer", class: "btn btn-success")   %>
                 <% end %>
                 </div>
                 <div class="col-md-3">
@@ -51,7 +51,7 @@
                 <div class="col-md-1">
                 <%= form_for :search do |f| %>
                     <%= f.hidden_field(:start_date, :value => Time.now.tomorrow.beginning_of_day.to_formatted_s(:db)) %>
-                    <%= (f.submit "Mañana", class: "btn btn-primary")   %>
+                    <%= (f.submit "Mañana", class: "btn btn-success")   %>
                 <% end %>
                 </div>
               </div>
