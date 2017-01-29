@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170111205755) do
+ActiveRecord::Schema.define(version: 20170127170742) do
+
+  create_table "assessments", force: :cascade do |t|
+    t.integer  "body_water",    limit: 4
+    t.integer  "body_fat",      limit: 4
+    t.integer  "bone",          limit: 4
+    t.integer  "bmi",           limit: 4
+    t.integer  "visceral_fat",  limit: 4
+    t.integer  "bmr",           limit: 4
+    t.integer  "muscle_mass",   limit: 4
+    t.integer  "metabolic_age", limit: 4
+    t.integer  "weight",        limit: 4
+    t.integer  "user_id",       limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
 
   create_table "courtesies", force: :cascade do |t|
     t.string   "name",        limit: 255

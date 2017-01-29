@@ -1,0 +1,135 @@
+= form_for(@assessment, html: { class: "form-horizontal" }) do |f|
+  
+  -if @assessment.errors.any?
+    .widget
+      .alert.alert-danger
+        %h4
+          %i.fa.fa-ban
+          %strong 
+            Tienes 
+            =@assessment.errors.count
+            errores
+        %ul
+          -@assessment.errors.values.each do |myerror|
+            %li
+              =myerror.to_sentence
+  .widget
+    .widget-head
+      .text-center
+        %i.fa.fa-calculator
+        Nueva valoracion
+      .clearfix
+    .widget-content
+      .padd
+        .row
+          .col-md-6
+            .form-group
+              .col-md-12
+                %label.control-label.col-md-4
+                  Agua
+                .col-md-8
+                  .input-group
+                    = f.number_field :body_water, class: 'form-control'
+                    %span.input-group-addon.add-on
+                      %b
+                        ="%"
+            .form-group
+              .col-md-12
+                %label.control-label.col-md-4
+                  Grasa
+                .col-md-8
+                  .input-group
+                    = f.number_field :body_fat, class: 'form-control'
+                    %span.input-group-addon.add-on
+                      %b
+                        ="%"
+            .form-group
+              .col-md-12
+                %label.control-label.col-md-4
+                  Hueso
+                .col-md-8
+                  .input-group
+                    = f.number_field :bone, class: 'form-control'
+                    %span.input-group-addon.add-on
+                      %b
+                        ="%"
+            .form-group
+              .col-md-12
+                %label.control-label.col-md-4
+                  BMI
+                .col-md-8
+                  .input-group
+                    = f.number_field :bmi, class: 'form-control'
+                    %span.input-group-addon.add-on
+                      %b
+                        ="%"
+            .form-group
+              .col-md-12
+                %label.control-label.col-md-4
+                  Grasa visceral
+                .col-md-8
+                  .input-group
+                    = f.number_field :visceral_fat, class: 'form-control'
+                    %span.input-group-addon.add-on
+                      %b
+                        ="%"
+          .col-md-6
+            .form-group
+              .col-md-12
+                %label.control-label.col-md-4
+                  BMR
+                .col-md-8
+                  .input-group
+                    = f.number_field :bmr, class: 'form-control'
+                    %span.input-group-addon.add-on
+                      %b
+                        ="%"
+            .form-group
+              .col-md-12
+                %label.control-label.col-md-4
+                  Masa muscular
+                .col-md-8
+                  .input-group
+                    = f.number_field :muscle_mass, class: 'form-control'
+                    %span.input-group-addon.add-on
+                      %b
+                        ="%"
+            .form-group
+              .col-md-12
+                %label.control-label.col-md-4
+                  Edad metabolica
+                .col-md-8
+                  .input-group
+                    = f.number_field :metabolic_age, class: 'form-control'
+                    %span.input-group-addon.add-on
+                      %b
+                        ="Años"
+            .form-group
+              .col-md-12
+                %label.control-label.col-md-4
+                  Peso
+                .col-md-8
+                  .input-group
+                    = f.number_field :weight, class: 'form-control'
+                    %span.input-group-addon.add-on
+                      %b
+                        ="Kg."
+        .row
+          %hr
+          .col-md-12
+            .form-group
+              .col-md-12
+                
+                .col-md-12
+                  .row
+                  Asignar a usuario
+                  %select#users{style:'width:100%',name:'assessment[user_id]'}
+                    -@users.each do |user|
+                      %option{value:user.id}= user.name
+
+        .row
+          %hr
+          .col-lg-12.col-lg-offset-5
+            = f.submit('Guardar ahora', class:'btn btn-success')
+%script
+  $('#users').select2()

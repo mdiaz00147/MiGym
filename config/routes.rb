@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :assessments
   resources :plans
   resources :lessons
   resources :users
@@ -34,12 +35,13 @@ Rails.application.routes.draw do
   get     '/admin/estadisticas/tendencias/:user_id', to: 'stats#trends'
   get     'puntos', to:   'points#new'
   get     'mispuntos/:id', to:  'points#user_points', as: 'user_points'
+  get     'mis-valoraciones/:id', to: 'assessments#show', as: 'mis_valoraciones'
 
   post    'puntos', to:   'points#create'
   post    '/cortesias/:id',       to:   'courtesies#check', as: 'courtesie_check'
   post    '/cortesias/status/:id',       to:   'courtesies#uncheck',    as: 'courtesie_uncheck'
   post    '/login',   to: 'sessions#create'
-  post    '/cortesias/nueva',   to: 'courtesies#create'
+  post    '/cortesia/nueva',   to: 'courtesies#create', as: 'courtesie_create'
   post    '/calendario',  to: 'schedules#appointment'
   post    '/asistencia',  to: 'schedules#index' 
   post    'referer/new', to: 'events#referer'

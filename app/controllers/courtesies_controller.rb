@@ -45,7 +45,7 @@ class CourtesiesController < ApplicationController
 			@new_schedule	=	Schedule.new()
 			@new_schedule.lesson_id	=	@lesson_check.id
 			@new_schedule.user_id	=	'50'
-			@new_enrolled	=	@lesson_check.users_enrolled + 1
+			@new_enrolled	=	@lesson_check.users_enrolled.to_i + 1
 			@lesson_check.update_attribute(:users_enrolled, @new_enrolled)
 			@new_schedule.save
 			@new_courtesie.schedule_id = @new_schedule.id

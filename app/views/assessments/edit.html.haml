@@ -1,0 +1,21 @@
+-provide(:title,'Editar valoracion')
+.page-head
+	%h2.pull-left
+		%i.fa.fa-calculator
+		Nueva valoracion
+		
+	.bread-crumb.pull-right
+		%a
+			%i.fa.fa-calculator 
+			Home
+		%span.divider
+			='/'
+		%a.bread-current 
+			Valoraciones
+	.clearfix
+.container
+	.row
+		.col-md-10.col-md-offset-1
+			= render 'form'
+
+

@@ -1,0 +1,97 @@
+-provide(:title,'Valoraciones')
+.page-head
+  %h2.pull-left
+    %i.fa.fa-calculator
+    Valoraciones
+  .bread-crumb.pull-right
+    %a
+      %i.fa.fa-calculator
+      Home
+    %span.divider
+      ='/'
+    %a.bread-current 
+      Valoraciones
+  .clearfix
+.container
+  .row
+    .col-md-6
+      .widget.well.text-center
+        %h3
+          =link_to '<i class="fa fa-plus"></i> Nueva valoracion'.html_safe, new_assessment_path
+    .col-md-6
+      .widget.well.text-center
+        %h3
+          =@assessments.count.to_i
+          Valoraciones realizadas
+  .row
+    .col-md-12
+      .widget.wred
+        .widget-head
+          %i.fa.fa-calculator
+          Valoraciones usuarios
+
+        .widget-content
+          .padd
+            .page-tables
+              .table-responsive
+                %table#data-table-assessments
+                  %thead
+                    %tr
+                      %th #
+                      %th Usuario
+                      %th Porcentaje agua
+                      %th Hueso
+                      %th BMI
+                      %th BMR
+                      %th Masa muscular
+                      %th Peso
+                      %th Creada
+                      %th{collspan:3}
+                  %tbody
+                    -@assessments.each_with_index do |assessment,index|
+                      %tr
+                        %td= index+1
+                        %td= link_to assessment.user.name.capitalize, assessment.user
+                        %td= assessment.body_water.to_s + "%"
+                        %td= assessment.bone.to_s + "%"
+                        %td= assessment.bmi.to_s + "%"
+                        %td= assessment.bmr.to_s + "%"
+                        %td= assessment.muscle_mass.to_s + "%"
+                        %td= assessment.weight.to_s + " KG"
+                        %td= assessment.created_at.strftime('%d de %b, %y')
+                        %td 
+                          =link_to '<i class="fa fa-eye"></i>'.html_safe, assessment,  class: "btn btn-xs btn-success"
+                          = link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_assessment_path(assessment), class: "btn btn-xs btn-default"
+                          = link_to '<i class="fa fa-times"></i>'.html_safe, assessment, method: :delete, data: { confirm: '¿Estas seguro?' }, class: "btn btn-xs btn-danger"
+
+                  %tfoot    
+        .widget-foot
+%script
+  $(document).ready(function() {
+  $('#data-table-assessments').dataTable({
+  "pageLength": 30,
+  "order": [],
+  "language": {
+  "search": "Buscar: ",
+  "lengthMenu":     "Mostrar _MENU_ resultados",
+  "info":           "Mostrando _START_ a _END_ de _TOTAL_ resultados",
+  "infoEmpty":      "Mostrando 0 a 0 de 0 resultados",
+  "paginate": {
+  "first":      "Primero",
+  "last":       "Ultimo",
+  "next":       "Siguiente",
+  "previous":   "Anterior",
+  }
+  }
+  });
+  });
+
+-flash.each do |message_type, message|
+  %script
+    swal({
+    title: "#{message}",
+    text:  "",
+    type: "#{message_type}",
+    timer: 3000,
+    showConfirmButton: false
+    })
