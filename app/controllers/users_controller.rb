@@ -47,11 +47,13 @@ class UsersController < ApplicationController
   end
 
   def update
+    # return render json: params[:user][:plan_id]
     @plans  = Plan.all
     posted_expiration  = params[:user][:expiry_at]
-    expiration    = Date.strptime(posted_expiration,'%m/%d/%Y')
-    @user.expiry_at = expiration
-
+    posted_expiration ? (
+      expiration    = Date.strptime(posted_expiration,'%m/%d/%Y')
+      @user.expiry_at = expiration
+      ) : ()
       if @user.update(user_params)
         flash[:success] = "Actualizado correctamente"
         redirect_to request.referer

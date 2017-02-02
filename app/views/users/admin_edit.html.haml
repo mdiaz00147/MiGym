@@ -72,7 +72,7 @@
                     Plan actual
                   .col-md-6
                     %select.form-control{:name => "user[plan_id]"}
-                      %option{:value => "#{@user.plan ? (@user.plan) : (nil)}", selected:'selected'}= @user.plan ? (@user.plan.name) : ('No asignado')
+                      %option{:value => "#{@user.plan ? (@user.plan.id) : (nil)}", selected:'selected'}= @user.plan ? (@user.plan.name) : ('No asignado')
                       - @plans.each do |plan|
                         %option{:value => "#{plan.id}"}
                           = plan.name
