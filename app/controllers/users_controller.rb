@@ -48,10 +48,15 @@ class UsersController < ApplicationController
 
   def update
     @plans  = Plan.all
+    posted_expiration  = params[:user][:expiry_at]
+    expiration    = Date.strptime(posted_expiration,'%m/%d/%Y')
+    @user.expiry_at = expiration
+
       if @user.update(user_params)
         flash[:success] = "Actualizado correctamente"
         redirect_to request.referer
       else
+        @user = User.find(params[:id])
         render 'admin_edit'
       end
   end
@@ -66,7 +71,7 @@ class UsersController < ApplicationController
     end
     def user_params
       params.require(:user).permit(:name, :email, :phone, :document, :password,
-                                   :password_confirmation, :plan_id, :lessons, :expiry_at, :avatar)
+                                   :password_confirmation, :plan_id, :lessons, :avatar)
     end
     def check_login
       if !logged_in?
