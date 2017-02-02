@@ -1,0 +1,127 @@
+.page-head
+  %h2.pull-left
+    %i.fa.fa-user
+    Editar usuario
+  .bread-crumb.pull-right
+    %a{:href => "/"}
+      %i.fa.fa-user
+      Home
+    %span.divider /
+    %a.bread-current{:href => "#"} Clases
+  .clearfix
+.matter
+  .container
+    .row
+      .col-md-10.col-lg-offset-1
+        -if @user.errors.any?
+          .alert.alert-danger
+            %h4
+              %i.fa.fa-ban
+              %strong 
+                Tienes 
+                =@user.errors.count
+                errores
+            %ul
+              -@user.errors.values.each do |myerror|
+                %li
+                  =myerror.to_sentence
+        .widget.wred
+          .widget-head
+            %i.fa.fa-user
+            Editar usuario
+          .widget-content
+            .padd
+              - provide(:title, "Editar usuario #{@user.name.capitalize}")
+              = form_for(@user, html: { class: "form-horizontal" }) do |f|
+                .form-group
+                  .col-md-4.col-md-offset-4
+                    = f.file_field :avatar, id:'user_avatar'
+                .form-group
+                  %label.control-label.col-md-2{:for => "sitename"} Nombre
+                  .col-md-9
+                    = f.text_field :name, class: 'form-control'
+                .form-group
+                  %label.control-label.col-md-2{:for => "sitename"}
+                    Email
+                  .col-md-9
+                    = f.email_field :email, class: 'form-control'
+                .form-group
+                  %label.control-label.col-md-2{:for => "sitename"}
+                    Documento
+                  .col-md-9
+                    %input#user_document.form-control{:name => "user[document]", :type => "text", :value => "#{@user.document.to_i}"}/
+                .form-group
+                  %label.control-label.col-md-2{:for => "sitename"}
+                    Telefono
+                  .col-md-9
+                    %input#user_phone.form-control{:name => "user[phone]", :type => "text", :value => "#{@user.phone.to_i}"}/
+                .form-group
+                  %label.control-label.col-md-2{:for => "sitename"}
+                    Clases
+                  .col-md-9
+                    = f.text_field :lessons, class: 'form-control'
+                .form-group
+                  %label.control-label.col-md-2{:for => "sitename"}
+                    Vencimiento
+                  .col-md-6
+                    
+                    %input#user_expiry_at.form-control.datepicker{:name => "user[expiry_at]", :type => "text", :value => "#{(@user.expiry_at).strftime("%m/%d/%Y")}"}
+                    
+                .form-group
+                  %label.control-label.col-md-2{:for => "sitename"}
+                    Plan actual
+                  .col-md-6
+                    %select.form-control{:name => "user[plan_id]"}
+                      %option{:value => "#{@user.plan ? (@user.plan) : (nil)}", selected:'selected'}= @user.plan ? (@user.plan.name) : ('No asignado')
+                      - @plans.each do |plan|
+                        %option{:value => "#{plan.id}"}
+                          = plan.name
+                          | $#{plan.price} COP
+                .form-group
+                  %label.control-label.col-md-2{:for => "sitename"} Password
+                  .col-md-6
+                    = f.password_field :password, class: 'form-control'
+                .form-group
+                  %label.control-label.col-md-2{:for => "sitename"} Confirmacíon de password
+                  .col-md-6
+                    = f.password_field :password_confirmation, class: 'form-control'
+                .form-group
+                  / Buttons
+                  .col-lg-9.col-lg-offset-2
+                    = f.submit "Guardar cambios", class: "btn btn-success"
+                    %a.btn.btn-default{:href => users_path} Cancelar
+          .widget-foot
+=render('layouts/sweet_alert')
+
+%script
+  $('#user_expiry_at').datepicker();
+:javascript
+  $('#user_avatar').fileinput(
+      {
+    uploadUrl: '#',
+    language: 'es',
+    "showCaption":false,
+    "showRemove":false,
+    "showUpload":false,
+    "showZoom":false,
+    "browseClass":"btn btn-success btn-block",
+    "browseIcon":"\u003Ci class=\u0022fa fa-camera\u0022\u003E\u003C\/i\u003E ",
+    "browseLabel":"<b>Selecciona una foto</b>",
+    "purifyHtml":true,
+    "showActions":false,
+    allowedFileExtensions : ['jpg', 'png','gif'],
+    overwriteInitial: true,
+    maxFileSize: 1000,
+    maxFilesNum: 1,
+    initialPreview: ["#{@user.avatar.url(:medium)}",],
+    initialPreviewAsData: true,
+    initialPreviewFileType: 'image', 
+    initialPreviewConfig: [
+      {caption: "#{@user.avatar.name}", size: "#{@user.avatar.size}", width: "50px", key: 1,extra: {contentType: "application/json; charset=utf-8"} 
+      }],
+    allowedFileTypes: ['image', 'video', 'flash'],
+    slugCallback: function(filename) {
+      return filename.replace('(', '_').replace(']', '_');
+    }
+    }
+    );

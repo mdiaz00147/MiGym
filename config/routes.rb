@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   get     'puntos', to:   'points#new'
   get     'mispuntos/:id', to:  'points#user_points', as: 'user_points'
   get     'mis-valoraciones/:id', to: 'assessments#show', as: 'mis_valoraciones'
+  get     '/admin/usuario/:id/editar', to: 'users#admin_edit', as: 'admin_user_edit'
 
   post    'puntos', to:   'points#create'
   post    '/cortesias/:id',       to:   'courtesies#check', as: 'courtesie_check'

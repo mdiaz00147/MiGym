@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :admin_edit]
   #before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
   before_action :check_login
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     @plans        = Plan.all
   end
   def admin_edit
-    
+    @plans        = Plan.all
   end
 
   def create
@@ -47,14 +47,12 @@ class UsersController < ApplicationController
   end
 
   def update
-    @plans        = Plan.all
+    @plans  = Plan.all
       if @user.update(user_params)
         flash[:success] = "Actualizado correctamente"
         redirect_to request.referer
       else
-        # flash[:warning] = "Ooops... algo ha fallado :O #{@user.errors}"
-        # redirect_to user_path
-        render 'edit'
+        render 'admin_edit'
       end
   end
   def destroy

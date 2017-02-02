@@ -1,0 +1,12 @@
+:erb
+  <% flash.each do |message_type, message| %>
+  <script>
+  swal({
+  title: "<%= message %>",
+  text:  "",
+  type: "<%= message_type %>",
+  timer: 3000,
+  showConfirmButton: false
+  })
+  </script>
+  <% end %> 

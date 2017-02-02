@@ -7,9 +7,9 @@ class User < ActiveRecord::Base
 		uniqueness: {case_sensitive: false}
 	has_secure_password
 	validates :password, presence: true, length: { minimum: 6 }, confirmation: true, allow_nil: true
-	validates :document, presence: true
-	validates :plan_id, presence: true
-	validates :lessons, presence: true
+	validates :document, presence: {message:'El documento es requerido'}
+	validates :plan_id, presence: {message:'Debes asignar tipo de plan'}
+	validates :lessons, presence: {message:'Numero de sesiones es requerido'}
 
 	has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/img/anon_user.png"
 	validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/

@@ -1,0 +1,62 @@
+- provide(:title, 'Usuarios')
+.page-head
+  %h2.pull-left
+    %i.fa.fa-users
+    Usuarios
+  .bread-crumb.pull-right
+    %a{:href => "/"}
+      %i.fa.fa-users
+      Home
+    %span.divider /
+    %a.bread-current{:href => "#"} Usuarios
+  .clearfix
+.matter
+  .container
+    - if current_user.admin?
+      .row
+        .col-md-12
+          .widget
+            .widget-head
+              .pull-left Usuarios Inscritos
+              .widget-icons.pull-right
+                %a.wminimize{:href => "#"}
+                  %i.fa.fa-chevron-up
+                %a.wclose{:href => "#"}
+                  %i.fa.fa-times
+              .clearfix
+            .widget-content
+              .padd
+                / Table Page
+                .page-tables
+                  / Table
+                  .table-responsive
+                    %table#data-table-1{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+                      %thead
+                        %tr
+                          %th Nombre
+                          %th Email
+                          %th Telefono
+                          %th Plan
+                          %th Clases
+                          %th Vencimiento
+                          %th Documento
+                          %th
+                      %tbody
+                        - @users.each do |user|
+                          %tr
+                            %td= user.name
+                            %td= user.email
+                            %td= user.phone.to_i
+                            %td= user.plan ? (user.plan.name) : ('No asignado')
+                            %td= user.lessons
+                            %td= (user.expiry_at).strftime("%d %B, %Y")
+                            %td= user.document
+                            %td
+                              = link_to '<i class="fa fa-user"></i>'.html_safe, user,  class: "btn btn-xs btn-success"
+                              = link_to '<i class="fa fa-pencil"></i>'.html_safe, admin_user_edit_path(user), class: "btn btn-xs btn-default"
+                              = link_to '<i class="fa fa-times"></i>'.html_safe, user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger"
+                      %tfoot
+                    .clearfix
+            .widget-foot
+              / Footer goes here
+=render('layouts/sweet_alert')
