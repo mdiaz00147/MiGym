@@ -1,0 +1,215 @@
+- provide(:title, "Dashboard")
+.page-head
+  %h2.pull-left
+    %i.fa.fa-tachometer
+    Inicio
+  .bread-crumb.pull-right
+    %a{:href => "index.html"}
+      %i.fa.fa-tachometer
+      Home
+    %span.divider /
+    %a.bread-current{:href => "#"} Inicio
+  .clearfix
+.matter
+  .container
+    - if logged_in?
+      .row
+        /
+          <div class="col-md-6">
+          <div class="widget wblack">
+          <div class="widget-head">
+          <div class="text-center"><i class="fa fa-flag" aria-hidden="true" style="color: red"></i>
+          PARTICIPA Y GANA! <i class="fa fa-flag" aria-hidden="true" style="color: red"></i>
+          </div>
+          
+          <div class="clearfix"></div>
+          </div>
+          <div class="widget-content">
+          <div class="padd">
+          
+          <haml_silent>                   if @event.present?
+          </haml_silent><haml_block>                  <p style="padding-left: 5%; padding-right: 5%">Ya has enviado 3 referídos. Aun así si envías otros 3 tendras mas posibilidades de ganar :)</p>
+          </haml_block><haml_silent>                   else
+          </haml_silent><haml_block>                  <p style="padding-left: 5%; padding-right: 5%">Por todo el mes de <b>septiembre</b> refiere a 3 amigos o familiares y participa por el sorteo de un bono de descuento del <span style="background-color: red; font-weight: bold; font-size: 1.5em">100%</span> en cualquíera de nuestros planes. El ganador será anunciado el 10 00de Octubre.</p>
+          </haml_block>
+          <div class="form quick-post">
+          <haml_loud> form_for(:referer, url: &#39;/referer/new&#39;, html: { class: &quot;form-horizontal&quot;, onsubmit: &quot;if(document.getElementById(&#39;checkboxterms&#39;).checked==false){
+          alert(&#39;Debes aceptar los terminos y condiciones antes de guardar&#39;);
+          return false;
+          }&quot; } ) do |f| </haml_loud><haml_block>
+          <haml_loud> f.hidden_field :event_name, value: &#39;referidos&#39; </haml_loud>
+          <div class="form-group">
+          <label class="control-label col-lg-3" for="title">Referido #1</label>
+          <div class="col-lg-9">
+          
+          <haml_loud> f.text_field :name_1, class: &#39;form-control&#39;, style: &quot;display: inline-block;
+          width: auto;
+          vertical-align: middle;&quot;, placeholder: &quot;Nombre&quot; </haml_loud>
+          <haml_loud> f.text_field :phone_1, class: &#39;form-control&#39;, style: &quot;display: inline-block;
+          width: auto;
+          vertical-align: middle;&quot;, placeholder: &quot;Telefono&quot; </haml_loud>
+          </div>
+          </div>
+          <div class="form-group">
+          <label class="control-label col-lg-3" for="title">Referido #2</label>
+          <div class="col-lg-9">
+          <haml_loud> f.text_field :name_2, class: &#39;form-control&#39;, style: &quot;display: inline-block;
+          width: auto;
+          vertical-align: middle;&quot;, placeholder: &quot;Nombre&quot; </haml_loud>
+          <haml_loud> f.text_field :phone_2, class: &#39;form-control&#39;, style: &quot;display: inline-block;
+          width: auto;
+          vertical-align: middle;&quot;, placeholder: &quot;Telefono&quot; </haml_loud>
+          </div>
+          </div>
+          <div class="form-group">
+          <label class="control-label col-lg-3" for="title">Referido #3</label>
+          <div class="col-lg-9">
+          <haml_loud> f.text_field :name_3, class: &#39;form-control&#39;, style: &quot;display: inline-block;
+          width: auto;
+          vertical-align: middle;&quot;, placeholder: &quot;Nombre&quot; </haml_loud>
+          <haml_loud> f.text_field :phone_3, class: &#39;form-control&#39;, style: &quot;display: inline-block;
+          width: auto;
+          vertical-align: middle;&quot;, placeholder: &quot;Telefono&quot; </haml_loud>
+          </div>
+          </div>
+          
+          
+          <div class="form-group">
+          <div class="col-lg-offset-3 col-lg-6">
+          <input type="checkbox" id="checkboxterms"></input> Acepto <a href="#" id="terminos" style="color:white; font-weight: bold;">terminos y condiciones</a>
+          
+          <br>
+          <button type="submit" class="btn btn-sm btn-success"><h4>Guardar!</h4></button>
+          </div>
+          </div>
+          </haml_block>                                    </div>
+          </div>
+          <div class="widget-foot">
+          </div>
+          </div>
+          </div>
+          </div>
+        .col-md-6
+          .widget
+            .widget-head
+              .text-center
+                Mi perfil
+                %i.fa.fa-user
+              .clearfix
+            .widget-content
+              .padd
+                .user
+                  .user-pic
+                    %a{:href => "#"}
+                      %img.img-responsive.img-rounded{:src => "#{@user.avatar.url(:medium)}"}/
+                    = link_to 'EDITAR MI PERFIL', edit_user_path(current_user)
+                  .user-details
+                    %h5= @user.name
+                    %p
+                      = @user.email
+                    %p
+                      = @user.lessons
+                      Clases restantes
+                    %p= @plan.name unless !@plan.present?
+              .widget-foot
+        .col-md-5
+          .widget
+            .widget-head
+              .text-center
+                Algunos tips para tu entrenamiento
+                %i.fa.fa-bell
+              .clearfix
+            .widget-content
+              .padd
+                %ul.recent
+                  %li
+                    .avatar.pull-left
+                      %img{:alt => "", :height => "44", :src => "https://image.freepik.com/free-icon/stretching-male-silhouette_318-62378.png", :width => "44"}/
+                    .recent-content
+                      .recent-meta Posted on 25/1/2120 by Ashok
+                      %div
+                        Recuerda estirar antes y despues del entrenamiento, pues esto ayudara a tu cuerpo a prevenir posibles lesiones.
+                      .clearfix
+                  %li
+                    .avatar.pull-left
+                      %img{:alt => "", :height => "44", :src => "https://cdn3.iconfinder.com/data/icons/medical-7/512/drink_coffee_web20_icontexto_drinking_alcohol-512.png", :width => "44"}/
+                    .recent-content
+                      .recent-meta Posted on 25/1/2120 by Ashok
+                      %div
+                        La hidratacion antes, durante y despues del entrenamiento hace parte esencial de un ejercicio saludable.
+                      .clearfix
+                  %li
+                    .avatar.pull-left
+                      %img{:alt => "", :height => "44", :src => "http://downloadicons.net/sites/default/files/hand-bags-icon-87745.png", :width => "44"}/
+                    .recent-content
+                      .recent-meta Posted on 25/1/2120 by Ashok
+                      %div
+                        En nuestras sedes encontraras casilleros donde podras dejar tus objetos personales mientras te ejercitas, esto nos ayudara a mantener nuestro lugar de trabajo ordenado para ti.
+                      .clearfix
+              .widget-foot
+                .clearfix
+      .row
+        .col-md-6
+          .widget
+            .widget-head
+              .pull-left
+                %i.fa.fa-list
+                Mis sesiones agendadas este mes (#{@schedules.count})
+              .clearfix
+            .widget-content
+              .padd
+                .page-tables
+                  .table-responsive
+                    %table#data-table-1.table.table-striped.table-bordered.table-hover{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+                      %thead
+                        %tr
+                          %th Usuario
+                          %th Fecha
+                          %th Sesion
+                      %tbody
+                        = render @schedules
+                      %tfoot
+                        %tr
+                          %td
+                          %td
+                          %td
+            .widget-foot
+        .col-md-5
+          .widget
+            .widget-head
+              .pull-left
+                %i.fa.fa-list
+                Nuestros planes disponibles
+              .clearfix
+            .widget-content.referer
+              .table-responsive
+                %table.table.table-striped.table-bordered.table-hover
+                  %tr
+                    %th Nombre
+                    %th Sesiones
+                    %th Precio
+                  - @plans.each do |plan|
+                    %tr
+                      %td= plan.name
+                      %td= plan.lessons
+                      %td= number_to_currency(plan.price)
+              .clearfix
+              .widget-foot
+:javascript
+  document.querySelector('#terminos').onclick = function(){
+    swal({
+      title: "Terminos y condiciones evento referidos",
+      text: "<p>- El bono es personal e instransferible</p><p>- No es acumulable con otros descuentos (e.g: Plan 2x1)</p><p>- Redimible en un plazo de 6 meses</p><p>- No es canjeable por dinero en efectivo</p><p>- Valido solamente para gimnasios Elite Fintess Center</p>",
+      html: true,
+      showConfirmButton: true
+    });
+  };
+- flash.each do |message_type, message|
+  :javascript
+    swal({
+        title: "#{message}",
+        text:  "",
+        type: "#{message_type}",
+        timer: 3000,
+        showConfirmButton: false
+     })

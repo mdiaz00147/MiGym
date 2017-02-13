@@ -14,13 +14,14 @@
     .row
       .col-md-10.col-lg-offset-1
         -if @user.errors.any?
-          .alert.alert-danger
-            %h4
-              %i.fa.fa-ban
-              %strong 
-                Tienes 
-                =@user.errors.count
-                errores
+          .widget
+            .alert.alert-danger
+              %h4
+                %i.fa.fa-ban
+                %strong 
+                  Tienes 
+                  =@user.errors.count
+                  errores
             %ul
               -@user.errors.values.each do |myerror|
                 %li

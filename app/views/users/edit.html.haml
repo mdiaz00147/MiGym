@@ -30,6 +30,20 @@
 									= f.file_field :avatar, id:'user_avatar'
 					.widget-foot
 			.col-md-8
+				/ # =@user.errors.count
+				-if @user.errors.any?
+					.widget
+						.alert.alert-danger
+							%h4
+								%i.fa.fa-ban
+								%strong 
+									Tienes 
+									=@user.errors.count
+									errores
+							%ul
+								-@user.errors.values.each do |myerror|
+									%li
+										=myerror.to_sentence
 				.widget
 					.widget-head
 						.text-center

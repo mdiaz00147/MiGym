@@ -27,23 +27,23 @@ class UsersController < ApplicationController
   end
 
   def create
-  plan        =   params[:user][:plan_id]
-  expiry      =   (Time.now + 1.months) 
-  @plan_vars   =   Plan.find(plan)
+    plan        =   params[:user][:plan_id]
+    expiry      =   (Time.now + 1.months) 
+    @plan_vars   =   Plan.find(plan)
 
-	@user        = User.new(user_params)
-  @user.plan_id   = @plan_vars.id
-  @user.lessons   = @plan_vars.lessons
-  @user.expiry_at = expiry
+  	@user        = User.new(user_params)
+    @user.plan_id   = @plan_vars.id
+    @user.lessons   = @plan_vars.lessons
+    @user.expiry_at = expiry
 
-    if @user.save
-    	flash[:success] = "Usuario creado exitosamente"
-      Gymail.register_email(@user).deliver_now
-      redirect_to	users_path
-    else
-    	flash[:warning]	=	"Ooops... algo ha fallado :O #{@user.errors}"
-	    redirect_to  new_user_path
-    end
+      if @user.save
+      	flash[:success] = "Usuario creado exitosamente"
+        Gymail.register_email(@user).deliver_now
+        redirect_to	users_path
+      else
+        @plans        = Plan.all
+      	render 'new'
+      end
   end
 
   def update
@@ -59,7 +59,7 @@ class UsersController < ApplicationController
         redirect_to request.referer
       else
         @user = User.find(params[:id])
-        render 'admin_edit'
+        render 'edit'
       end
   end
   def destroy
