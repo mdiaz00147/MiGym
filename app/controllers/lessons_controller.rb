@@ -69,7 +69,7 @@ class LessonsController < ApplicationController
     redirect_to lessons_path
   end
   def multiply
-    @lessons  = Lesson.where(start_date: (Time.zone.now.last_week.beginning_of_week.beginning_of_day)..Time.zone.now.last_week.end_of_week.end_of_day)
+    @lessons  = Lesson.where(start_date: (Time.zone.now.last_wee.beginning_of_week.beginning_of_day)..Time.zone.now.end_of_week.end_of_day)
     @lessons.each do |newl|
       @new_lesson_date  = (newl.start_date) + 1.weeks
       @check  = Lesson.where(start_date: @new_lesson_date)
