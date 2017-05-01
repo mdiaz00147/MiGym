@@ -48,7 +48,7 @@
                   <td><%= number_to_currency(plan.price) %></td>
                   <td><%= plan.lessons %></td>
                   <td><%= plan.start_hour %> Hasta <%= plan.end_hour %></td>
-                  <td><%= link_to '<i class="fa fa-eye"></i>'.html_safe, plan,  class: "btn btn-xs btn-success" %>
+                  <td><%= link_to '<i class="fa fa-eye"></i>'.html_safe, plan,  class: "btn btn-xs btn-primary" %>
                               <%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_plan_path(plan), class: "btn btn-xs btn-default" %>
                               <%= link_to '<i class="fa fa-times"></i>'.html_safe, plan, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %></td>
                 </tr>
@@ -72,9 +72,9 @@
       </div>
     </div>
   </div>
-
+</div>
 <% flash.each do |message_type, message| %>
-  <% if message_type == "success" %>
+  <% if message_type == "primary" %>
   <script>
   swal({
       title: "<%= message %>",

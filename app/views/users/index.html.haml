@@ -52,7 +52,7 @@
                             %td= (user.expiry_at).strftime("%d %B, %Y")
                             %td= user.document
                             %td
-                              = link_to '<i class="fa fa-user"></i>'.html_safe, user,  class: "btn btn-xs btn-success"
+                              = link_to '<i class="fa fa-user"></i>'.html_safe, user,  class: "btn btn-xs btn-primary"
                               = link_to '<i class="fa fa-pencil"></i>'.html_safe, admin_user_edit_path(user), class: "btn btn-xs btn-default"
                               = link_to '<i class="fa fa-times"></i>'.html_safe, user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger"
                       %tfoot

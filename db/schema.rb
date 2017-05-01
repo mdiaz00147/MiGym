@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170127170742) do
+ActiveRecord::Schema.define(version: 20170501010948) do
 
   create_table "assessments", force: :cascade do |t|
     t.integer  "body_water",    limit: 4
@@ -114,6 +114,8 @@ ActiveRecord::Schema.define(version: 20170127170742) do
     t.datetime "last_login"
     t.datetime "last_email"
     t.string   "token",               limit: 255
+    t.integer  "whatsapp",            limit: 4
+    t.string   "address",             limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

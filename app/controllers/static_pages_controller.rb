@@ -8,6 +8,6 @@ class StaticPagesController < ApplicationController
   def help
   end
   def contact
-  	
+  	@contact_user = User.where(admin:1).first
   end
 end

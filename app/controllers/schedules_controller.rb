@@ -10,7 +10,6 @@ class SchedulesController < ApplicationController
         @assistance     =   Schedule.joins(:lesson).select(:id,'lessons.start_date as start_date',:options,:user_id,:lesson_id).where("lessons.start_date BETWEEN '#{fecha_start}' AND '#{fecha_end}'").order("lessons.start_date ASC")     
       else
           @assistance       = Schedule.joins(:lesson ).select(:id,'lessons.start_date as start_date', :options,:user_id,:lesson_id ).where("lessons.start_date BETWEEN '#{Time.now.beginning_of_day}' AND '#{Time.now.end_of_day}'").order("lessons.start_date ASC")
-           
       end
   end
   def dynash

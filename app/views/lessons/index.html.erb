@@ -50,7 +50,7 @@
                           <td><%= lesson.users_allowed %></td>
                           <td>
 
-                              <%= link_to '<i class="fa fa-eye"></i>'.html_safe, lesson,  class: "btn btn-xs btn-success" %>
+                              <%= link_to '<i class="fa fa-eye"></i>'.html_safe, lesson,  class: "btn btn-xs btn-primary" %>
                               <%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_lesson_path(lesson), class: "btn btn-xs btn-default" %>
                               <%= link_to '<i class="fa fa-times"></i>'.html_safe, lesson, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %></td>
                         </tr>
@@ -103,7 +103,7 @@
 swal({
     title: "<%= message %>",
     text:  "",
-    type: "success",
+    type: "primary",
     timer: 3000,
     showConfirmButton: false
  })
