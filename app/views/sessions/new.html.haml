@@ -1,0 +1,39 @@
+- provide(:title, "Iniciar sesion")
+.page-head
+  %h2.pull-left
+    %i.fa.fa-users
+    Iniciar sesion
+  .bread-crumb.pull-right
+    %a{:href => "/"}
+      %i.fa.fa-users
+      Iniciar sesion
+
+  .clearfix
+.matter
+  .container
+    .col-md-8.col-lg-offset-2
+      .row
+        .widget.wred
+          .widget-head
+            %i.fa.fa-user
+            Iniciar sesion
+          .widget-content
+            .padd
+              - flash.each do |message_type, message|
+                %div{:class => "alert alert-#{message_type}"}= message
+              = form_for(:session, url: login_path, html: { class: "form-horizontal" }) do |f|
+                .form-group
+                  %label.control-label.col-md-2{:for => "sitename"} Email
+                  .col-md-9
+                    = f.email_field :email, class: 'form-control'
+                .form-group
+                  %label.control-label.col-md-2{:for => "sitename"} Documento o password
+                  .col-md-9
+                    = f.password_field :password, class: 'form-control'
+                .form-group
+                  .col-md-9.col-lg-offset-2
+                    = f.submit "Iniciar Sesion", class: "btn btn-primary"
+                .form-group
+                  .col-md-9.col-lg-offset-2
+                    %a{:href => "#"} Olvidaste tu contraseña?
+          .widget-foot
